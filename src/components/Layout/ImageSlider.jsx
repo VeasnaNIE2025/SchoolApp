@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import imag1 from "../assets/images/1.jpg"
-import imag2 from "../assets/images/2.jpg"
-import imag3 from "../assets/images/3.jpg"
-import imag4 from "../assets/images/4.jpg"
+import imag1 from "../../assets/images/1.jpg"
+import imag2 from "../../assets/images/2.jpg"
+import imag3 from "../../assets/images/3.jpg"
+import imag4 from "../../assets/images/4.jpg"
 
 const images = [imag1, imag2, imag3, imag4];
 

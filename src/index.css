@@ -4,5 +4,3 @@
   font-family: 'Kantumruy Pro', sans-serif;
 }
 @import "tailwindcss";
-/* នេះជាការកំណត់ dark mode ដោយ class .dark */
-@custom-variant dark (&:where(.dark, .dark *));
