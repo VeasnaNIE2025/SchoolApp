@@ -1,220 +1,269 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import "../../index.css";
-const HomePage = () => {
-  return (
-    <div className="space-y-20 py-16 bg-gray-50 font-khmer">
-      
-      {/* ផ្នែក ១: ចំណេះទូទៅ */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-8" >
-        <div className="mb-8 flex items-center justify-between border-b-4 border-red-600 pb-4">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
-            <span className="bg-red-600 text-white px-5 py-2 rounded-r-lg inline-block shadow-md">
-              ចំណេះទូទៅ
-            </span>
-          </h2>
-          <Link 
-            to="/general" 
-            className="text-red-600 font-bold text-lg hover:text-red-800 transition flex items-center gap-2 hidden md:flex"
-          >
-            មើលបន្ថែមទាំងអស់ →
-          </Link>
-        </div>
 
-        {/* Featured - ទំហំស្មើគ្នា */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-          <div className="relative rounded-2xl overflow-hidden shadow-xl group col-span-1 md:col-span-2 lg:col-span-1">
-            <img 
-              src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80" 
-              alt="ថ្នាក់រៀនចំណេះទូទៅ" 
-              className="w-full h-80 md:h-96 lg:h-[480px] object-cover group-hover:scale-105 transition duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
-              <h3 className="text-2xl md:text-3xl font-bold mb-2">មុខវិជ្ជាស្នូលឆ្នាំថ្មី</h3>
-              <p className="text-base md:text-lg opacity-90">គណិតវិទ្យា • វិទ្យាសាស្ត្រ • ភាសាខ្មែរ • ប្រវត្តិវិទ្យា</p>
-            </div>
-          </div>
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: (i = 0) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }
+  })
+};
 
-          <div className="relative rounded-2xl overflow-hidden shadow-xl group">
-            <img 
-              src="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?auto=format&fit=crop&w=800&q=80" 
-              alt="សកម្មភាពសិស្ស" 
-              className="w-full h-80 md:h-96 lg:h-[480px] object-cover group-hover:scale-105 transition duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
-              <h3 className="text-2xl md:text-3xl font-bold mb-2">ប្រកួតសរសេរអត្ថបទឈ្នះថ្នាក់ជាតិ</h3>
-              <p className="text-base md:text-lg opacity-90">សិស្សថ្នាក់ទី១១ ទទួលបានជ័យលាភ</p>
-            </div>
-          </div>
-
-          <div className="relative rounded-2xl overflow-hidden shadow-xl group">
-            <img 
-              src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80" 
-              alt="បណ្ណាល័យ" 
-              className="w-full h-80 md:h-96 lg:h-[480px] object-cover group-hover:scale-105 transition duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
-              <h3 className="text-2xl md:text-3xl font-bold mb-2">បណ្ណាល័យឌីជីថលថ្មី</h3>
-              <p className="text-base md:text-lg opacity-90">អានសៀវភៅរាប់ពាន់ក្បាលតាមអនឡាញ</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Small cards - ទំហំស្មើគ្នា */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <div key={i} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition flex flex-col">
-              <img 
-                src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=400&q=80" 
-                alt="សកម្មភាព" 
-                className="w-full h-40 object-cover flex-shrink-0"
-              />
-              <div className="p-4 flex-grow flex flex-col justify-between">
-                <h4 className="font-semibold text-base line-clamp-2 mb-2">ប្រធានបទថ្មី វគ្គសិក្សា...</h4>
-                <p className="text-sm text-gray-500">១ ម៉ោងមុន</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ផ្នែក ២: បច្ចេកទេស */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mb-8 flex items-center justify-between border-b-4 border-green-600 pb-4">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
-            <span className="bg-green-600 text-white px-5 py-2 rounded-r-lg inline-block shadow-md">
-              បច្ចេកទេស
-            </span>
-          </h2>
-          <Link 
-            to="/technical" 
-            className="text-green-600 font-bold text-lg hover:text-green-800 transition flex items-center gap-2 hidden md:flex"
-          >
-            មើលបន្ថែមទាំងអស់ →
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-          <div className="relative rounded-2xl overflow-hidden shadow-xl group col-span-1 md:col-span-2 lg:col-span-1">
-            <img 
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80" 
-              alt="អគ្គិសនី" 
-              className="w-full h-80 md:h-96 lg:h-[480px] object-cover group-hover:scale-105 transition duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
-              <h3 className="text-2xl md:text-3xl font-bold mb-2">ជំនាញអគ្គិសនី & សូឡា</h3>
-              <p className="text-base md:text-lg opacity-90">សិស្សបង្កើតប្រព័ន្ធសូឡាសម្រាប់សាលា</p>
-            </div>
-          </div>
-
-          <div className="relative rounded-2xl overflow-hidden shadow-xl group">
-            <img 
-              src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" 
-              alt="កែច្នៃអាហារ" 
-              className="w-full h-80 md:h-96 lg:h-[480px] object-cover group-hover:scale-105 transition duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
-              <h3 className="text-2xl md:text-3xl font-bold mb-2">កែច្នៃអាហារ & កសិកម្ម</h3>
-              <p className="text-base md:text-lg opacity-90">ផលិតផលកសិកម្មទំនើប</p>
-            </div>
-          </div>
-
-          <div className="relative rounded-2xl overflow-hidden shadow-xl group">
-            <img 
-              src="https://images.unsplash.com/photo-1592982537447-6f2a6a6a0c10?auto=format&fit=crop&w=800&q=80" 
-              alt="បសុវិទ្យា" 
-              className="w-full h-80 md:h-96 lg:h-[480px] object-cover group-hover:scale-105 transition duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
-              <h3 className="text-2xl md:text-3xl font-bold mb-2">បសុវប្បកម្មទំនើប</h3>
-              <p className="text-base md:text-lg opacity-90">ការចិញ្ចឹមសត្វបែបវិទ្យាសាស្ត្រ</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <div key={i} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition flex flex-col">
-              <img 
-                src="https://images.unsplash.com/photo-1581092160607-798aaaa19906?auto=format&fit=crop&w=400&q=80" 
-                alt="project" 
-                className="w-full h-40 object-cover flex-shrink-0"
-              />
-              <div className="p-4 flex-grow flex flex-col justify-between">
-                <h4 className="font-semibold text-base line-clamp-2 mb-2">គម្រោងសិស្សថ្មី...</h4>
-                <p className="text-sm text-gray-500">ថ្ងៃនេះ</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-{/* ផ្នែក ៣: កម្រងវីដេអូស្នាដៃសិស្ស */}
-<section className="mx-auto max-w-7xl px-6 lg:px-8">
-  <div className="mb-8 flex items-center justify-between border-b-4 border-red-600 pb-4">
-    <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
-      <span className="bg-red-600 text-white px-5 py-2 rounded-r-lg inline-block shadow-md">
-        កម្រងវីដេអូស្នាដៃសិស្ស
-      </span>
-    </h2>
-    <Link 
-      to="/videos" 
-      className="text-red-600 font-bold text-lg hover:text-red-800 transition flex items-center gap-2 hidden md:flex"
-    >
-      មើលវីដេអូទាំងអស់ →
-    </Link>
-  </div>
-
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-    {Array.from({ length: 6 }).map((_, i) => (  // បង្ហាញ ៦ វីដេអូសិន (២ ជួរ × ៣) អាចបន្ថែមបាន
-      <div 
-        key={i} 
-        className="group relative rounded-2xl overflow-hidden shadow-2xl cursor-pointer flex flex-col bg-gray-900"
+/* ── Section Header (news-ribbon style) ── */
+const SectionHeader = ({ label, color, to }) => (
+  <div className="mb-8">
+    {/* Ribbon row */}
+    <div className="flex items-center gap-0 mb-0">
+      <Link
+        to={to}
+        className="flex items-center gap-2 text-white text-base font-bold px-4 py-2 font-khmer
+                   hover:brightness-110 transition-all duration-200 select-none"
+        style={{
+          background: color,
+          clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%)',
+          paddingRight: '28px',
+        }}
       >
-        {/* Thumbnail + Play Overlay */}
-        <div className="relative flex-shrink-0 aspect-video">  {/* aspect-video = 16:9 សម្រាប់វីដេអូ */}
-          <img 
-            src={`https://images.unsplash.com/photo-1611162617210-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80&ixlib=rb-4.0.3${i % 3 === 0 ? '&crop=entropy' : ''}`} 
-            alt={`ស្នាដៃសិស្ស ${i + 1}`} 
-            className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-          />
-          <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-70 group-hover:opacity-90 transition">
-            <span className="text-white text-7xl md:text-8xl drop-shadow-2xl transform group-hover:scale-110 transition duration-300">
-              ▶
-            </span>
+        {label}
+        <span className="text-white/80 font-light ml-1">›</span>
+      </Link>
+    </div>
+    {/* Underline */}
+    <div className="h-[3px] w-full mt-0" style={{ background: `linear-gradient(90deg, ${color} 180px, #e5e7eb 180px)` }} />
+  </div>
+);
+
+/* ── Hero Card ── */
+const HeroCard = ({ img, title, desc, i }) => (
+  <motion.div
+    custom={i}
+    variants={fadeUp}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
+    whileHover={{ y: -8 }}
+    className="relative rounded-[2rem] overflow-hidden shadow-2xl group cursor-pointer"
+    style={{ height: 420 }}
+  >
+    <img
+      src={img + "?auto=format&fit=crop&w=900&q=80"}
+      alt={title}
+      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+    <div className="absolute bottom-0 left-0 right-0 p-8">
+      <h3 className="text-2xl font-bold text-white leading-snug mb-2">{title}</h3>
+      <p className="text-white/75 text-sm leading-relaxed">{desc}</p>
+    </div>
+  </motion.div>
+);
+
+/* ── Small Card ── */
+const SmallCard = ({ img, title, time, i }) => (
+  <motion.div
+    custom={i}
+    variants={fadeUp}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
+    whileHover={{ y: -5 }}
+    className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer group"
+  >
+    <div className="overflow-hidden h-36">
+      <img
+        src={img}
+        alt={title}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+    </div>
+    <div className="p-4">
+      <h4 className="font-semibold text-sm leading-snug line-clamp-2 text-gray-800 mb-2">{title}</h4>
+      <p className="text-xs text-gray-400">{time}</p>
+    </div>
+  </motion.div>
+);
+
+/* ── Video Card ── */
+const VideoCard = ({ video, onLike, onShare }) => (
+  <motion.div
+    variants={fadeUp}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
+    className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col"
+  >
+    <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+      <iframe
+        className="absolute inset-0 w-full h-full"
+        src={`https://www.youtube.com/embed/${video.youtubeId}`}
+        title={video.title}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    </div>
+
+    <div className="p-5 flex flex-col flex-1">
+      <h4 className="font-bold text-base leading-snug line-clamp-2 text-gray-900 mb-1">
+        {video.title}
+      </h4>
+      <p className="text-xs text-gray-400 mb-4">{video.views} ចូលមើល · {video.duration}</p>
+
+      <div className="flex items-center gap-5 mt-auto pt-4 border-t border-gray-100 text-sm text-gray-500">
+        <motion.button
+          whileTap={{ scale: 0.85 }}
+          onClick={() => onLike(video.id)}
+          className={`flex items-center gap-1.5 font-medium transition ${video.liked ? 'text-rose-500' : 'hover:text-rose-500'}`}
+        >
+          <span className="text-lg">{video.liked ? '❤️' : '🤍'}</span> {video.likes}
+        </motion.button>
+
+        <motion.button
+          whileTap={{ scale: 0.85 }}
+          onClick={() => onShare(video)}
+          className="flex items-center gap-1.5 hover:text-blue-500 transition font-medium"
+        >
+          <span className="text-lg">🔗</span> Share
+        </motion.button>
+
+        <button className="flex items-center gap-1.5 hover:text-amber-500 transition font-medium">
+          <span className="text-lg">📥</span> Save
+        </button>
+      </div>
+    </div>
+  </motion.div>
+);
+
+/* ════ MAIN PAGE ════ */
+const HomePage = () => {
+  const [videos, setVideos] = useState([
+    { id: 1, youtubeId: "na-SWi-tyyw",  title: "ស្នាដៃគម្រោងវិទ្យាសាស្ត្រ ២០២៦ - ថ្នាក់ទី១០", duration: "4:32", views: "1.2K", likes: 342, liked: false },
+    { id: 2, youtubeId: "TVljUbXf64o",  title: "ការបង្កើតរ៉ូបូតសាមញ្ញដោយសិស្សថ្នាក់ទី១១",     duration: "7:15", views: "2.8K", likes: 189, liked: false },
+    { id: 3, youtubeId: "1QydIWMcOcw",  title: "សកម្មភាពកែច្នៃអាហារបែបទំនើប",                  duration: "5:48", views: "4.1K", likes: 456, liked: false },
+    { id: 4, youtubeId: "x8aBUGLRND0",  title: "បណ្ណាល័យឌីជីថល និងការអានសៀវភៅអនឡាញ",          duration: "3:55", views: "1.9K", likes: 98,  liked: false },
+    { id: 5, youtubeId: "MgriqFQBdlg",  title: "ជំនាញអគ្គិសនី និងថាមពលពន្លឺព្រះអាទិត្យ",       duration: "6:20", views: "3.5K", likes: 267, liked: false },
+    { id: 6, youtubeId: "9acYqc1pF0I",  title: "ប្រកួតប្រជែងសរសេរអត្ថបទថ្នាក់ជាតិ ២០២៥",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+  ]);
+
+  const handleLike = (id) =>
+    setVideos(prev => prev.map(v =>
+      v.id === id ? { ...v, liked: !v.liked, likes: v.liked ? v.likes - 1 : v.likes + 1 } : v
+    ));
+
+  const handleShare = async (video) => {
+    const url = `https://www.youtube.com/watch?v=${video.youtubeId}`;
+    try {
+      if (navigator.share) await navigator.share({ title: video.title, url });
+      else { await navigator.clipboard.writeText(url); alert("✅ បានចម្លង Link ទៅ Clipboard!"); }
+    } catch (err) { console.log(err); }
+  };
+
+  const generalHeroes = [
+    { img: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1", title: "មុខវិជ្ជាស្នូលឆ្នាំថ្មី",              desc: "គណិតវិទ្យា • វិទ្យាសាស្ត្រ • ភាសាខ្មែរ • ប្រវត្តិវិទ្យា" },
+    { img: "https://images.unsplash.com/photo-1588075592446-265fd1e6e76f", title: "ប្រកួតសរសេរអត្ថបទឈ្នះថ្នាក់ជាតិ", desc: "សិស្សថ្នាក់ទី១១ ទទួលបានជ័យលាភ" },
+    { img: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6", title: "បណ្ណាល័យឌីជីថលថ្មី",                  desc: "អានសៀវភៅរាប់ពាន់ក្បាលតាមអនឡាញ" },
+  ];
+
+  const techHeroes = [
+    { img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158", title: "ជំនាញអគ្គិសនី & សូឡា",  desc: "សិស្សបង្កើតប្រព័ន្ធសូឡាសម្រាប់សាលា" },
+    { img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d", title: "កែច្នៃអាហារ & កសិកម្ម", desc: "ផលិតផលកសិកម្មទំនើប" },
+    { img: "https://images.unsplash.com/photo-1592982537447-6f2a6a6a0c10", title: "បសុវប្បកម្មទំនើប",        desc: "ការចិញ្ចឹមសត្វបែបវិទ្យាសាស្ត្រ" },
+  ];
+
+  const smallImgsGeneral = [
+    "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1610484826967-09c5720778c7?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1596495578065-6e0763fa1178?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=400&q=80",
+  ];
+
+  const smallImgsTech = [
+    "https://images.unsplash.com/photo-1581092160607-798aaaa19906?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&fit=crop&w=400&q=80",
+  ];
+
+  const smallTitles = [
+    "ប្រធានបទថ្មី - វគ្គសិក្សា ២០២៦",
+    "សកម្មភាពក្រុម STEM ថ្ងៃចុងសប្តាហ៍",
+    "ការតាំងពិពណ៌គម្រោងវិទ្យាសាស្ត្រ",
+    "ជំនួបសិស្សសាស្ត្រាចារ្យ",
+    "វគ្គបណ្តុះបណ្តាលបច្ចេកទេស",
+    "ការបង្ហាញស្នាដៃរបស់ក្រុម B",
+    "ព្រឹត្តិការណ៍សរសេរកូដ Hackathon",
+    "ពិព័រណ៍ស្នាដៃឌីជីថល",
+    "ការប្រកួតចម្លើយរហ័ស",
+    "ចែករំលែកចំណេះដឹងប្រចាំខែ",
+  ];
+  const timeLabels = ["ម្សិលមិញ","២ ថ្ងៃមុន","ថ្ងៃនេះ","៣ ថ្ងៃមុន","១ ម៉ោងមុន","ម្សិលមិញ","ថ្ងៃនេះ","៤ ថ្ងៃមុន","១ ម៉ោងមុន","ម្សិលមិញ"];
+
+  return (
+    <div
+      className="font-khmer min-h-screen"
+      style={{ background: 'linear-gradient(160deg, #f8faff 0%, #ffffff 50%, #f5f3ff 100%)' }}
+    >
+
+      {/* ═══ ១. ចំណេះទូទៅ ═══ */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-10 pt-10 pb-16">
+        <SectionHeader label="ចំណេះទូទៅ" color="#6366f1" to="/general" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          {generalHeroes.map((item, i) => <HeroCard key={i} {...item} i={i} />)}
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+          {smallImgsGeneral.map((img, i) => (
+            <SmallCard key={i} img={img} title={smallTitles[i]} time={timeLabels[i]} i={i} />
+          ))}
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-7xl px-10">
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+      </div>
+
+      {/* ═══ ២. បច្ចេកទេស ═══ */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
+        <SectionHeader label="បច្ចេកទេស" color="#0d9488" to="/technical" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          {techHeroes.map((item, i) => <HeroCard key={i} {...item} i={i} />)}
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+          {smallImgsTech.map((img, i) => (
+            <SmallCard key={i} img={img} title={smallTitles[i]} time={timeLabels[i]} i={i} />
+          ))}
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-7xl px-10">
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+      </div>
+
+      {/* ═══ ៣. វីដេអូស្នាដៃសិស្ស ═══ */}
+      <section style={{ background: 'linear-gradient(180deg, #fff1f2 0%, #ffffff 100%)' }} className="py-16">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <SectionHeader label="វីដេអូស្នាដៃសិស្ស" color="#e11d48" to="/videos" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {videos.map((video) => (
+              <VideoCard key={video.id} video={video} onLike={handleLike} onShare={handleShare} />
+            ))}
           </div>
         </div>
+      </section>
 
-        {/* Title & Info - ដាក់នៅខាងក្រោម មិន overlap លើរូបទាំងស្រុងទៀតទេ */}
-        <div className="p-5 bg-gradient-to-t from-black/90 via-black/60 to-transparent text-white">
-          <h4 className="text-xl md:text-2xl font-bold line-clamp-2 mb-2">
-            ស្នាដៃគម្រោងវិទ្យាសាស្ត្រ {2026 + i} - ថ្នាក់ទី {10 + i % 3}
-          </h4>
-          <p className="text-base opacity-90 flex items-center gap-3">
-            <span>៤:៣០</span>
-            <span>•</span>
-            <span>១.{i + 1}K ចូលមើល</span>
-          </p>
-        </div>
-      </div>
-    ))}
-  </div>
-
-  {/* បើចង់បន្ថែម "មើលបន្ថែម" ខាងក្រោម */}
-  <div className="mt-10 text-center">
-    <Link 
-      to="/videos" 
-      className="inline-block bg-red-600 text-white font-bold text-lg px-10 py-4 rounded-lg hover:bg-red-700 transition shadow-lg"
-    >
-      មើលវីដេអូស្នាដៃសិស្សបន្ថែម →
-    </Link>
-  </div>
-</section>
     </div>
   );
 };
