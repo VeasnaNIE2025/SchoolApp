@@ -26,10 +26,9 @@ const Footer = () => {
 
             {/* Contact */}
             <div className="mt-6 flex flex-col gap-2 text-sm text-gray-500">
-              <a href="mailto:https://www.salacode.site/" className="flex items-center gap-2 hover:text-white transition-colors">
-                <span className="text-indigo-400">📧</span> info@education.edu.kh
-              </a>
-              <a href="tel:+85512345678" className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href="mailto:manveasna1994@gmail.com" className="flex items-center gap-2 hover:text-white transition-colors">
+                <span className="text-indigo-400">📧</span> manveasna1994@gmail.com
+              <a href="tel:+855967932240" className="flex items-center gap-2 hover:text-white transition-colors">
                 <span className="text-indigo-400">📞</span> 097 793 2240
               </a>
               <span className="flex items-center gap-2">
