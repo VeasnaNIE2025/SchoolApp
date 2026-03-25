@@ -139,12 +139,26 @@ const VideoCard = ({ video, onLike, onShare }) => (
 /* ════ MAIN PAGE ════ */
 const HomePage = () => {
   const [videos, setVideos] = useState([
-    { id: 1, youtubeId: "na-SWi-tyyw",  title: "ស្នាដៃគម្រោងវិទ្យាសាស្ត្រ ២០២៦ - ថ្នាក់ទី១០", duration: "4:32", views: "1.2K", likes: 342, liked: false },
-    { id: 2, youtubeId: "TVljUbXf64o",  title: "ការបង្កើតរ៉ូបូតសាមញ្ញដោយសិស្សថ្នាក់ទី១១",     duration: "7:15", views: "2.8K", likes: 189, liked: false },
-    { id: 3, youtubeId: "1QydIWMcOcw",  title: "សកម្មភាពកែច្នៃអាហារបែបទំនើប",                  duration: "5:48", views: "4.1K", likes: 456, liked: false },
-    { id: 4, youtubeId: "x8aBUGLRND0",  title: "បណ្ណាល័យឌីជីថល និងការអានសៀវភៅអនឡាញ",          duration: "3:55", views: "1.9K", likes: 98,  liked: false },
-    { id: 5, youtubeId: "MgriqFQBdlg",  title: "ជំនាញអគ្គិសនី និងថាមពលពន្លឺព្រះអាទិត្យ",       duration: "6:20", views: "3.5K", likes: 267, liked: false },
-    { id: 6, youtubeId: "9acYqc1pF0I",  title: "ប្រកួតប្រជែងសរសេរអត្ថបទថ្នាក់ជាតិ ២០២៥",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 1, youtubeId: "WWKom2ptiok",  title: "បច្ចេកវិទ្យាជួយដល់អ្នកសិក្សាក្នុងសត្សវត្សទី២១", duration: "4:32", views: "1.2K", likes: 342, liked: false },
+    { id: 2, youtubeId: "jWp9xB9FMA4",  title: "ផលប៉ះពាល់នៃការប្រើប្រាស់ទូរស័ព្ទដៃលើសកម្រិត",     duration: "7:15", views: "2.8K", likes: 189, liked: false },
+    { id: 3, youtubeId: "71HJaRRKyE8",  title: "សាលារៀនស្អាតផ្ដើមចេញពីយើងទាំងអស់គ្នា",                  duration: "5:48", views: "4.1K", likes: 456, liked: false },
+    { id: 4, youtubeId: "-Pg9gUdRPFo",  title: "ការផលវិបាកនៃការបាត់បង់ព្រៃឈើ",          duration: "3:55", views: "1.9K", likes: 98,  liked: false },
+    { id: 5, youtubeId: "He8CrtG7JK0",  title: "អត្ថប្រយោជន៍នៃការប្រើប្រាស់ទូរស័ព្ទដៃ",       duration: "6:20", views: "3.5K", likes: 267, liked: false },
+    { id: 6, youtubeId: "UJ-bkBymHcg",  title: "ការញៀនទូរស័ព្ទ និងបណ្ដាញសង្គម",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 7, youtubeId: "kWbJY6vqO8g",  title: "ការការពារព័ត៌មានផ្ទាល់ខ្លូននៅលើ Internet",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 8, youtubeId: "HtEhf8twmiw",  title: "ការប្រើបញ្ញាសិប្បនិមិត្តក្នុងយុគ្គសម័យឌីជីថល",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 9, youtubeId: "TBLiYVIGDA4",  title: "ការប្រើប្រាស់ថង់ប្លាស្ទិក និងវិធីបង្ការ",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 10, youtubeId: "YEcZjP2rS60",  title: "ជំនាញបច្ចេកទេសនៅ វិចប ព្រះបាទសម្ដេចព្រះបរមនាថនរោត្តមសីហមុនី",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 11, youtubeId: "Sh7foiIj6qQ",  title: "បញ្ហាបរិស្ថានក្នុងសាលារៀន",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 12, youtubeId: "dd_yIKCdjjo",  title: "របៀបសំពះរបស់ខ្មែរ",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 13, youtubeId: "9acYqc1pF0I",  title: "ផលប៉ះពាល់នៃជំងឺទឹកនោមផ្អែម និងរបៀបបង្ការ",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 13, youtubeId: "MgriqFQBdlg",  title: "ការគ្រប់គ្រងសំរាម",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 13, youtubeId: "1QydIWMcOcw",  title: "សមិទ្ធិផលនៃការមិនខិតខំរៀនសូត្រ",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 13, youtubeId: "QbuVUlt6IYw",  title: "ការប្រើប្រាស់បណ្ដាញសង្គម",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 13, youtubeId: "TVljUbXf64o",  title: "ការបំពុលបរិស្ថានដោយថង់ប្លាស្ទិក",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 13, youtubeId: "na-SWi-tyyw",  title: "របៀបកែប្រែខ្លួនទៅជាមនុស្សវិជ្ជមាន",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+
+
   ]);
 
   const handleLike = (id) =>
