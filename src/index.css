@@ -1,6 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap');
+@import "tailwindcss";
+
+/* Tailwind v4 dark mode via selector */
+@import "tailwindcss/utilities" layer(utilities);
+
+@theme {
+  --font-khmer: "Kantumruy Pro", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 transition-colors duration-300;
+  }
+}
 
 .font-khmer {
-  font-family: 'Kantumruy Pro', sans-serif;
+  font-family: var(--font-khmer);
 }
-@import "tailwindcss";

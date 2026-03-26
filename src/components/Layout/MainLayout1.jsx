@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
 import MenuBar from "./MenuBar";
 import Footer from "./Footer";
-import "../../index.css";
+// ❌ លុបចេញ: import "../../index.css";
+
 const MainLayout1 = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Header: Image + MenuBar */}
+      {/* Header: MenuBar */}
       <div className="h-[30%] flex flex-col">
         <div className="h-1/2">
           <MenuBar />
