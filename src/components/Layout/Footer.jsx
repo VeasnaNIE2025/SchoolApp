@@ -27,7 +27,7 @@ const Footer = () => {
             {/* Contact */}
             <div className="mt-6 flex flex-col gap-2 text-sm text-gray-500">
               <a href="mailto:manveasna1994@gmial.com" className="flex items-center gap-2 hover:text-white transition-colors">
-                <span className="text-indigo-400">📧</span> imanveasna1994@gmail.com
+                <span className="text-indigo-400">📧</span> manveasna1994@gmail.com
               </a>
               <a href="tel:+855967932240" className="flex items-center gap-2 hover:text-white transition-colors">
                 <span className="text-indigo-400">📞</span> 097 793 2240
