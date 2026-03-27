@@ -92,9 +92,8 @@ function MenuBar() {
                 <AiOutlineRead className="text-base" /><span>ព័ត៌មាន</span>
               </NavLink>
               <NavLink to="/ict" onClick={closeMenu} className={navCls}>
-                <AiOutlineLaptop className="text-base" />
-                <span>ព័ត៌មានវិទ្យា</span>
-              </NavLink> 
+                <AiOutlineLaptop className="text-base" /><span>ព័ត៌មានវិទ្យា</span>
+              </NavLink>
               <NavLink to="/contact" onClick={closeMenu} className={navCls}>
                 <AiOutlinePhone className="text-base" /><span>ទំនាក់ទំនង</span>
               </NavLink>
@@ -140,10 +139,8 @@ function MenuBar() {
         </div>
 
         {/* ── Mobile Dropdown ── */}
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out
-            ${isOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"}`}
-        >
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out
+  ${isOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"}`}>
           <div className="px-4 pb-4 pt-2 space-y-1 border-t border-white/10">
             <NavLink to="/" onClick={closeMenu} className={mobileNavCls} end>
               <AiOutlineHome className="text-lg" /><span>ទំព័រដើម</span>
@@ -151,6 +148,12 @@ function MenuBar() {
             <NavLink to="/news" onClick={closeMenu} className={mobileNavCls}>
               <AiOutlineRead className="text-lg" /><span>ព័ត៌មាន</span>
             </NavLink>
+
+            {/* ✅ បន្ថែម ICT ត្រង់នេះ */}
+            <NavLink to="/ict" onClick={closeMenu} className={mobileNavCls}>
+              <AiOutlineLaptop className="text-lg" /><span>ព័ត៌មានវិទ្យា</span>
+            </NavLink>
+
             <NavLink to="/aboutme" onClick={closeMenu} className={mobileNavCls}>
               <AiOutlineInfoCircle className="text-lg" /><span>អំពីខ្ញុំ</span>
             </NavLink>
