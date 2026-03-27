@@ -86,7 +86,6 @@ const subjects = [
         subTopics: ["ស្វែងយល់អំពីការប្រើប្រាស់គ្រាប់ចុច","រៀនវាយស្រៈ", "រៀនវាយព្យញ្ជនៈ", "រៀនវាយស្រៈផ្សំនិងព្យញ្ជនៈ"],
         pdf: "/PDF/Microsoft Word/Lesson7/slide7.pdf",
       },
-
     ],
   },
 ];
@@ -191,7 +190,7 @@ const IctPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {subject.lessons.map((lesson) => (
                   <div
-                    key={lesson.id}
+                    key={`${subject.id}-${lesson.id}`} // ✅ ជួសជុល: key មិនស្ទួនទៀតទេ
                     className={`bg-white dark:bg-gray-800 rounded-3xl border ${c.border} shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col`}
                   >
                     {/* Card Top */}

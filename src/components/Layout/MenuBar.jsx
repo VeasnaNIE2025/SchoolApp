@@ -13,6 +13,7 @@ import {
 } from "react-icons/ai";
 import { AiOutlineLaptop } from "react-icons/ai";
 import { HiOutlineMoon, HiOutlineSun } from "react-icons/hi2";
+import { BsCameraVideo } from "react-icons/bs";
 
 function MenuBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -94,6 +95,9 @@ function MenuBar() {
               <NavLink to="/ict" onClick={closeMenu} className={navCls}>
                 <AiOutlineLaptop className="text-base" /><span>ព័ត៌មានវិទ្យា</span>
               </NavLink>
+              <NavLink to="/videos" onClick={closeMenu} className={navCls}>
+                <BsCameraVideo className="text-base" /><span>វីដេអូ</span>
+              </NavLink>
               <NavLink to="/contact" onClick={closeMenu} className={navCls}>
                 <AiOutlinePhone className="text-base" /><span>ទំនាក់ទំនង</span>
               </NavLink>
@@ -153,7 +157,9 @@ function MenuBar() {
             <NavLink to="/ict" onClick={closeMenu} className={mobileNavCls}>
               <AiOutlineLaptop className="text-lg" /><span>ព័ត៌មានវិទ្យា</span>
             </NavLink>
-
+            <NavLink to="/videos" onClick={closeMenu} className={mobileNavCls}>
+              <BsCameraVideo className="text-lg" /><span>វីដេអូ</span>
+            </NavLink>
             <NavLink to="/aboutme" onClick={closeMenu} className={mobileNavCls}>
               <AiOutlineInfoCircle className="text-lg" /><span>អំពីខ្ញុំ</span>
             </NavLink>

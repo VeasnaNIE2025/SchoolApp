@@ -9,6 +9,7 @@ import IctPage from "./page/ICT/IctPage";
 import MainLayout1 from "./components/Layout/MainLayout1";
 import ContactPage from "./page/contact/ContactPage";
 import AboutMePage from "./page/aboutme/AboutMePage";
+import VidoesPage from "./page/videos/VideosPage";
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
             <Route element={<MainLayout1/>}>
               <Route path="/news" element={<NewsPage />} />
               <Route path="/ict" element={<IctPage/>} />
+              <Route path="/videos" element={<VidoesPage/>} />
               <Route path="/aboutme" element={<AboutMePage/>} />
               <Route path="*" element={<h1>Error Route</h1>}/>
             </Route>

@@ -1,8 +1,6 @@
 import { Outlet } from "react-router-dom";
 import MenuBar from "./MenuBar";
 import Footer from "./Footer";
-// ❌ លុបចេញ: import "../../index.css";
-
 const MainLayout1 = () => {
   return (
     <div className="flex flex-col min-h-screen">
