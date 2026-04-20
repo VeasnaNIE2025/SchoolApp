@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import MenuBar from "./MenuBar";
 import ImageSlide from "./ImageSlider";
 import Footer from "./Footer";
-// ❌ លុបចេញ: import "../../index.css";
+
 
 const MainLayout = () => {
   return (

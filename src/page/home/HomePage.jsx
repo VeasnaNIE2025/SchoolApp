@@ -43,7 +43,7 @@ const HeroCard = ({ img, title, desc, i }) => (
     initial="hidden"
     whileInView="show"
     viewport={{ once: true }}
-    whileHover={{ y: -8 }}
+f    whileHover={{ y: -8 }}
     className="relative rounded-[2rem] overflow-hidden shadow-2xl group cursor-pointer"
     style={{ height: 420 }}
   >

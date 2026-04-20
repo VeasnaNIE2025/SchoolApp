@@ -17,19 +17,20 @@ import { HiOutlineBookOpen } from "react-icons/hi2";
 const curriculum = [
   {
     id: 1,
-    title: "មេរៀនទី ១: មូលដ្ឋានគ្រឹះ",
+    title: "មេរៀនទី ១: មូលដ្ឋានគ្រឹះកម្មវិធី Microsoft word",
     total: 3,
     done: 0,
     open: true,
     lessons: [
-      { id: 1, title: "ការណែនាំមុខវិជ្ជា", duration: "3:20", done: false, url: "/Videos/Lesson1.mp4" },
-      { id: 2, title: "គោលការណ៍ ICT",      duration: "5:45", done: false, url: "/Videos/Lesson2.mp4" },
-      { id: 3, title: "ប្រវត្តិកុំព្យូទ័រ",  duration: "4:10", done: false, url: "/Videos/Lesson3.mp4" },
+      { id: 1, title: "1-របៀបបញ្ចូលរូបភាព", duration: "3:20", done: false, url: "/Videos/1-របៀបបញ្ចូលរូបភាព.mp4" },
+      { id: 2, title: "2-ការប្រើប្រាស់ពន្លឺ djust", duration: "5:45", done: false, url: "/Videos/2-ការប្រើប្រាស់ពន្លឺ djust.mp4" },
+      { id: 3, title: "3-ការប្រើប្រាស់ម៉ូតរូបភាពPicture Style",  duration: "4:10", done: false, url: "/Videos/3-ការប្រើប្រាស់ម៉ូតរូបភាពPicture Style.mp4" },
+      { id: 4, title: "4-ការកំណត់ទម្រង់អក្សរជាមួយរូបភាពWrap Text",  duration: "4:10", done: false, url: "/Videos/4-ការកំណត់ទម្រង់អក្សរជាមួយរូបភាពWrap Text.mp4" },
     ],
   },
   {
     id: 2,
-    title: "មេរៀនទី ២: Hardware & Software",
+    title: "មេរៀនទី ២: ការអនុវត្ត Project ",
     total: 3,
     done: 0,
     open: false,
