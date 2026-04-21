@@ -15,10 +15,20 @@ import { HiOutlineBookOpen } from "react-icons/hi2";
    Sample Data
 ────────────────────────────────────────── */
 const curriculum = [
-  {
+   {
     id: 1,
+    title: "ការណែនាំអំពីគន្លឺះខ្លីៗនៃការប្រើប្រាស់កុំព្យូទ័រ",
+    total: 1,
+    done: 0,
+    open: true,
+    lessons: [
+      { id: 1, title: "HelpFindKey", duration: "3:20", done: false, url: "/Videos/HelpFindKey.mp4" },
+    ],
+  },
+  {
+    id: 2,
     title: "មេរៀនទី ១: មូលដ្ឋានគ្រឹះកម្មវិធី Microsoft word",
-    total: 3,
+    total: 11,
     done: 0,
     open: true,
     lessons: [
@@ -36,7 +46,7 @@ const curriculum = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "មេរៀនទី ២: ការអនុវត្ត Project ",
     total: 3,
     done: 0,
@@ -48,7 +58,7 @@ const curriculum = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: "មេរៀនទី ៣: Internet & Network",
     total: 2,
     done: 0,
