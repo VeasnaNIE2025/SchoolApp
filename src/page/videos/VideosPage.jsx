@@ -47,14 +47,14 @@ const curriculum = [
   },
   {
     id: 3,
-    title: "មេរៀនទី ២: ការអនុវត្ត Project ",
+    title: "មេរៀនទី ២: សិក្សាអំពី  Microsoft Excel 2021",
     total: 3,
     done: 0,
     open: false,
     lessons: [
-      { id: 4, title: "Hardware គឺជាអ្វី?",  duration: "6:00", done: false, url: "/Videos/lesson4.mp4" },
-      { id: 5, title: "Software ប្រភេទនានា", duration: "7:30", done: false, url: "" },
-      { id: 6, title: "ការដំឡើង OS",         duration: "10:00", done: false, locked: true, url: "" },
+      { id: 4, title: "1-ការកំណត់ក្រដាស Page Setup",  duration: "6:00", done: false, url: "/Videos/lesson4.mp4" },
+      { id: 5, title: "Software ប្រភេទនានា", duration: "7:30", done: false, url: "/Videos/lesson5.mp4" },
+      { id: 6, title: "ការដំឡើង OS",         duration: "10:00", done: false, locked: true, url: "/Videos/lesson4.mp4" },
     ],
   },
   {

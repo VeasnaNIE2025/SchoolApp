@@ -28,6 +28,13 @@ const subjects = [
         subTopics: ["Basic Formulas", "Statistical Functions", "Logical Functions"],
         pdf: "/PDF/Microsoft Excel/Lesson2/slide2.pdf",
       },
+      {
+        id: 3,
+        title: "លំហាត់អនុវត្ត PageSetup",
+        description: "លំហាត់អនុវត្តការកំណត់ទំព័រ PageSetup សម្រាប់បោះពុម្ព",
+        subTopics: ["Page Setup", "Print Titles", "Print Area"],
+        pdf: "/PDF/Microsoft Excel/ExcelExcercise/លំហាត់អនុវត្ត Excel page Setup 1.xlsx",
+      },
     ],
   },
   {
@@ -125,15 +132,15 @@ const IctPage = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-16 transition-colors duration-300 font-khmer">
-      <div className="p-6 max-w-6xl mx-auto">
+    <div className="min-h-screen pt-16 transition-colors duration-300 bg-gray-50 dark:bg-gray-900 font-khmer">
+      <div className="max-w-6xl p-6 mx-auto">
 
         {/* ==================== HEADER ==================== */}
         <div className="mb-10">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
             វិទ្យាសាស្ត្រ ICT
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-3 text-lg">
+          <p className="mt-3 text-lg text-gray-600 dark:text-gray-400">
             ជ្រើសរើសមុខវិជ្ជា ហើយចូលមើល PDF មេរៀន
           </p>
         </div>
@@ -187,7 +194,7 @@ const IctPage = () => {
               </div>
 
               {/* Lesson Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {subject.lessons.map((lesson) => (
                   <div
                     key={`${subject.id}-${lesson.id}`} // ✅ ជួសជុល: key មិនស្ទួនទៀតទេ
@@ -202,17 +209,17 @@ const IctPage = () => {
                     </div>
 
                     {/* Card Content */}
-                    <div className="p-6 flex flex-col flex-1">
-                      <h3 className="font-semibold text-lg leading-tight text-gray-900 dark:text-white mb-3">
+                    <div className="flex flex-col flex-1 p-6">
+                      <h3 className="mb-3 text-lg font-semibold leading-tight text-gray-900 dark:text-white">
                         {lesson.title}
                       </h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
+                      <p className="mb-6 text-sm text-gray-600 dark:text-gray-400">
                         {lesson.description}
                       </p>
 
                       {/* Sub Topics */}
-                      <div className="mb-8 flex-1">
-                        <p className="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-3 flex items-center gap-2">
+                      <div className="flex-1 mb-8">
+                        <p className="flex items-center gap-2 mb-3 text-xs font-semibold text-gray-500 uppercase dark:text-gray-400">
                           <AiOutlineBook className="text-base" />
                           ខ្លឹមសាររង
                         </p>
@@ -261,10 +268,10 @@ const IctPage = () => {
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-[100] p-4">
           <div className="bg-white dark:bg-gray-900 w-full max-w-6xl h-[92vh] rounded-3xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col">
 
-            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex-shrink-0">
+            <div className="flex items-center justify-between flex-shrink-0 px-6 py-4 border-b border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-3">
                 <AiOutlineFilePdf className="text-2xl text-red-500" />
-                <h3 className="font-semibold text-gray-800 dark:text-white truncate">
+                <h3 className="font-semibold text-gray-800 truncate dark:text-white">
                   {viewTitle}
                 </h3>
               </div>
@@ -286,7 +293,7 @@ const IctPage = () => {
               </div>
             </div>
 
-            <div className="flex-1 bg-gray-100 dark:bg-gray-950 overflow-hidden rounded-b-3xl">
+            <div className="flex-1 overflow-hidden bg-gray-100 dark:bg-gray-950 rounded-b-3xl">
               <iframe
                 src={viewPdf}
                 title={viewTitle}
