@@ -93,6 +93,13 @@ const subjects = [
         subTopics: ["ស្វែងយល់អំពីការប្រើប្រាស់គ្រាប់ចុច","រៀនវាយស្រៈ", "រៀនវាយព្យញ្ជនៈ", "រៀនវាយស្រៈផ្សំនិងព្យញ្ជនៈ"],
         pdf: "/PDF/Microsoft Word/Lesson7/slide7.pdf",
       },
+        {
+        id: 8,
+        title: "លំហាត់អនុវត្តការបញ្ជូលរូបភាព",
+        description: "លំហាត់ប្រើសម្រាប់អនុវត្តជាមួយការអនុវត្តរូបភាព",
+        subTopics: ["word","រូបភាព", "បញ្ជូលរូបភាព", "រៀនបញ្ចូលរូបភាព"],
+        pdf: "/PDF/Microsoft Word/Lesson7/WordExcercise/Excercise.docx",
+      },
     ],
   },
 ];
