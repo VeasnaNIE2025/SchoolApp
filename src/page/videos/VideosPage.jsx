@@ -68,8 +68,8 @@ const curriculum = [
     done: 0,
     open: false,
     lessons: [
-      { id: 15, title: "1.របៀបដោនឡូត និងតម្លើងកម្មវិធីតេលេក្រាមលើកុំព្យូទ័រ", duration: "8:15", done: false, url: "/Videos/other/telegram-install.mp4" },
-      { id: 16, title: "LAN, WAN, MAN",duration: "5:50", done: false, locked: true, url: "" },
+      { id: 19, title: "1.របៀបដោនឡូត និងតម្លើងកម្មវិធីតេលេក្រាមលើកុំព្យូទ័រ", duration: "8:15", done: false, url: "/Videos/other/telegram-install.mp4" },
+      { id: 20, title: "LAN, WAN, MAN",duration: "5:50", done: false, locked: true, url: "" },
     ],
   },
 ];
