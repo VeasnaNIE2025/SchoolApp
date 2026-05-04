@@ -56,9 +56,9 @@ const curriculum = [
     done: 0,
     open: false,
     lessons: [
-      { id: 16, title: "1-ការកំណត់ក្រដាស Page Setup",  duration: "6:00", done: false, url: "/Videos/lesson4.mp4" },
-      { id: 17, title: "Software ប្រភេទនានា", duration: "7:30", done: false, url: "/Videos/lesson5.mp4" },
-      { id: 18, title: "ការដំឡើង OS",         duration: "10:00", done: false, locked: true, url: "/Videos/lesson4.mp4" },
+      { id: 16, title: "1-ការកំណត់ក្រដាស Page Setup",  duration: "6:00", done: false, url: "https://youtu.be/JsYCj_BL2XY?si=1f_sXf01qZImq0nf" },
+      { id: 17, title: "2-ការកំណត់ទម្រង់ (Format Cells)", duration: "7:30", done: false, url: "https://youtu.be/8LGgnKUiVa0?si=uySgHLHITswJg9uQ" },
+      { id: 18, title: "3-ការកំណត់ទម្រង់ (Format Cells)",         duration: "10:00", done: false, locked: true, url: "https://youtu.be/T1PJG5c2L7c?si=Ci9SngVRyrwRjizH" },
     ],
   },
   {
