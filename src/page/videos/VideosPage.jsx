@@ -43,6 +43,10 @@ const curriculum = [
       { id: 9, title: "18.1-ការប្រើប្រាស់ពន្លឺ djust", duration: "5:45", done: false, url: "/Videos/18.1-ការប្រើប្រាស់ពន្លឺ djust.mp4" },
       { id: 10, title: "18.2-ការប្រើប្រាស់ម៉ូតរូបភាពPicture Style",  duration: "4:10", done: false, url: "/Videos/18.2-ការប្រើប្រាស់ម៉ូតរូបភាពPicture Style.mp4" },
       { id: 11, title: "18.3-ការកំណត់ទម្រង់អក្សរជាមួយរូបភាពWrap Text",  duration: "4:10", done: false, url: "/Videos/18.3-ការកំណត់ទម្រង់អក្សរជាមួយរូបភាពWrap Text.mp4" },
+      { id: 12, title: "18.5-ការរៀបចំលំដាប់ស្រទាប់ (Layer) និងការបង្ហាញ Object", duration: "3:20", done: false, url: "/Videos/18.5-ការរៀបចំលំដាប់ស្រទាប់ (Layer) និងការបង្ហាញ Object.mp4" },
+      { id: 13, title: "18.6-សិក្សាអំពី Select Pane", duration: "5:45", done: false, url: "/Videos/18.6-សិក្សាអំពី Select Pane.mp4" },
+      { id: 14, title: "18.7-សិក្សាអំពី  Aligment Object",  duration: "4:10", done: false, url: "/Videos/18.7-សិក្សាអំពី  Aligment Object.mp4" },
+      { id: 15, title: "18.8-សិក្សាអំពី Group Object",  duration: "4:10", done: false, url: "/Videos/18.8-សិក្សាអំពី Group Object.mp4" },
     ],
   },
   {
@@ -52,20 +56,20 @@ const curriculum = [
     done: 0,
     open: false,
     lessons: [
-      { id: 4, title: "1-ការកំណត់ក្រដាស Page Setup",  duration: "6:00", done: false, url: "/Videos/lesson4.mp4" },
-      { id: 5, title: "Software ប្រភេទនានា", duration: "7:30", done: false, url: "/Videos/lesson5.mp4" },
-      { id: 6, title: "ការដំឡើង OS",         duration: "10:00", done: false, locked: true, url: "/Videos/lesson4.mp4" },
+      { id: 16, title: "1-ការកំណត់ក្រដាស Page Setup",  duration: "6:00", done: false, url: "/Videos/lesson4.mp4" },
+      { id: 17, title: "Software ប្រភេទនានា", duration: "7:30", done: false, url: "/Videos/lesson5.mp4" },
+      { id: 18, title: "ការដំឡើង OS",         duration: "10:00", done: false, locked: true, url: "/Videos/lesson4.mp4" },
     ],
   },
   {
     id: 4,
-    title: "មេរៀនទី ៣: Internet & Network",
+    title: "មេរៀនទី ៣: គន្លឹះដោះស្រាយសំណួរ",
     total: 2,
     done: 0,
     open: false,
     lessons: [
-      { id: 7, title: "អ៊ីនធឺណែតដំណើរការដូចម្ដេច?", duration: "8:15", done: false, url: "" },
-      { id: 8, title: "LAN, WAN, MAN",               duration: "5:50", done: false, locked: true, url: "" },
+      { id: 15, title: "1.របៀបដោនឡូត និងតម្លើងកម្មវិធីតេលេក្រាមលើកុំព្យូទ័រ", duration: "8:15", done: false, url: "/Videos/other/telegram-install.mp4" },
+      { id: 16, title: "LAN, WAN, MAN",duration: "5:50", done: false, locked: true, url: "" },
     ],
   },
 ];
@@ -133,12 +137,12 @@ export default function VideosPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white flex flex-col pt-16 mt-5">
+    <div className="flex flex-col min-h-screen pt-16 mt-5 text-white bg-gray-950">
 
       {/* ── Top course bar ── */}
-      <div className="bg-gray-900 border-b border-white/10 px-4 py-2 flex items-center justify-between">
+      <div className="flex items-center justify-between px-4 py-2 bg-gray-900 border-b border-white/10">
         <div className="flex items-center gap-3">
-          <BsCameraVideo className="text-indigo-400 text-lg" />
+          <BsCameraVideo className="text-lg text-indigo-400" />
           <span className="text-sm font-semibold text-white/90 font-khmer">
             ព័ត៌មានវិទ្យា – វីដេអូមេរៀន
           </span>
@@ -148,47 +152,47 @@ export default function VideosPage() {
           <span className="font-khmer">{stats.done}/{stats.total} មេរៀន</span>
           <div className="w-28 h-1.5 bg-white/10 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full transition-all duration-700"
+              className="h-full transition-all duration-700 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
               style={{ width: `${stats.pct}%` }}
             />
           </div>
-          <span className="text-indigo-400 font-semibold">{stats.pct}%</span>
+          <span className="font-semibold text-indigo-400">{stats.pct}%</span>
         </div>
       </div>
 
       {/* ── Main layout ── */}
-      <div className="flex flex-1 flex-col lg:flex-row overflow-hidden">
+      <div className="flex flex-col flex-1 overflow-hidden lg:flex-row">
 
         {/* ══ LEFT: Video Player ══ */}
-        <div className="flex-1 flex flex-col bg-black">
+        <div className="flex flex-col flex-1 bg-black">
 
           {/* Video */}
           <div className="relative w-full" style={{ aspectRatio: "16/9", maxHeight: "calc(100vh - 160px)" }}>
             {activeLesson?.url ? (
               <video
                 key={activeLesson.id}
-                className="w-full h-full object-contain"
+                className="object-contain w-full h-full"
                 controls
                 autoPlay
                 src={activeLesson.url}
                 onEnded={handleVideoEnded} // ✅ auto mark done
               />
             ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center bg-gray-900 gap-4">
+              <div className="flex flex-col items-center justify-center w-full h-full gap-4 bg-gray-900">
                 <AiOutlineLock className="text-5xl text-white/30" />
-                <p className="text-white/40 font-khmer text-sm">មេរៀននេះត្រូវបិទ</p>
+                <p className="text-sm text-white/40 font-khmer">មេរៀននេះត្រូវបិទ</p>
               </div>
             )}
           </div>
 
           {/* Lesson info */}
           <div className="p-5 border-t border-white/5 bg-gray-950">
-            <div className="flex items-start justify-between gap-4 flex-wrap">
+            <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
-                <h1 className="text-lg font-bold text-white font-khmer leading-snug">
+                <h1 className="text-lg font-bold leading-snug text-white font-khmer">
                   {activeLesson?.title}
                 </h1>
-                <p className="text-xs text-white/40 mt-1 font-khmer">
+                <p className="mt-1 text-xs text-white/40 font-khmer">
                   រយៈពេល: {activeLesson?.duration}
                 </p>
               </div>
@@ -198,14 +202,14 @@ export default function VideosPage() {
                 <button
                   disabled={activeIdx === 0}
                   onClick={() => goLesson(allLessons[activeIdx - 1])}
-                  className="px-4 py-2 rounded-lg text-xs font-semibold bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed transition font-khmer"
+                  className="px-4 py-2 text-xs font-semibold transition rounded-lg bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed font-khmer"
                 >
                   ← មុន
                 </button>
                 <button
                   disabled={activeIdx === allLessons.length - 1 || allLessons[activeIdx + 1]?.locked}
                   onClick={() => goLesson(allLessons[activeIdx + 1])}
-                  className="px-4 py-2 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 disabled:opacity-30 disabled:cursor-not-allowed transition font-khmer"
+                  className="px-4 py-2 text-xs font-semibold transition bg-indigo-600 rounded-lg hover:bg-indigo-500 disabled:opacity-30 disabled:cursor-not-allowed font-khmer"
                 >
                   បន្ទាប់ →
                 </button>
@@ -213,10 +217,10 @@ export default function VideosPage() {
             </div>
 
             {/* Description */}
-            <div className="mt-4 p-4 bg-white/5 rounded-xl text-sm text-white/60 font-khmer leading-relaxed border border-white/5">
+            <div className="p-4 mt-4 text-sm leading-relaxed border bg-white/5 rounded-xl text-white/60 font-khmer border-white/5">
               <div className="flex items-center gap-2 mb-2">
                 <HiOutlineBookOpen className="text-indigo-400" />
-                <span className="text-white/80 font-semibold">សេចក្ដីពិពណ៌នា</span>
+                <span className="font-semibold text-white/80">សេចក្ដីពិពណ៌នា</span>
               </div>
               <p>
                 នៅក្នុងមេរៀននេះ សិស្សានុសិស្សនឹងបានសិក្សាអំពី
@@ -228,19 +232,19 @@ export default function VideosPage() {
         </div>
 
         {/* ══ RIGHT: Curriculum Sidebar ══ */}
-        <div className="w-full lg:w-96 bg-gray-900 border-l border-white/10 flex flex-col overflow-y-auto">
+        <div className="flex flex-col w-full overflow-y-auto bg-gray-900 border-l lg:w-96 border-white/10">
 
           {/* Sidebar header */}
-          <div className="px-5 py-4 border-b border-white/10 sticky top-0 bg-gray-900 z-10">
+          <div className="sticky top-0 z-10 px-5 py-4 bg-gray-900 border-b border-white/10">
             <h2 className="text-sm font-bold text-white font-khmer">មាតិកាវីដេអូ</h2>
-            <div className="mt-2 flex items-center gap-2">
+            <div className="flex items-center gap-2 mt-2">
               <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full transition-all duration-700"
+                  className="h-full transition-all duration-700 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
                   style={{ width: `${stats.pct}%` }}
                 />
               </div>
-              <span className="text-xs text-indigo-400 font-semibold">{stats.pct}%</span>
+              <span className="text-xs font-semibold text-indigo-400">{stats.pct}%</span>
             </div>
           </div>
 
@@ -252,7 +256,7 @@ export default function VideosPage() {
                 {/* Section header */}
                 <button
                   onClick={() => toggleSection(section.id)}
-                  className="w-full flex items-center justify-between px-5 py-4 hover:bg-white/5 transition text-left"
+                  className="flex items-center justify-between w-full px-5 py-4 text-left transition hover:bg-white/5"
                 >
                   <div>
                     <p className="text-sm font-semibold text-white font-khmer">{section.title}</p>
@@ -262,8 +266,8 @@ export default function VideosPage() {
                     </p>
                   </div>
                   {section.open
-                    ? <AiOutlineDown className="text-white/50 text-sm flex-shrink-0" />
-                    : <AiOutlineRight className="text-white/50 text-sm flex-shrink-0" />
+                    ? <AiOutlineDown className="flex-shrink-0 text-sm text-white/50" />
+                    : <AiOutlineRight className="flex-shrink-0 text-sm text-white/50" />
                   }
                 </button>
 
@@ -288,13 +292,13 @@ export default function VideosPage() {
                           {/* Icon */}
                           <div className="mt-0.5 flex-shrink-0">
                             {lesson.locked ? (
-                              <AiOutlineLock className="text-white/40 text-base" />
+                              <AiOutlineLock className="text-base text-white/40" />
                             ) : lesson.done ? (
-                              <AiOutlineCheckCircle className="text-green-400 text-base" />
+                              <AiOutlineCheckCircle className="text-base text-green-400" />
                             ) : isActive ? (
-                              <BsPlayFill className="text-indigo-400 text-base" />
+                              <BsPlayFill className="text-base text-indigo-400" />
                             ) : (
-                              <AiOutlinePlayCircle className="text-white/50 text-base" />
+                              <AiOutlinePlayCircle className="text-base text-white/50" />
                             )}
                           </div>
 
@@ -304,7 +308,7 @@ export default function VideosPage() {
                               ${isActive ? "text-indigo-300 font-semibold" : "text-white/75"}`}>
                               {lesson.title}
                             </p>
-                            <p className="text-xs text-white/35 mt-1">{lesson.duration}</p>
+                            <p className="mt-1 text-xs text-white/35">{lesson.duration}</p>
                           </div>
                         </button>
                       );
