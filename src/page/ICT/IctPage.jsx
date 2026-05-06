@@ -105,7 +105,7 @@ const subjects = [
       title: "មេរៀនថ្មី",
       description: "មេរៀនថ្មី",
       subTopics: ["word", "រូបភាព", "បញ្ជូលរូបភាព", "រៀនបញ្ចូលរូបភាព"],
-      pdf: "https://canva.link/7af9a5qfql4nu4c",
+      pdf: "https://forms.gle/ZZuHRsMqEBdLQHvW6",
     }
     ],
   },
