@@ -105,7 +105,7 @@ const subjects = [
       title: "មេរៀនថ្មី",
       description: "មេរៀនថ្មី",
       subTopics: ["word", "រូបភាព", "បញ្ជូលរូបភាព", "រៀនបញ្ចូលរូបភាព"],
-      pdf: "https://forms.gle/ZZuHRsMqEBdLQHvW6",
+      pdf: "/PDF/Microsoft Word/ban.docx",
     }
     ],
   },
