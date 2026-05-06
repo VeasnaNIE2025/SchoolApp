@@ -1,4 +1,3 @@
-// components/MenuBar.jsx
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
@@ -9,18 +8,26 @@ import {
   AiOutlinePhone,
   AiOutlineMenu,
   AiOutlineClose,
-
 } from "react-icons/ai";
 import { AiOutlineLaptop } from "react-icons/ai";
-import { HiOutlineMoon, HiOutlineSun } from "react-icons/hi2";
 import { BsCameraVideo } from "react-icons/bs";
+import { HiOutlineMoon, HiOutlineSun } from "react-icons/hi2";
+
+const navItems = [
+  { to: "/", label: "ទំព័រដើម", icon: AiOutlineHome },
+  { to: "/news", label: "ព័ត៌មាន", icon: AiOutlineRead },
+  { to: "/ict", label: "ព័ត៌មានវិទ្យា", icon: AiOutlineLaptop },
+  { to: "/videos", label: "វីដេអូ", icon: BsCameraVideo },
+  { to: "/aboutme", label: "អំពីខ្ញុំ", icon: AiOutlineInfoCircle },
+  { to: "/contact", label: "ទំនាក់ទំនង", icon: AiOutlinePhone },
+];
 
 function MenuBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [dark, setDark] = useState(() => localStorage.getItem("theme") === "dark");
   const [scrolled, setScrolled] = useState(false);
 
-  /* ── Dark mode: toggle class on <html> ── */
+  // Dark Mode
   useEffect(() => {
     const root = document.documentElement;
     if (dark) {
@@ -32,143 +39,130 @@ function MenuBar() {
     }
   }, [dark]);
 
-  /* ── Shrink navbar on scroll ── */
+  // Scroll Effect
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const closeMenu = () => setIsOpen(false);
 
-  /* ── Shared NavLink class builder ── */
-  const navCls = ({ isActive }) =>
-    `relative flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-200
-     ${isActive
-      ? "bg-white/15 text-white"
-      : "text-white/70 hover:text-white hover:bg-white/10"
-    }`;
-
-  const mobileNavCls = ({ isActive }) =>
-    `flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold transition-all duration-200
-     ${isActive
-      ? "bg-white/15 text-white"
-      : "text-white/60 hover:text-white hover:bg-white/10"
-    }`;
-
   return (
     <>
       <nav
-        className={`fixed w-full top-0 left-0 z-50 transition-all duration-300
-          ${scrolled ? "py-0 shadow-2xl" : "py-1"}
-          bg-gradient-to-r from-indigo-700 via-indigo-600 to-violet-600
-          dark:from-gray-950 dark:via-gray-900 dark:to-gray-950
-          border-b border-white/10
-        `}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+          scrolled
+            ? "py-2 shadow-2xl bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800"
+            : "py-3 bg-gradient-to-r from-indigo-700 via-violet-600 to-purple-700 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950"
+        }`}
       >
-        <div className="max-w-7xl mx-auto px-5 lg:px-8">
-          <div className={`flex justify-between items-center transition-all duration-300 ${scrolled ? "h-14" : "h-16"}`}>
-
-            {/* ── Logo ── */}
+        <div className="px-5 mx-auto max-w-7xl lg:px-8">
+          <div className="flex items-center justify-between h-14">
+            
+            {/* Logo */}
             <Link
               to="/"
-              className="flex items-center gap-2.5 group"
               onClick={closeMenu}
+              className="flex items-center gap-3 group"
             >
-              {/* Logo Image */}
-              <div className="w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center group-hover:opacity-90 transition">
-                <img src={logo} alt="Salacode logo" className="w-full h-full object-contain" />
+              <div className="w-10 h-10 overflow-hidden transition-transform border shadow-inner rounded-xl border-white/30 group-hover:scale-105">
+                <img
+                  src={logo}
+                  alt="School Logo"
+                  className="object-contain w-full h-full"
+                />
               </div>
-              <span className="text-white font-extrabold text-lg tracking-tight font-khmer leading-none">
-                វិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេស ព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តមសីហមុនី
-              </span>
+              <div className="hidden md:block">
+                <span className="text-lg font-bold leading-tight tracking-tight text-white font-khmer">
+                  វិចប.ព្រះបាទនរោត្តមសីហមុនី
+                </span>
+              </div>
             </Link>
 
-            {/* ── Desktop Links ── */}
-            <div className="hidden md:flex items-center gap-1">
-              <NavLink to="/" onClick={closeMenu} className={navCls} end>
-                <AiOutlineHome className="text-base" /><span>ទំព័រដើម</span>
-              </NavLink>
-              <NavLink to="/news" onClick={closeMenu} className={navCls}>
-                <AiOutlineRead className="text-base" /><span>ព័ត៌មាន</span>
-              </NavLink>
-              <NavLink to="/ict" onClick={closeMenu} className={navCls}>
-                <AiOutlineLaptop className="text-base" /><span>ព័ត៌មានវិទ្យា</span>
-              </NavLink>
-              <NavLink to="/videos" onClick={closeMenu} className={navCls}>
-                <BsCameraVideo className="text-base" /><span>វីដេអូ</span>
-              </NavLink>
-              <NavLink to="/contact" onClick={closeMenu} className={navCls}>
-                <AiOutlinePhone className="text-base" /><span>ទំនាក់ទំនង</span>
-              </NavLink>
-              <NavLink to="/aboutme" onClick={closeMenu} className={navCls}>
-                <AiOutlineInfoCircle className="text-base" /><span>អំពីខ្ញុំ</span>
-              </NavLink>
-
+            {/* Desktop Navigation */}
+            <div className="items-center hidden gap-1 md:flex">
+              {navItems.map(({ to, label, icon: Icon }) => (
+                <NavLink
+                  key={to}
+                  to={to}
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    `flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-300 relative group
+                     ${isActive
+                      ? "bg-white text-indigo-700 shadow-md"
+                      : "text-white/80 hover:text-white hover:bg-white/10"
+                    }`
+                  }
+                >
+                  <Icon className="text-lg" />
+                  <span>{label}</span>
+                </NavLink>
+              ))}
             </div>
 
-            {/* ── Right Controls ── */}
-            <div className="flex items-center gap-2">
+            {/* Right Side Controls */}
+            <div className="flex items-center gap-3">
               {/* Dark Mode Toggle */}
               <button
                 onClick={() => setDark(!dark)}
-                aria-label="Toggle dark mode"
-                className="relative w-14 h-7 rounded-full bg-white/20 hover:bg-white/30 transition-all duration-300 flex items-center px-1 cursor-pointer"
+                className="flex items-center justify-center transition-all w-11 h-11 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95"
+                aria-label="Toggle theme"
               >
-                <span
-                  className={`absolute w-5 h-5 rounded-full bg-white shadow-md flex items-center justify-center transition-all duration-300
-                    ${dark ? "translate-x-7" : "translate-x-0"}`}
-                >
-                  {dark
-                    ? <HiOutlineMoon className="text-indigo-700 text-xs" />
-                    : <HiOutlineSun className="text-amber-500 text-xs" />
-                  }
-                </span>
+                {dark ? (
+                  <HiOutlineMoon className="text-xl text-white" />
+                ) : (
+                  <HiOutlineSun className="text-xl text-amber-300" />
+                )}
               </button>
 
-              {/* Hamburger (mobile) */}
+              {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden w-9 h-9 rounded-lg flex items-center justify-center text-white hover:bg-white/15 transition"
-                aria-expanded={isOpen}
+                className="flex items-center justify-center transition-all md:hidden w-11 h-11 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95"
+                aria-label="Toggle menu"
               >
-                {isOpen
-                  ? <AiOutlineClose className="text-xl" />
-                  : <AiOutlineMenu className="text-xl" />
-                }
+                {isOpen ? (
+                  <AiOutlineClose className="text-2xl text-white" />
+                ) : (
+                  <AiOutlineMenu className="text-2xl text-white" />
+                )}
               </button>
             </div>
-
           </div>
         </div>
 
-        {/* ── Mobile Dropdown ── */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out
-  ${isOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"}`}>
-          <div className="px-4 pb-4 pt-2 space-y-1 border-t border-white/10">
-            <NavLink to="/" onClick={closeMenu} className={mobileNavCls} end>
-              <AiOutlineHome className="text-lg" /><span>ទំព័រដើម</span>
-            </NavLink>
-            <NavLink to="/news" onClick={closeMenu} className={mobileNavCls}>
-              <AiOutlineRead className="text-lg" /><span>ព័ត៌មាន</span>
-            </NavLink>
-
-            {/* ✅ បន្ថែម ICT ត្រង់នេះ */}
-            <NavLink to="/ict" onClick={closeMenu} className={mobileNavCls}>
-              <AiOutlineLaptop className="text-lg" /><span>ព័ត៌មានវិទ្យា</span>
-            </NavLink>
-            <NavLink to="/videos" onClick={closeMenu} className={mobileNavCls}>
-              <BsCameraVideo className="text-lg" /><span>វីដេអូ</span>
-            </NavLink>
-            <NavLink to="/aboutme" onClick={closeMenu} className={mobileNavCls}>
-              <AiOutlineInfoCircle className="text-lg" /><span>អំពីខ្ញុំ</span>
-            </NavLink>
-            <NavLink to="/contact" onClick={closeMenu} className={mobileNavCls}>
-              <AiOutlinePhone className="text-lg" /><span>ទំនាក់ទំនង</span>
-            </NavLink>
+        {/* Mobile Menu - Slide Down with Animation */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-500 ease-out
+            ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
+        >
+          <div className="px-5 py-6 border-t border-gray-200 bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl dark:border-gray-800">
+            <div className="flex flex-col gap-2">
+              {navItems.map(({ to, label, icon: Icon }) => (
+                <NavLink
+                  key={to}
+                  to={to}
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    `flex items-center gap-4 px-5 py-4 rounded-2xl text-base font-medium transition-all
+                     ${isActive
+                      ? "bg-indigo-600 text-white shadow-lg"
+                      : "hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
+                    }`
+                  }
+                >
+                  <Icon className="text-2xl" />
+                  <span>{label}</span>
+                </NavLink>
+              ))}
+            </div>
           </div>
         </div>
       </nav>
+
+      {/* Spacer to prevent content overlap */}
+      <div className="h-16" />
     </>
   );
 }
