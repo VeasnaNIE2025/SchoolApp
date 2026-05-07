@@ -70,7 +70,7 @@ const subjects = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: "ឯកសារអនុវត្តន៍",
     description: "ឯកសារសម្រាប់សិស្សអនុវត្តន៍",
     color: "green",
@@ -81,7 +81,7 @@ const subjects = [
         title: "ឯកសារសម្រាប់សិស្សអនុវត្តន៍",
         description: "សូមទាញយកឯកសារនេះ ហើយអនុវត្តន៍តាម",
         subTopics: ["កិច្ចការ", "សកម្មភាព ផ្សេងៗ ដែលគ្រូបានបង្រៀន"],
-        url: "https://docs.google.com/forms/d/e/1FAIpQLSd4EyzuibUXCB2depDmHtwk7dQuiVTYEmVzx6iLgvE-ZMe_ig/viewform",
+        pdf: "/PDF/Microsoft Word/Excercise.docx",
       },
     ],
   },,
