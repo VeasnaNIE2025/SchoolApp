@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   ChevronRight, Heart, Share2, Bookmark, Eye, 
-  Calendar, TrendingUp, Sparkles, Users, Award 
+  Calendar, TrendingUp, Sparkles, Users, Award,
+  ChevronLeft, ChevronRight as ChevronRightIcon
 } from 'lucide-react';
 import "../../index.css";
 
@@ -12,7 +13,7 @@ const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   show: (i = 0) => ({
     opacity: 1, y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.6, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }
   })
 };
 
@@ -20,13 +21,8 @@ const staggerContainer = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 }
+    transition: { staggerChildren: 0.05 }
   }
-};
-
-const scaleOnHover = {
-  whileHover: { scale: 1.02 },
-  whileTap: { scale: 0.98 }
 };
 
 // ===================== COMPONENTS =====================
@@ -63,13 +59,6 @@ const SectionHeader = ({ label, color, to, icon: Icon, subtitle }) => (
           )}
         </div>
       </div>
-      <Link 
-        to={to}
-        className="px-4 py-2 text-sm font-medium transition-all rounded-full hover:shadow-md"
-        style={{ background: `${color}10`, color }}
-      >
-        មើលទាំងអស់ →
-      </Link>
     </div>
     <div className="w-24 h-1 mt-3 rounded-full" style={{ background: `linear-gradient(90deg, ${color}, ${color}40)` }} />
   </motion.div>
@@ -234,6 +223,80 @@ const VideoCard = ({ video, onLike, onShare }) => (
   </motion.div>
 );
 
+/* Pagination Component */
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+  const maxVisible = 5;
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+  let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+  
+  if (endPage - startPage + 1 < maxVisible) {
+    startPage = Math.max(1, endPage - maxVisible + 1);
+  }
+
+  const pages = [];
+  for (let i = startPage; i <= endPage; i++) {
+    pages.push(i);
+  }
+
+  return (
+    <div className="flex items-center justify-center gap-2 mt-12">
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="p-2 transition-all bg-white shadow-md rounded-xl dark:bg-gray-800 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        <ChevronLeft size={20} />
+      </button>
+      
+      {startPage > 1 && (
+        <>
+          <button
+            onClick={() => onPageChange(1)}
+            className="w-10 h-10 transition-all bg-white shadow-md rounded-xl dark:bg-gray-800 hover:shadow-lg"
+          >
+            1
+          </button>
+          {startPage > 2 && <span className="px-2">...</span>}
+        </>
+      )}
+      
+      {pages.map(page => (
+        <button
+          key={page}
+          onClick={() => onPageChange(page)}
+          className={`w-10 h-10 rounded-xl transition-all ${
+            currentPage === page
+              ? 'bg-indigo-600 text-white shadow-lg'
+              : 'bg-white dark:bg-gray-800 shadow-md hover:shadow-lg'
+          }`}
+        >
+          {page}
+        </button>
+      ))}
+      
+      {endPage < totalPages && (
+        <>
+          {endPage < totalPages - 1 && <span className="px-2">...</span>}
+          <button
+            onClick={() => onPageChange(totalPages)}
+            className="w-10 h-10 transition-all bg-white shadow-md rounded-xl dark:bg-gray-800 hover:shadow-lg"
+          >
+            {totalPages}
+          </button>
+        </>
+      )}
+      
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="p-2 transition-all bg-white shadow-md rounded-xl dark:bg-gray-800 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        <ChevronRightIcon size={20} />
+      </button>
+    </div>
+  );
+};
+
 /* Stats Counter */
 const StatCard = ({ icon: Icon, value, label, color }) => (
   <motion.div
@@ -251,43 +314,47 @@ const StatCard = ({ icon: Icon, value, label, color }) => (
 // ===================== MAIN PAGE =====================
 const HomePage = () => {
   const [videos, setVideos] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const videosPerPage = 6;
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
-  useEffect(() => {
-    const fetchVideos = async () => {
-      await new Promise(resolve => setTimeout(resolve, 500));
-      setVideos([
-         { id: 1, youtubeId: "WWKom2ptiok",  title: "បច្ចេកវិទ្យាជួយដល់អ្នកសិក្សាក្នុងសត្សវត្សទី២១", duration: "4:32", views: "1.2K", likes: 342, liked: false },
-    { id: 2, youtubeId: "jWp9xB9FMA4",  title: "ផលប៉ះពាល់នៃការប្រើប្រាស់ទូរស័ព្ទដៃលើសកម្រិត",     duration: "7:15", views: "2.8K", likes: 189, liked: false },
-    { id: 3, youtubeId: "71HJaRRKyE8",  title: "សាលារៀនស្អាតផ្ដើមចេញពីយើងទាំងអស់គ្នា",                  duration: "5:48", views: "4.1K", likes: 456, liked: false },
-    { id: 4, youtubeId: "-Pg9gUdRPFo",  title: "ការផលវិបាកនៃការបាត់បង់ព្រៃឈើ",          duration: "3:55", views: "1.9K", likes: 98,  liked: false },
-    { id: 5, youtubeId: "He8CrtG7JK0",  title: "អត្ថប្រយោជន៍នៃការប្រើប្រាស់ទូរស័ព្ទដៃ",       duration: "6:20", views: "3.5K", likes: 267, liked: false },
-    { id: 6, youtubeId: "UJ-bkBymHcg",  title: "ការញៀនទូរស័ព្ទ និងបណ្ដាញសង្គម",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
-    { id: 7, youtubeId: "kWbJY6vqO8g",  title: "ការការពារព័ត៌មានផ្ទាល់ខ្លូននៅលើ Internet",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
-    { id: 8, youtubeId: "HtEhf8twmiw",  title: "ការប្រើបញ្ញាសិប្បនិមិត្តក្នុងយុគ្គសម័យឌីជីថល",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
-    { id: 9, youtubeId: "TBLiYVIGDA4",  title: "ការប្រើប្រាស់ថង់ប្លាស្ទិក និងវិធីបង្ការ",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
-    { id: 10, youtubeId: "YEcZjP2rS60",  title: "ជំនាញបច្ចេកទេសនៅ វិចប ព្រះបាទសម្ដេចព្រះបរមនាថនរោត្តមសីហមុនី",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
-    { id: 11, youtubeId: "Sh7foiIj6qQ",  title: "បញ្ហាបរិស្ថានក្នុងសាលារៀន",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
-    { id: 12, youtubeId: "dd_yIKCdjjo",  title: "របៀបសំពះរបស់ខ្មែរ",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
-    { id: 13, youtubeId: "9acYqc1pF0I",  title: "ផលប៉ះពាល់នៃជំងឺទឹកនោមផ្អែម និងរបៀបបង្ការ",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
-    { id: 14, youtubeId: "MgriqFQBdlg",  title: "ការគ្រប់គ្រងសំរាម",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
-    { id: 15, youtubeId: "1QydIWMcOcw",  title: "សមិទ្ធិផលនៃការមិនខិតខំរៀនសូត្រ",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
-    { id: 16, youtubeId: "QbuVUlt6IYw",  title: "ការប្រើប្រាស់បណ្ដាញសង្គម",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
-    { id: 17, youtubeId: "TVljUbXf64o",  title: "ការបំពុលបរិស្ថានដោយថង់ប្លាស្ទិក",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
-    { id: 18, youtubeId: "na-SWi-tyyw",  title: "របៀបកែប្រែខ្លួនទៅជាមនុស្សវិជ្ជមាន",      duration: "8:10", views: "5.7K", likes: 512, liked: false },
+  // All videos data (unique list without duplicates)
+  const allVideos = [
+    { id: 1, youtubeId: "WWKom2ptiok", title: "បច្ចេកវិទ្យាជួយដល់អ្នកសិក្សាក្នុងសតវត្សរ៍ទី២១", duration: "4:32", views: "1.2K", likes: 342, liked: false },
+    { id: 2, youtubeId: "jWp9xB9FMA4", title: "ផលប៉ះពាល់នៃការប្រើប្រាស់ទូរស័ព្ទដៃលើសកម្រិត", duration: "7:15", views: "2.8K", likes: 189, liked: false },
+    { id: 3, youtubeId: "71HJaRRKyE8", title: "សាលារៀនស្អាតផ្ដើមចេញពីយើងទាំងអស់គ្នា", duration: "5:48", views: "4.1K", likes: 456, liked: false },
+    { id: 4, youtubeId: "-Pg9gUdRPFo", title: "ការផលវិបាកនៃការបាត់បង់ព្រៃឈើ", duration: "3:55", views: "1.9K", likes: 98, liked: false },
+    { id: 5, youtubeId: "He8CrtG7JK0", title: "អត្ថប្រយោជន៍នៃការប្រើប្រាស់ទូរស័ព្ទដៃ", duration: "6:20", views: "3.5K", likes: 267, liked: false },
+    { id: 6, youtubeId: "UJ-bkBymHcg", title: "ការញៀនទូរស័ព្ទ និងបណ្ដាញសង្គម", duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 7, youtubeId: "kWbJY6vqO8g", title: "ការការពារព័ត៌មានផ្ទាល់ខ្លួននៅលើ Internet", duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 8, youtubeId: "HtEhf8twmiw", title: "ការប្រើបញ្ញាសិប្បនិមិត្តក្នុងយុគ្គសម័យឌីជីថល", duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 9, youtubeId: "TBLiYVIGDA4", title: "ការប្រើប្រាស់ថង់ប្លាស្ទិក និងវិធីបង្ការ", duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 10, youtubeId: "YEcZjP2rS60", title: "ជំនាញបច្ចេកទេសនៅ វិចប ព្រះបាទសម្ដេចព្រះបរមនាថនរោត្តមសីហមុនី", duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 11, youtubeId: "Sh7foiIj6qQ", title: "បញ្ហាបរិស្ថានក្នុងសាលារៀន", duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 12, youtubeId: "dd_yIKCdjjo", title: "របៀបសំពះរបស់ខ្មែរ", duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 13, youtubeId: "9acYqc1pF0I", title: "ផលប៉ះពាល់នៃជំងឺទឹកនោមផ្អែម និងរបៀបបង្ការ", duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 14, youtubeId: "MgriqFQBdlg", title: "ការគ្រប់គ្រងសំរាម", duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 15, youtubeId: "1QydIWMcOcw", title: "សមិទ្ធិផលនៃការមិនខិតខំរៀនសូត្រ", duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 16, youtubeId: "QbuVUlt6IYw", title: "ការប្រើប្រាស់បណ្ដាញសង្គម", duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 17, youtubeId: "TVljUbXf64o", title: "ការបំពុលបរិស្ថានដោយថង់ប្លាស្ទិក", duration: "8:10", views: "5.7K", likes: 512, liked: false },
+    { id: 18, youtubeId: "na-SWi-tyyw", title: "របៀបកែប្រែខ្លួនទៅជាមនុស្សវិជ្ជមាន", duration: "8:10", views: "5.7K", likes: 512, liked: false },
+  ];
 
-        // { id: 1, youtubeId: "WWKom2ptiok",  title: "បច្ចេកវិទ្យាជួយដល់អ្នកសិក្សាក្នុងសតវត្សរ៍ទី២១", duration: "4:32", views: "1.2K", likes: 342, liked: false },
-        // { id: 2, youtubeId: "jWp9xB9FMA4",  title: "ផលប៉ះពាល់នៃការប្រើប្រាស់ទូរស័ព្ទដៃលើសកម្រិត", duration: "7:15", views: "2.8K", likes: 189, liked: false },
-        // { id: 3, youtubeId: "71HJaRRKyE8",  title: "សាលារៀនស្អាតផ្ដើមចេញពីយើងទាំងអស់គ្នា", duration: "5:48", views: "4.1K", likes: 456, liked: false },
-        // { id: 4, youtubeId: "-Pg9gUdRPFo",  title: "ការផលវិបាកនៃការបាត់បង់ព្រៃឈើ", duration: "3:55", views: "1.9K", likes: 98, liked: false },
-        // { id: 5, youtubeId: "He8CrtG7JK0",  title: "អត្ថប្រយោជន៍នៃការប្រើប្រាស់ទូរស័ព្ទដៃ", duration: "6:20", views: "3.5K", likes: 267, liked: false },
-        // { id: 6, youtubeId: "UJ-bkBymHcg",  title: "ការញៀនទូរស័ព្ទ និងបណ្ដាញសង្គម", duration: "8:10", views: "5.7K", likes: 512, liked: false },
-      ]);
+  // Calculate pagination
+  const indexOfLastVideo = currentPage * videosPerPage;
+  const indexOfFirstVideo = indexOfLastVideo - videosPerPage;
+  const currentVideos = allVideos.slice(indexOfFirstVideo, indexOfLastVideo);
+  const totalPages = Math.ceil(allVideos.length / videosPerPage);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      setVideos(allVideos);
       setLoading(false);
     };
-    fetchVideos();
+    fetchData();
   }, []);
 
   const handleLike = (id) => {
@@ -306,6 +373,11 @@ const HomePage = () => {
         alert("✅ បានចម្លង Link ទៅ Clipboard!");
       }
     } catch (err) { console.log(err); }
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Data
@@ -495,12 +567,12 @@ const HomePage = () => {
             color="#e11d48" 
             to="/videos" 
             icon={Sparkles}
-            subtitle="ស្នាដៃច្នៃប្រឌិតពីសិស្សានុសិស្សរបស់យើង"
+            subtitle={`ស្នាដៃច្នៃប្រឌិតពីសិស្សានុសិស្សរបស់យើង (មាន ${allVideos.length} វីដេអូ)`}
           />
           
           {loading ? (
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {[1,2,3].map(i => (
+              {[1,2,3,4,5,6].map(i => (
                 <div key={i} className="animate-pulse">
                   <div className="bg-gray-200 dark:bg-gray-800 rounded-3xl pt-[56.25%]" />
                   <div className="p-5 space-y-3">
@@ -511,17 +583,33 @@ const HomePage = () => {
               ))}
             </div>
           ) : (
-            <motion.div 
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
-            >
-              {videos.map((video) => (
-                <VideoCard key={video.id} video={video} onLike={handleLike} onShare={handleShare} />
-              ))}
-            </motion.div>
+            <>
+              <motion.div 
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+              >
+                {currentVideos.map((video) => (
+                  <VideoCard key={video.id} video={video} onLike={handleLike} onShare={handleShare} />
+                ))}
+              </motion.div>
+              
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <Pagination 
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
+              )}
+              
+              {/* Showing info */}
+              <div className="mt-6 text-sm text-center text-gray-500 dark:text-gray-400">
+                បង្ហាញ {indexOfFirstVideo + 1} - {Math.min(indexOfLastVideo, allVideos.length)} នៃ {allVideos.length} វីដេអូ
+              </div>
+            </>
           )}
         </div>
       </section>
@@ -556,7 +644,7 @@ const HomePage = () => {
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 font-semibold text-indigo-600 transition-all bg-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
             >
-              ចុះឈ្មោះចូលរៀនឆ្នាំសិក្សាថ្មី
+              ចុះឈ្មោះចូលរៀន
               <ChevronRight size={20} />
             </Link>
           </motion.div>
