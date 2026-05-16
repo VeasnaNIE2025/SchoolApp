@@ -537,7 +537,7 @@ const HomePage = () => {
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 font-semibold text-indigo-600 transition-all bg-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
             >
-              ចុះឈ្មោះចូលរៀន
+              ចុះឈ្មោះចូលរៀនឆ្នាំសិក្សាថ្មី
               <ChevronRight size={20} />
             </Link>
           </motion.div>
