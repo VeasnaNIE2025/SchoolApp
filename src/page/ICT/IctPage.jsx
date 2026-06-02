@@ -79,7 +79,7 @@ const subjects = [
         title: "ថ្នាក់ទី១០",
         description: "Send Homework",
         subTopics: ["Homework"],
-        url: "https://docs.google.com/forms/d/e/1FAIpQLSd4EyzuibUXCB2depDmHtwk7dQuiVTYEmVzx6iLgvE-ZMe_ig/viewform",
+        url: "https://qcm.salacode.site/student/dashboard",
       },
     ],
   },

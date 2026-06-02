@@ -8,6 +8,24 @@
   body {
     font-family: 'Kantumruy Pro', 'Khmer OS', sans-serif;
     line-height: 1.75;
-    @apply bg-gray-50 text-gray-900 transition-colors duration-300;
+    @apply text-gray-900 transition-colors duration-300 bg-gray-50;
   }
+}
+
+.table-scroll::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 9999px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
 }

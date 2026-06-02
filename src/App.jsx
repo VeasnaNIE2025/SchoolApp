@@ -6,6 +6,7 @@ import MainLayout1 from "./components/Layout/MainLayout1";
 
 import HomePage from "./page/home/HomePage";
 import NewsPage from "./page/news/NewsPage";
+import NewsDetail from "./page/news/NewsDetail";
 import IctPage from "./page/ICT/IctPage";
 import VideosPage from "./page/videos/VideosPage";
 import ContactPage from "./page/contact/ContactPage";
@@ -24,6 +25,7 @@ function App() {
         {/* Layout 2 */}
         <Route element={<MainLayout1 />}>
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/news/:id" element={<NewsDetail />} />
           <Route path="/ict" element={<IctPage />} />
           <Route path="/videos" element={<VideosPage />} />
           <Route path="/aboutme" element={<AboutMePage />} />

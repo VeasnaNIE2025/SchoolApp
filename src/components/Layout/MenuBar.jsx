@@ -1,6 +1,7 @@
-// 
+// src/components/MenuBar.jsx
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import logo from "../../assets/images/logo.png";
 import {
   AiOutlineHome,
@@ -23,11 +24,12 @@ const navItems = [
   { to: "/contact", label: "ទំនាក់ទំនង", icon: AiOutlinePhone },
 ];
 
-function MenuBar() {
+const MenuBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dark, setDark] = useState(() => localStorage.getItem("theme") === "dark");
   const [scrolled, setScrolled] = useState(false);
 
+  // Toggle dark mode
   useEffect(() => {
     const root = document.documentElement;
     if (dark) {
@@ -39,11 +41,24 @@ function MenuBar() {
     }
   }, [dark]);
 
+  // Scroll listener for navbar background
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   const closeMenu = () => setIsOpen(false);
   const toggleTheme = () => setDark(!dark);
@@ -51,25 +66,27 @@ function MenuBar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 
-        ${scrolled
-            ? "py-1 shadow-2xl bg-white/90 dark:bg-gray-950/90 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50"
-            : "py-2 bg-gradient-to-r from-indigo-700 via-indigo-600 to-violet-700 dark:from-gray-900 dark:via-gray-900 dark:to-gray-950"
-          }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+          scrolled
+            ? "py-2 shadow-xl bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg border-b border-gray-200/30 dark:border-gray-800/30"
+            : "py-3 bg-gradient-to-r from-indigo-700 via-indigo-600 to-violet-700 dark:from-gray-900 dark:via-gray-900 dark:to-gray-950"
+        }`}
       >
         <div className="px-5 mx-auto max-w-7xl lg:px-8">
-          <div className="flex items-center justify-between h-16">
-
-            {/* Logo - Improved with hover effect */}
+          <div className="flex items-center justify-between">
+            {/* Logo with hover animation */}
             <Link
               to="/"
               onClick={closeMenu}
               className="flex items-center gap-3 group"
             >
-              <div className="w-10 h-10 overflow-hidden transition-all duration-300 border shadow-md rounded-2xl border-white/30 group-hover:scale-105 group-hover:shadow-lg">
+              <motion.div
+                whileHover={{ rotate: 5, scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400 }}
+                className="w-10 h-10 overflow-hidden border shadow-md rounded-xl border-white/30"
+              >
                 <img src={logo} alt="សាលារៀន" className="object-contain w-full h-full" />
-              </div>
-
+              </motion.div>
               <div className="font-khmer">
                 <span className="text-[17px] md:text-xl font-bold text-white leading-tight tracking-tight block transition-all duration-300 group-hover:tracking-wide">
                   វិទ្យាល័យព្រះបាទនរោត្តមសីហមុនី
@@ -80,127 +97,137 @@ function MenuBar() {
               </div>
             </Link>
 
-            {/* Desktop Menu - Improved active indicator */}
-            <div className="hidden md:flex items-center gap-1.5">
+            {/* Desktop Menu */}
+            <div className="items-center hidden gap-1 md:flex">
               {navItems.map(({ to, label, icon: Icon }) => (
-                <NavLink
-                  key={to}
-                  to={to}
-                  onClick={closeMenu}
-                  className={({ isActive }) =>
-                    `relative flex items-center gap-2 px-5 py-2.5 rounded-3xl text-sm font-semibold transition-all duration-300
-                     ${isActive
-                        ? "bg-white text-indigo-700 shadow-md scale-105"
-                        : "text-white/80 hover:text-white hover:bg-white/10 hover:scale-105"
-                      }`
-                  }
-                >
-                  <Icon className="text-xl transition-transform duration-300 group-hover:scale-110" />
-                  <span>{label}</span>
-                  {/* Active underline indicator for desktop */}
-                  {({ isActive }) => isActive && (
-                    <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-white rounded-full"></span>
+                <NavLink key={to} to={to} onClick={closeMenu}>
+                  {({ isActive }) => (
+                    <div className="relative px-4 py-2 transition-all duration-200 rounded-full hover:bg-white/10">
+                      <div className="flex items-center gap-2">
+                        <Icon className={`text-xl transition-transform duration-200 ${isActive ? "scale-110" : ""}`} />
+                        <span className={`text-sm font-medium ${isActive ? "text-white" : "text-white/80"}`}>
+                          {label}
+                        </span>
+                      </div>
+                      {isActive && (
+                        <motion.span
+                          layoutId="activeDesktopTab"
+                          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-white rounded-full"
+                          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                        />
+                      )}
+                    </div>
                   )}
                 </NavLink>
               ))}
             </div>
 
-            {/* Right Controls - Improved buttons */}
+            {/* Right controls */}
             <div className="flex items-center gap-2">
-              <button
+              <motion.button
+                whileTap={{ scale: 0.9 }}
                 onClick={toggleTheme}
-                className="relative flex items-center justify-center text-white transition-all duration-300 w-11 h-11 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 hover:rotate-12"
+                className="relative flex items-center justify-center w-10 h-10 transition-all duration-300 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
                 aria-label="ប្តូរពន្លឺ/ងងឹត"
               >
                 {dark ? (
-                  <HiOutlineMoon className="text-2xl" />
+                  <HiOutlineMoon className="text-xl text-white" />
                 ) : (
-                  <HiOutlineSun className="text-2xl text-amber-300" />
+                  <HiOutlineSun className="text-xl text-amber-300" />
                 )}
-              </button>
+              </motion.button>
 
-              <button
+              <motion.button
+                whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center justify-center text-white transition-all duration-300 md:hidden w-11 h-11 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95"
+                className="flex items-center justify-center w-10 h-10 transition-all duration-300 rounded-full md:hidden bg-white/10 backdrop-blur-sm hover:bg-white/20"
                 aria-label="ម៉ឺនុយ"
               >
                 {isOpen ? (
-                  <AiOutlineClose className="text-2xl" />
+                  <AiOutlineClose className="text-xl text-white" />
                 ) : (
-                  <AiOutlineMenu className="text-2xl" />
+                  <AiOutlineMenu className="text-xl text-white" />
                 )}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* ==================== Mobile Menu - Enhanced ==================== */}
-        <div
-          className={`md:hidden fixed inset-0 bg-black/60 backdrop-blur-md transition-all duration-400 z-40
-            ${isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}
-          onClick={closeMenu}
-        >
-          <div
-            className={`bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl w-[85%] max-w-[340px] h-full shadow-2xl transform transition-all duration-500 ease-out
-              ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex flex-col h-full">
-              <div className="p-6 pb-4 border-b border-gray-200 dark:border-gray-800">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <img src={logo} alt="សាលារៀន" className="w-10 h-10 shadow-md rounded-xl" />
-                    <span className="text-base font-bold text-gray-800 font-khmer dark:text-white">
-                      វិទ្យាល័យព្រះបាទ...
-                    </span>
-                  </div>
-                  <button
-                    onClick={closeMenu}
-                    className="p-2 text-2xl text-gray-500 transition-all rounded-full dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-90"
-                  >
-                    <AiOutlineClose />
-                  </button>
-                </div>
-              </div>
-
-              <div className="flex-1 p-4 overflow-y-auto">
-                <div className="space-y-1.5">
-                  {navItems.map(({ to, label, icon: Icon }) => (
-                    <NavLink
-                      key={to}
-                      to={to}
-                      onClick={closeMenu}
-                      className={({ isActive }) =>
-                        `flex items-center gap-4 px-5 py-3.5 rounded-2xl text-[17px] font-medium transition-all duration-200
-                         ${isActive
-                            ? "bg-indigo-600 text-white shadow-md"
-                            : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:translate-x-1"
-                          }`
-                      }
-                    >
-                      <Icon className={`text-2xl ${({ isActive }) => isActive ? "text-white" : "text-indigo-500"}`} />
-                      <span>{label}</span>
-                      {({ isActive }) => isActive && (
-                        <span className="ml-auto text-xs font-bold">✓</span>
-                      )}
-                    </NavLink>
-                  ))}
-                </div>
-              </div>
-
-              {/* Optional: extra info in mobile menu */}
-              <div className="p-6 pt-4 text-xs text-center text-gray-500 border-t border-gray-200 dark:border-gray-800">
-                <p>© {new Date().getFullYear()} វិទ្យាល័យព្រះបាទនរោត្តមសីហមុនី</p>
-              </div>
+              </motion.button>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Spacer - Prevent content hiding under fixed navbar */}
-      <div className="h-16" />
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-md md:hidden"
+            onClick={closeMenu}
+          >
+            <motion.div
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="w-[85%] max-w-sm h-full bg-white dark:bg-gray-900 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex flex-col h-full">
+                {/* Header with logo and close button */}
+                <div className="flex items-center justify-between p-5 border-b border-gray-200 dark:border-gray-800">
+                  <div className="flex items-center gap-3">
+                    <img src={logo} alt="logo" className="w-10 h-10 shadow-md rounded-xl" />
+                    <span className="text-base font-bold text-gray-800 font-khmer dark:text-white">
+                      វិទ្យាល័យ​ព្រះបាទ...
+                    </span>
+                  </div>
+                  <button
+                    onClick={closeMenu}
+                    className="p-2 text-gray-500 transition-all rounded-full dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                  >
+                    <AiOutlineClose size={20} />
+                  </button>
+                </div>
+
+                {/* Navigation Items */}
+                <div className="flex-1 px-3 py-4 overflow-y-auto">
+                  {navItems.map(({ to, label, icon: Icon }) => (
+                    <NavLink key={to} to={to} onClick={closeMenu}>
+                      {({ isActive }) => (
+                        <div
+                          className={`flex items-center gap-4 px-4 py-3 rounded-xl mb-1 transition-all duration-200 ${
+                            isActive
+                              ? "bg-indigo-600 text-white shadow-md"
+                              : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                          }`}
+                        >
+                          <Icon className={`text-xl ${isActive ? "text-white" : "text-indigo-500"}`} />
+                          <span className="font-medium">{label}</span>
+                          {isActive && (
+                            <span className="ml-auto text-sm font-bold">✓</span>
+                          )}
+                        </div>
+                      )}
+                    </NavLink>
+                  ))}
+                </div>
+
+                {/* Footer */}
+                <div className="p-5 text-xs text-center text-gray-500 border-t border-gray-200 dark:border-gray-800">
+                  <p>© {new Date().getFullYear()} វិទ្យាល័យព្រះបាទនរោត្តមសីហមុនី</p>
+                  <p className="mt-1">ចំណេះទូទៅ និងបច្ចេកទេស</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Spacer to prevent content hiding under fixed navbar */}
+      <div className="h-16 md:h-[4.5rem]" />
     </>
   );
-}
+};
 
 export default MenuBar;
