@@ -61,9 +61,16 @@ const subjects = [
       {
         id: 5,
         title: "មេរៀនទី ៤  ការណែនាំអំពីកម្មវិធី Microsoft Word",
-        description: "សិក្សាអំពីកវត្ថុគំនូរ និងការកែសម្រូលការប្រើប្រាស់ ",
+        description: "សិក្សាអំពី Shape និងការកែសម្រូលការប្រើប្រាស់ ",
         subTopics: ["១៩.សិក្សាអំពី​ Shape", "១៩.១ ការ Edit Shape", "១៩.២ Shape Style", "១៩.៣ Align Text in Shape","១៩.៤ Text Direction in Shape"," ១៩.៥ Shape Create Link"],
         pdf: "https://canva.link/gjmkc8oss1e4do0",
+      },
+      {
+        id: 6,
+        title: "មេរៀនទី ៤  ការណែនាំអំពីកម្មវិធី Microsoft Word",
+        description: "សិក្សាអំពី Smart Art និងការកែសម្រូលការប្រើប្រាស់ ",
+        subTopics: ["២០.សិក្សាអំពី​ Smart Art", "២០.១ សិក្សាអំពីរបៀប Add Shape", "២០.២ សិក្សាអំពីរបៀប Add Bullets", "២០.៣ សិក្សាអំពីរបៀប Add Text Pane","២០.៤ សិក្សាអំពី Layout និង Color"],
+        pdf: "https://canva.link/42b2scx69m78qgf",
       },
     ],
   },
