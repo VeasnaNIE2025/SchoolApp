@@ -56,6 +56,16 @@ const curriculum = [
       { id: 21, title: "19.3-Align Text In Shape",  duration: "4:10", done: false, url: "/Videos/19.3-Align Text In Shape.mp4" },
       { id: 23, title: "19.4-ការកំណត់ទិសដៅអក្សរ Text Direction In Shape",  duration: "4:10", done: false, url: "/Videos/19.4-ការកំណត់ទិសដៅអក្សរ Text Direction In Shape.mp4" },
       { id: 24, title: "19.5-Shape Create Link",  duration: "4:10", done: false, url: "/Videos/19.5-Shape Create Link.mp4" },
+      { id: 25, title: "20-សិក្សាអំពី​ Smart Art", duration: "3:20", done: false, url: "/Videos/20-Smart-Art/20-Smart-Art.mp4" },
+      { id: 26, title: "20.1-សិក្សាអំពីរបៀបបញ្ចូល Smart Art", duration: "5:45", done: false, url: "/Videos/20-Smart-Art/20.1-Insert Smart Art.mp4"},
+      { id: 27, title: "20.2-សិក្សាអំពីរបៀប Add Bullets",  duration: "4:10", done: false, url: "/Videos/20-Smart-Art/20.2-Add Bullets.mp4" },  
+      { id: 28, title: "20.3-សិក្សាអំពីរបៀប Add Text Pane",  duration: "4:10", done: false, url: "/Videos/20-Smart-Art/20.3-Add Text Pane.mp4" },
+      { id: 29, title: "20.4-សិក្សាអំពី Layout និង Color",  duration: "4:10", done: false, url: "/Videos/20-Smart-Art/20.4-Layout-And-Color.mp4" },
+
+
+
+
+      
     ],
   },
   {
@@ -65,9 +75,9 @@ const curriculum = [
     done: 0,
     open: false,
     lessons: [
-      { id: 25, title: "1-ការកំណត់ក្រដាស Page Setup",  duration: "6:00", done: false, url: "https://youtu.be/JsYCj_BL2XY?si=1f_sXf01qZImq0nf" },
-      { id: 26, title: "2-ការកំណត់ទម្រង់ (Format Cells)", duration: "7:30", done: false, url: "https://youtu.be/8LGgnKUiVa0?si=uySgHLHITswJg9uQ" },
-      { id: 27, title: "3-ការកំណត់ទម្រង់ (Format Cells)",         duration: "10:00", done: false, locked: true, url: "https://youtu.be/T1PJG5c2L7c?si=Ci9SngVRyrwRjizH" },
+      { id: 30, title: "1-ការកំណត់ក្រដាស Page Setup",  duration: "6:00", done: false, url: "https://youtu.be/JsYCj_BL2XY?si=1f_sXf01qZImq0nf" },
+      { id: 31, title: "2-ការកំណត់ទម្រង់ (Format Cells)", duration: "7:30", done: false, url: "https://youtu.be/8LGgnKUiVa0?si=uySgHLHITswJg9uQ" },
+      { id: 32, title: "3-ការកំណត់ទម្រង់ (Format Cells)",         duration: "10:00", done: false, locked: true, url: "https://youtu.be/T1PJG5c2L7c?si=Ci9SngVRyrwRjizH" },
     ],
   },
   {
@@ -77,8 +87,8 @@ const curriculum = [
     done: 0,
     open: false,
     lessons: [
-      { id: 28, title: "1.របៀបដោនឡូត និងតម្លើងកម្មវិធីតេលេក្រាមលើកុំព្យូទ័រ", duration: "8:15", done: false, url: "/Videos/telegram-install.mp4" },
-      { id: 29, title: "LAN, WAN, MAN",duration: "5:50", done: false, locked: true, url: "" },
+      { id: 33, title: "1.របៀបដោនឡូត និងតម្លើងកម្មវិធីតេលេក្រាមលើកុំព្យូទ័រ", duration: "8:15", done: false, url: "/Videos/telegram-install.mp4" },
+      { id: 34, title: "LAN, WAN, MAN",duration: "5:50", done: false, locked: true, url: "" },
     ],
   },
 ];
