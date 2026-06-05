@@ -10,16 +10,16 @@ const subjects = [
   {
     id: 1,
     title: "Microsoft Excel",
-    description: "រៀនប្រើប្រាស់ Microsoft Excel",
+    description: "សិក្សាអំពី Microsoft Excel",
     color: "green",
     icon: "📗",
     lessons: [
       {
         id: 1,
-        title: "មេរៀនទី១",
-        description: "ស្គាល់ Excel",
-        subTopics: ["Workbook", "Cells"],
-        pdf: "/PDF/Microsoft Excel/Lesson1/slide1.pdf",
+        title: "មេរៀនទី៥ សិក្សាអំពីរូបមន្ដនានាក្នុងកម្មវិធី Microsoft office 2026",
+        description: "6-Formular : Logical Function",
+        subTopics: ["6.1-IF", "6.2-AND & IF + AND", "6.3-OR & IF + OR", "6.4-NOT & IF + NOT", "6.5-IF + AND + OR"],
+        pdf: "https://canva.link/2qv6whyxi6flphp",
       },
     ],
   },

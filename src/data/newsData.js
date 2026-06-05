@@ -67,3 +67,4 @@ export const allNews = [
     webviewUrl: "https://script.google.com/macros/s/AKfycbwTIWbiUeLZmiHe7Wtb4taCtlFKotb-2EKWZW38W8biyRU7ztcQX1bStnDWSoTCFtsr/exec",
   },
 ];
+
