@@ -73,9 +73,9 @@ const curriculum = [
     lessons: [
       { id: 30, title: "6.1-IF",  duration: "6:00", done: false, url: "/Videos/Excel/6-Function/6.1-IF.mp4" },
       { id: 31, title: "6.2-AND & IF + AND", duration: "7:30", done: false, url: "/Videos/Excel/6-Function/6.2-AND-IF-AND.mp4" },
-      { id: 32, title: "6.3-OR & IF + OR", duration: "10:00", done: false, locked: true, url: "/Videos/Excel/6-Function/6.3-OR-IF-OR.mp4" },
-      { id: 33, title: "6.4-NOT & IF + NOT", duration: "8:15", done: false, locked: true, url: "/Videos/Excel/6-Function/6.4-NOT-IF-NOT.mp4" },
-      { id: 34, title: "6.5-IF + AND + OR", duration: "5:50", done: false, locked: true, url: "/Videos/Excel/6-Function/6.5-IF-AND-OR.mp4" },
+      { id: 32, title: "6.3-OR & IF + OR", duration: "10:00", done: false, url: "/Videos/Excel/6-Function/6.3-OR-IF-OR.mp4" },
+      { id: 33, title: "6.4-NOT & IF + NOT", duration: "8:15", done: false, url: "/Videos/Excel/6-Function/6.4-NOT-IF-NOT.mp4" },
+      { id: 34, title: "6.5-IF + AND + OR", duration: "5:50", done: false, url: "/Videos/Excel/6-Function/6.5-IF-AND-OR.mp4" },
       { id: 35, title: "កំណែលំហាត់", duration: "5:50", done: false, locked: true, url: "/Videos/Excel/6-Function/6.6-IF-OR-AND.mp4" },
     ],
   },
