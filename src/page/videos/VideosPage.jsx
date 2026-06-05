@@ -62,10 +62,6 @@ const curriculum = [
       { id: 28, title: "20.3-សិក្សាអំពីរបៀប Add Text Pane", duration: "4:10", done: false, url: "/Videos/20-Smart Art/20.3-Add Text.mp4" },
       { id: 29, title: "20.4-សិក្សាអំពី Layout និង Color", duration: "4:10", done: false, url: "/Videos/20-Smart Art/20.4-Change Layout And Color.mp4" },
 
-
-
-
-      
     ],
   },
   {
@@ -75,9 +71,12 @@ const curriculum = [
     done: 0,
     open: false,
     lessons: [
-      { id: 30, title: "1-ការកំណត់ក្រដាស Page Setup",  duration: "6:00", done: false, url: "https://youtu.be/JsYCj_BL2XY?si=1f_sXf01qZImq0nf" },
-      { id: 31, title: "2-ការកំណត់ទម្រង់ (Format Cells)", duration: "7:30", done: false, url: "https://youtu.be/8LGgnKUiVa0?si=uySgHLHITswJg9uQ" },
-      { id: 32, title: "3-ការកំណត់ទម្រង់ (Format Cells)",         duration: "10:00", done: false, locked: true, url: "https://youtu.be/T1PJG5c2L7c?si=Ci9SngVRyrwRjizH" },
+      { id: 30, title: "6.1-IF",  duration: "6:00", done: false, url: "/Videos/Excel/6-Function/6.1-IF.mp4" },
+      { id: 31, title: "6.2-AND & IF + AND", duration: "7:30", done: false, url: "/Videos/Excel/6-Function/6.2-AND-IF-AND.mp4" },
+      { id: 32, title: "6.3-OR & IF + OR", duration: "10:00", done: false, locked: true, url: "/Videos/Excel/6-Function/6.3-OR-IF-OR.mp4" },
+      { id: 33, title: "6.4-NOT & IF + NOT", duration: "8:15", done: false, locked: true, url: "/Videos/Excel/6-Function/6.4-NOT-IF-NOT.mp4" },
+      { id: 34, title: "6.5-IF + AND + OR", duration: "5:50", done: false, locked: true, url: "/Videos/Excel/6-Function/6.5-IF-AND-OR.mp4" },
+      { id: 35, title: "កំណែលំហាត់", duration: "5:50", done: false, locked: true, url: "/Videos/Excel/6-Function/6.6-IF-OR-AND.mp4" },
     ],
   },
   {
@@ -87,8 +86,8 @@ const curriculum = [
     done: 0,
     open: false,
     lessons: [
-      { id: 33, title: "1.របៀបដោនឡូត និងតម្លើងកម្មវិធីតេលេក្រាមលើកុំព្យូទ័រ", duration: "8:15", done: false, url: "/Videos/telegram-install.mp4" },
-      { id: 34, title: "LAN, WAN, MAN",duration: "5:50", done: false, locked: true, url: "" },
+      { id: 36, title: "1.របៀបដោនឡូត និងតម្លើងកម្មវិធីតេលេក្រាមលើកុំព្យូទ័រ", duration: "8:15", done: false, url: "/Videos/telegram-install.mp4" },
+      { id: 37, title: "LAN, WAN, MAN",duration: "5:50", done: false, locked: true, url: "" },
     ],
   },
 ];
