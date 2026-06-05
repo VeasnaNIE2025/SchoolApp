@@ -57,10 +57,10 @@ const curriculum = [
       { id: 23, title: "19.4-ការកំណត់ទិសដៅអក្សរ Text Direction In Shape",  duration: "4:10", done: false, url: "/Videos/19.4-ការកំណត់ទិសដៅអក្សរ Text Direction In Shape.mp4" },
       { id: 24, title: "19.5-Shape Create Link",  duration: "4:10", done: false, url: "/Videos/19.5-Shape Create Link.mp4" },
       { id: 25, title: "20-សិក្សាអំពី​ Smart Art", duration: "3:20", done: false, url: "/Videos/20-Smart Art/20-Smart Art.mp4" },
-      { id: 26, title: "20.1-សិក្សាអំពីរបៀបបញ្ចូល Smart Art", duration: "5:45", done: false, url: "/Videos/20-Smart Art/20.1-Insert Smart Art.mp4"},
-      { id: 27, title: "20.2-សិក្សាអំពីរបៀប Add Bullets",  duration: "4:10", done: false, url: "/Videos/20-Smart Art/20.2-Add Bullets.mp4" },  
-      { id: 28, title: "20.3-សិក្សាអំពីរបៀប Add Text Pane",  duration: "4:10", done: false, url: "/Videos/20-Smart Art/20.3-Add Text Pane.mp4" },
-      { id: 29, title: "20.4-សិក្សាអំពី Layout និង Color",  duration: "4:10", done: false, url: "/Videos/20-Smart Art/20.4-Layout-And-Color.mp4" },
+      { id: 26, title: "20.1-សិក្សាអំពីរបៀបបញ្ចូល Smart Art", duration: "5:45", done: false, url: "/Videos/20-Smart Art/20.1-Insert Smart Art.mp4" },
+      { id: 27, title: "20.2-សិក្សាអំពីរបៀប Add Bullets", duration: "4:10", done: false, url: "/Videos/20-Smart Art/20.2-Add Bullets.mp4" },
+      { id: 28, title: "20.3-សិក្សាអំពីរបៀប Add Text Pane", duration: "4:10", done: false, url: "/Videos/20-Smart Art/20.3-Add Text.mp4" },
+      { id: 29, title: "20.4-សិក្សាអំពី Layout និង Color", duration: "4:10", done: false, url: "/Videos/20-Smart Art/20.4-Change Layout And Color.mp4" },
 
 
 
