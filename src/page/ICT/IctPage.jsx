@@ -25,7 +25,7 @@ const subjects = [
         id: 2,
         title: "មេរៀនទី៥ សិក្សាអំពីរូបមន្ដនានាក្នុងកម្មវិធី Microsoft office 2026",
         description: "លំហាត់អនុវត្តលើការប្រើប្រាស់ 6-Formular : Logical Function",
-        subTopics: ["6.1-IF", "6.2-AND & IF + AND", "6.3-OR & IF + OR", "6.4-NOT & IF + NOT", "6.5-IF + AND + OR"],
+        subTopics: ["6.1-IF", "6.2-AND & IF + AND", "6.3-OR & IF + OR", "6.4-NOT & IF + NOT", "6.5-IF-AND-OR.mp4"],
         pdf: "Videos/Excel/6-Excercise/Excercise.xlsx",
       },
     ],
