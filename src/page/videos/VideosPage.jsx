@@ -12,18 +12,41 @@ import { BsPlayFill, BsCameraVideo } from "react-icons/bs";
 import { HiOutlineBookOpen } from "react-icons/hi2";
 
 /* ──────────────────────────────────────────
-   Sample Data
+   Auto-assign unique IDs to all lessons
 ────────────────────────────────────────── */
+let _id = 1;
+const uid = () => _id++;
+
 const curriculum = [
-   {
+  {
     id: 1,
     title: "ការណែនាំអំពីគន្លឺះខ្លីៗនៃការប្រើប្រាស់កុំព្យូទ័រ",
     total: 1,
     done: 0,
     open: true,
-    lessons: [
-      { id: 1, title: "HelpFindKey", duration: "3:20", done: false, url: "/Videos/HelpFindKey.mp4" },
-    ],
+ lessons: [
+  {
+    id: uid(),
+    title: "1-HelpFindKey",
+    duration: "3:20",
+    done: false,
+    url: "/Videos/Other/1-HelpFindKey.mp4",  // ✅ មាន 1-
+  },
+  {
+    id: uid(),
+    title: "2-How To Upload Document To System",
+    duration: "3:20",
+    done: false,
+    url: "/Videos/Other/2-How To Upload Document To System.mp4",  // ✅ មាន 2-
+  },
+  {
+    id: uid(),
+    title: "3-telegram-install",
+    duration: "3:20",
+    done: false,
+    url: "/Videos/Other/3-telegram-install.mp4",  // ✅ មាន 3-
+  },
+],
   },
   {
     id: 2,
@@ -32,36 +55,35 @@ const curriculum = [
     done: 0,
     open: true,
     lessons: [
-      { id: 1, title: "17.8-ការកំណត់ទំហំជួរឈរ (Distribute Column)", duration: "3:20", done: false, url: "/Videos/17.8-ការកំណត់ទំហំជួរឈរ (Distribute Column).mp4" },
-      { id: 2, title: "17.9-ការកំណត់ទំហំជួរដេក (Distribute Rows)", duration: "5:45", done: false, url: "/Videos/17.9-ការកំណត់ទំហំជួរដេក (Distribute Rows).mp4" },
-      { id: 3, title: "17.10-ការតម្រឹមអក្សរក្នុងក្រឡា (Text Alignment)",  duration: "4:10", done: false, url: "/Videos/17.10-ការតម្រឹមអក្សរក្នុងក្រឡា (Text Alignment).mp4"},
-      { id: 4, title: "17.11-ការកំណត់ទិសដៅក្នុងក្រឡា (Text Direction)", duration: "3:20", done: false, url: "/Videos/17.11-ការកំណត់ទិសដៅក្នុងក្រឡា (Text Direction).mp4" },
-      { id: 5, title: "17.12-ការតម្រៀបទិន្នន័យក្នុងតារាងSort Table", duration: "3:20", done: false, url: "/Videos/17.12-ការតម្រៀបទិន្នន័យក្នុងតារាងSort Table.mp4" },
-      { id: 6, title: "17.13-ការធ្វើឱ្យក្បាលតារាងរត់គ្រប់ជួរ Repeat Header Rows", duration: "5:45", done: false, url: "/Videos/17.13-ការធ្វើឱ្យក្បាលតារាងរត់គ្រប់ជួរ Repeat Header Rows.mp4" },
-      { id: 7, title: "17.14-ការប្រើប្រាស់រូបមន្ដក្នុងតារាងFormular",  duration: "4:10", done: false, url: "/Videos/17.14-ការប្រើប្រាស់រូបមន្ដក្នុងតារាងFormular.mp4"},
-      { id: 8, title: "18-ការបញ្ចូលរូបភាព Insert Picture", duration: "3:20", done: false, url: "/Videos/18-ការបញ្ចូលរូបភាព Insert Picture.mp4" },
-      { id: 9, title: "18.1-ការប្រើប្រាស់ពន្លឺ djust", duration: "5:45", done: false, url: "/Videos/18.1-ការប្រើប្រាស់ពន្លឺ djust.mp4" },
-      { id: 10, title: "18.2-ការប្រើប្រាស់ម៉ូតរូបភាពPicture Style",  duration: "4:10", done: false, url: "/Videos/18.2-ការប្រើប្រាស់ម៉ូតរូបភាពPicture Style.mp4" },
-      { id: 11, title: "18.3-ការកំណត់ទម្រង់អក្សរជាមួយរូបភាពWrap Text",  duration: "4:10", done: false, url: "/Videos/18.3-ការកំណត់ទម្រង់អក្សរជាមួយរូបភាពWrap Text.mp4" },
-      { id: 12, title: "18.5-ការរៀបចំលំដាប់ស្រទាប់ (Layer) និងការបង្ហាញ Object", duration: "3:20", done: false, url: "/Videos/18.5-ការរៀបចំលំដាប់ស្រទាប់ (Layer) និងការបង្ហាញ Object.mp4" },
-      { id: 13, title: "18.6-សិក្សាអំពី Select Pane", duration: "5:45", done: false, url: "/Videos/18.6-សិក្សាអំពី Select Pane.mp4" },
-      { id: 14, title: "18.7-សិក្សាអំពី  Aligment Object",  duration: "4:10", done: false, url: "/Videos/18.7-សិក្សាអំពី  Aligment Object.mp4" },
-      { id: 15, title: "18.8-សិក្សាអំពី Group Object",  duration: "4:10", done: false, url: "/Videos/18.8-សិក្សាអំពី Group Object.mp4" },
-      { id: 16, title: "18.9-សិក្សាអំពីការកំណត់ទិសដៅរូបភាព Picture Rotate", duration: "5:45", done: false, url: "/Videos/18.9-សិក្សាអំពីការកំណត់ទិសដៅរូបភាព Picture Rotate.mp4" },
-      { id: 17, title: "18.10-សិក្សាអំពីការកាត់រូបភាព Picture Crop",  duration: "4:10", done: false, url: "/Videos/18.10-សិក្សាអំពីការកាត់រូបភាព Picture Crop.mp4" },
-      { id: 18, title: "18.11-សិក្សាអំពី ​ការប្រើអត្ថបទជំនួស Alt Text",  duration: "4:10", done: false, url: "/Videos/18.11-សិក្សាអំពី ​ការប្រើអត្ថបទជំនួស Alt Text.mp4" },
-      { id: 19, title: "19-សិក្សាអំពី Shape",  duration: "4:10", done: false, url: "/Videos/119-សិក្សាអំពី Shape.mp4" },
-      { id: 20, title: "19.1-ការ Edit Shape",  duration: "4:10", done: false, url: "/Videos/19.1-ការ Edit Shape.mp4" },
-      { id: 21, title: "19.2-Shape Style", duration: "5:45", done: false, url: "/Videos/19.2-Shape Style.mp4" },
-      { id: 21, title: "19.3-Align Text In Shape",  duration: "4:10", done: false, url: "/Videos/19.3-Align Text In Shape.mp4" },
-      { id: 23, title: "19.4-ការកំណត់ទិសដៅអក្សរ Text Direction In Shape",  duration: "4:10", done: false, url: "/Videos/19.4-ការកំណត់ទិសដៅអក្សរ Text Direction In Shape.mp4" },
-      { id: 24, title: "19.5-Shape Create Link",  duration: "4:10", done: false, url: "/Videos/19.5-Shape Create Link.mp4" },
-      { id: 25, title: "20-សិក្សាអំពី​ Smart Art", duration: "3:20", done: false, url: "/Videos/20-Smart Art/20-Smart Art.mp4" },
-      { id: 26, title: "20.1-សិក្សាអំពីរបៀបបញ្ចូល Smart Art", duration: "5:45", done: false, url: "/Videos/20-Smart Art/20.1-Insert Smart Art.mp4" },
-      { id: 27, title: "20.2-សិក្សាអំពីរបៀប Add Bullets", duration: "4:10", done: false, url: "/Videos/20-Smart Art/20.2-Add Bullets.mp4" },
-      { id: 28, title: "20.3-សិក្សាអំពីរបៀប Add Text Pane", duration: "4:10", done: false, url: "/Videos/20-Smart Art/20.3-Add Text.mp4" },
-      { id: 29, title: "20.4-សិក្សាអំពី Layout និង Color", duration: "4:10", done: false, url: "/Videos/20-Smart Art/20.4-Change Layout And Color.mp4" },
-
+      { id: uid(), title: "17.8-ការកំណត់ទំហំជួរឈរ (Distribute Column)", duration: "3:20", done: false, url: "/Videos/17-TableMs0/17.8-ការកំណត់ទំហំជួរឈរ (Distribute Column).mp4" },
+      { id: uid(), title: "17.9-ការកំណត់ទំហំជួរដេក (Distribute Rows)", duration: "5:45", done: false, url: "/Videos/17-TableMs0/17.9-ការកំណត់ទំហំជួរដេក (Distribute Rows).mp4" },
+      { id: uid(), title: "17.10-ការតម្រឹមអក្សរក្នុងក្រឡា (Text Alignment)", duration: "4:10", done: false, url: "/Videos/17-TableMs0/17.10-ការតម្រឹមអក្សរក្នុងក្រឡា (Text Alignment).mp4" },
+      { id: uid(), title: "17.11-ការកំណត់ទិសដៅក្នុងក្រឡា (Text Direction)", duration: "3:20", done: false, url: "/Videos/17-TableMs0/17.11-ការកំណត់ទិសដៅក្នុងក្រឡា (Text Direction).mp4" },
+      { id: uid(), title: "17.12-ការតម្រៀបទិន្នន័យក្នុងតារាងSort Table", duration: "3:20", done: false, url: "/Videos/17-TableMs1/17.12-ការតម្រៀបទិន្នន័យក្នុងតារាងSort Table.mp4" },
+      { id: uid(), title: "17.13-ការធ្វើឱ្យក្បាលតារាងរត់គ្រប់ជួរ Repeat Header Rows", duration: "5:45", done: false, url: "/Videos/17-TableMs1/17-TableMs0/17.13-ការធ្វើឱ្យক្បាលតារាងរត់គ្រប់ជួរ Repeat Header Rows.mp4" },
+      { id: uid(), title: "17.14-ការប្រើប្រាស់រូបមនkនុងតារាងFormular", duration: "4:10", done: false, url: "/Videos/17-TableMs1/17.14-ការប្រើប្រាស់រូបមនkនុងតារាងFormular.mp4" },
+      { id: uid(), title: "18-ការបញ្ចូលរូបភាព Insert Picture", duration: "3:20", done: false, url: "/Videos/18-Picture/18-ការបញ្ចូលរូបភាព Insert Picture.mp4" },
+      { id: uid(), title: "18.1-ការប្រើប្រាស់ពន្លឺ djust", duration: "5:45", done: false, url: "/Videos/18-Picture/18.1-ការប្រើប្រាស់ពន្លឺ djust.mp4" },
+      { id: uid(), title: "18.2-ការប្រើប្រាស់ម៉ូតរូបភាពPicture Style", duration: "4:10", done: false, url: "/Videos/18-Picture/18.2-ការប្រើប្រាស់ម៉ូតរូបភាពPicture Style.mp4" },
+      { id: uid(), title: "18.3-ការកំណត់ទម្រង់អក្សរជាមួយរូបភាពWrap Text", duration: "4:10", done: false, url: "/Videos/18-Picture/18.3-ការកំណត់ទម្រង់អក្សរជាមួយរូបភាពWrap Text.mp4" },
+      { id: uid(), title: "18.5-ការរៀបចំលំដាប់ស្រទាប់ (Layer) និងការបង្ហាញ Object", duration: "3:20", done: false, url: "/Videos/18-Picture1/18.5-ការរៀបចំលំដាប់ស្រទាប់ (Layer) និងការបង្ហាញ Object.mp4" },
+      { id: uid(), title: "18.6-សិក្សាអំពី Select Pane", duration: "5:45", done: false, url: "/Videos/18-Picture1/18.6-សិក្សាអំពី Select Pane.mp4" },
+      { id: uid(), title: "18.7-សិក្សាអំពី  Aligment Object", duration: "4:10", done: false, url: "/Videos/18-Picture1/18.7-សិក្សាអំពី  Aligment Object.mp4" },
+      { id: uid(), title: "18.8-សិក្សាអំពី Group Object", duration: "4:10", done: false, url: "/Videos/18-Picture1/18.8-សិក្សាអំពី Group Object.mp4" },
+      { id: uid(), title: "18.9-សិក្សាអំពីការកំណត់ទិសដៅរូបភាព Picture Rotate", duration: "5:45", done: false, url: "/Videos/18-Picture2/18.9-សិក្សាអំពីការកំណត់ទិសដៅរូបភាព Picture Rotate.mp4" },
+      { id: uid(), title: "18.10-សិក្សាអំពីការកាត់រូបភាព Picture Crop", duration: "4:10", done: false, url: "/Videos/18-Picture2/18.10-សិក្សាអំពីការកាត់រូបភាព Picture Crop.mp4" },
+      { id: uid(), title: "18.11-សិក្សាអំពី ​ការប្រើអត្ថបទជំនួស Alt Text", duration: "4:10", done: false, url: "/Videos/18-Picture2/18.11-សិក្សាអំពី ​ការប្រើអត្ថបទជំនួស Alt Text.mp4" },
+      { id: uid(), title: "19-សិក្សាអំពី Shape", duration: "4:10", done: false, url: "/Videos/19-Shape/19-សិក្សាអំពី Shape.mp4" },
+      { id: uid(), title: "19.1-ការ Edit Shape", duration: "4:10", done: false, url: "/Videos/19-Shape/19.1-ការ Edit Shape.mp4" },
+      { id: uid(), title: "19.2-Shape Style", duration: "5:45", done: false, url: "/Videos/19-Shape/19.2-Shape Style.mp4" },
+      { id: uid(), title: "19.3-Align Text In Shape", duration: "4:10", done: false, url: "/Videos/19-Shape/19.3-Align Text In Shape.mp4" },
+      { id: uid(), title: "19.4-ការកំណត់ទិសដៅអក្សរ Text Direction In Shape", duration: "4:10", done: false, url: "/Videos/19-Shape/19.4-ការកំណត់ទិសដៅអក្សរ Text Direction In Shape.mp4" },
+      { id: uid(), title: "19.5-Shape Create Link", duration: "4:10", done: false, url: "/Videos/19-Shape/19.5-Shape Create Link.mp4" },
+      { id: uid(), title: "20-សិក្សាអំពី​ Smart Art", duration: "3:20", done: false, url: "/Videos/20-Smart Art/20-Smart Art.mp4" },
+      { id: uid(), title: "20.1-សិក្សាអំពីរបៀបបញ្ចូល Smart Art", duration: "5:45", done: false, url: "/Videos/20-Smart Art/20.1-Insert Smart Art.mp4" },
+      { id: uid(), title: "20.2-សិក្សាអំពីរបៀប Add Bullets", duration: "4:10", done: false, url: "/Videos/20-Smart Art/20.2-Add Bullets.mp4" },
+      { id: uid(), title: "20.3-សិក្សាអំពីរបៀប Add Text Pane", duration: "4:10", done: false, url: "/Videos/20-Smart Art/20.3-Add Text.mp4" },
+      { id: uid(), title: "20.4-សិក្សាអំពី Layout និង Color", duration: "4:10", done: false, url: "/Videos/20-Smart Art/20.4-Change Layout And Color.mp4" },
     ],
   },
   {
@@ -71,12 +93,12 @@ const curriculum = [
     done: 0,
     open: false,
     lessons: [
-      { id: 30, title: "6.1-IF",  duration: "6:00", done: false, url: "/Videos/Excel/6-Function/6.1-IF.mp4" },
-      { id: 31, title: "6.2-AND & IF + AND", duration: "7:30", done: false, url: "/Videos/Excel/6-Function/6.2-AND-IF-AND.mp4" },
-      { id: 32, title: "6.3-OR & IF + OR", duration: "10:00", done: false, url: "/Videos/Excel/6-Function/6.3-OR-IF-OR.mp4" },
-      { id: 33, title: "6.4-NOT & IF + NOT", duration: "8:15", done: false, url: "/Videos/Excel/6-Function/6.4-NOT-IF-NOT.mp4" },
-      { id: 34, title: "6.5-IF + AND + OR", duration: "5:50", done: false, url: "/Videos/Excel/6-Function/6.5-IF-AND-OR.mp4" },
-      { id: 35, title: "កំណែលំហាត់", duration: "5:50", done: false, locked: true, url: "/Videos/Excel/6-Function/6.6-IF-OR-AND.mp4" },
+      { id: uid(), title: "6.1-IF", duration: "6:00", done: false, url: "/Videos/Excel/6-Function/6.1-IF.mp4" },
+      { id: uid(), title: "6.2-And & IF + AND", duration: "7:30", done: false, url: "/Videos/Excel/6-Function/6.2-And & IF + AND.mp4" },
+      { id: uid(), title: "6.3-OR & IF+ OR", duration: "10:00", done: false, url: "/Videos/Excel/6-Function/6.3-OR & IF+ OR.mp4" },
+      { id: uid(), title: "6.4-NOT & IF + NOT", duration: "8:15", done: false, url: "/Videos/Excel/6-Function/6.4-Not & Not + If.mp4" },
+      { id: uid(), title: "6.5-IF+AND+OR", duration: "5:50", done: false, url: "/Videos/Excel/6-Function/6.5-IF+AND+OR.mp4" },
+      { id: uid(), title: "កំណែលំហាត់", duration: "5:50", done: false, locked: true, url: "/Videos/Excel/6-Function/6.5-IF-OR-AND.mp4" },
     ],
   },
   {
@@ -86,11 +108,13 @@ const curriculum = [
     done: 0,
     open: false,
     lessons: [
-      { id: 36, title: "1.របៀបដោនឡូត និងតម្លើងកម្មវិធីតេលេក្រាមលើកុំព្យូទ័រ", duration: "8:15", done: false, url: "/Videos/telegram-install.mp4" },
-      { id: 37, title: "LAN, WAN, MAN",duration: "5:50", done: false, locked: true, url: "" },
+      { id: uid(), title: "1.របៀបដោនឡូត និងតម្លើងកម្មវិធីតេលេក្រាមលើកុំព្យូទ័រ", duration: "8:15", done: false, url: "/Videos/telegram-install.mp4" },
+      { id: uid(), title: "LAN, WAN, MAN", duration: "5:50", done: false, locked: true, url: "" },
     ],
   },
 ];
+
+// ... component code ដដែល មិនមានការផ្លាស់ប្តូរ
 
 /* ──────────────────────────────────────────
    Helpers  ✅ ទទួល sections ជា parameter
