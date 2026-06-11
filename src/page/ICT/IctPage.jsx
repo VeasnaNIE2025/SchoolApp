@@ -79,6 +79,14 @@ const subjects = [
         subTopics: ["២០.សិក្សាអំពី​ Smart Art", "២០.១ សិក្សាអំពីរបៀប Add Shape", "២០.២ សិក្សាអំពីរបៀប Add Bullets", "២០.៣ សិក្សាអំពីរបៀប Add Text Pane","២០.៤ សិក្សាអំពី Layout និង Color"],
         pdf: "/Videos/Word/20-Smart Art/២០ អំពី Smart Art.pdf",
       },
+      {
+      id: 4,
+      title: "មេរៀនទី ៤  ការណែនាំអំពីកម្មវិធី Microsoft Word",
+      description: "សិក្សាអំពី ការរចនាទំព័រ និងការតុបតែងទំព័រ ",
+      subTopics: ["២១.សិក្សាអំពី​ការរចនា និងរៀបចំសន្លឹកកិច្ចការ", " ២១.១ សិក្សា Header និង Footer", "២១.២ សិក្សាអំពី Page Number", "២១.៣ សិក្សាអំពី Word Art","  ២១.៤ សិក្សាអំពី Drop Cap"],
+      pdf: "/Videos/Word/21-DesigePage/21-Desing Page.pdf",
+     },
+      
     ],
   },
   {
