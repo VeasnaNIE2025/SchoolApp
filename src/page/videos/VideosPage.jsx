@@ -105,6 +105,14 @@ const curriculum = [
       { id: uid(), title: "6.4-NOT & IF + NOT", duration: "8:15", done: false, url: "/Videos/Excel/6-Function/6.4-Not-Not-If.mp4" },
       { id: uid(), title: "6.5-IF+AND+OR", duration: "5:50", done: false, url: "/Videos/Excel/6-Function/6.5-IF-AND-OR.mp4" },
       { id: uid(), title: "កំណែលំហាត់", duration: "5:50", done: false, locked: true, url: "/Videos/Excel/6-Function/6.1-IF.mp4" },
+
+      { id: uid(), title: "7.1-MIN", duration: "6:00", done: false, url: "https://youtu.be/3XcNLQ1MGKk" },
+      { id: uid(), title: "7.1-MAX", duration: "7:30", done: false, url: "https://youtu.be/KZQX76ZC5Ws" },
+      { id: uid(), title: "7.2-AVERAGE", duration: "10:00", done: false, url: "https://youtu.be/KGEwJTIkoW4" },
+      { id: uid(), title: "7.3-COUNT", duration: "8:15", done: false, url: "https://youtu.be/rdJd9jXSgcU" },
+      { id: uid(), title: "7.3-COUNTA", duration: "5:50", done: false, url: "https://youtu.be/ClsKMuB4cyo" },
+      { id: uid(), title: "7.4-COUNTIF", duration: "6:00", done: false, url: "https://youtu.be/JWm7zSgLW5o" },
+      { id: uid(), title: "7.5-COUNTIFS", duration: "7:30", done: false, url: "https://youtu.be/jnrvlobFhKM" },
     ],
   },
   {
