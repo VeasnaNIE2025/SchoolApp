@@ -128,8 +128,6 @@ const curriculum = [
   },
 ];
 
-// ... component code ដដែល មិនមានការផ្លាស់ប្តូរ
-
 /* ──────────────────────────────────────────
    Helpers  ✅ ទទួល sections ជា parameter
 ────────────────────────────────────────── */
@@ -140,6 +138,26 @@ function totalStats(sections) {
     done  += s.lessons.filter(l => l.done).length; // ✅ រាប់ពី lessons state
   });
   return { total, done, pct: total === 0 ? 0 : Math.round((done / total) * 100) };
+}
+
+/* ✅ Extract YouTube ID from various formats */
+function getYouTubeId(url) {
+  if (!url) return null;
+  const patterns = [
+    /youtu\.be\/([a-zA-Z0-9_-]{11})/,           // youtu.be/ID
+    /youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/, // youtube.com/watch?v=ID
+    /youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/    // youtube.com/embed/ID
+  ];
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return match[1];
+  }
+  return null;
+}
+
+/* ✅ Check if URL is YouTube */
+function isYouTube(url) {
+  return url && (url.includes("youtu.be") || url.includes("youtube.com"));
 }
 
 export default function VideosPage() {
@@ -176,7 +194,7 @@ export default function VideosPage() {
     setActiveId(lesson.id);
   };
 
-  /* ✅ Mark done នៅពេល video ended */
+  /* ✅ Mark done នៅពេល video ended (local video only) */
   const handleVideoEnded = () => {
     setSections(prev =>
       prev.map(section => {
@@ -225,14 +243,27 @@ export default function VideosPage() {
           {/* Video */}
           <div className="relative w-full" style={{ aspectRatio: "16/9", maxHeight: "calc(100vh - 160px)" }}>
             {activeLesson?.url ? (
-              <video
-                key={activeLesson.id}
-                className="object-contain w-full h-full"
-                controls
-                autoPlay
-                src={activeLesson.url}
-                onEnded={handleVideoEnded} // ✅ auto mark done
-              />
+              isYouTube(activeLesson.url) ? (
+                // ✅ YouTube iframe
+                <iframe
+                  key={activeLesson.id}
+                  className="object-contain w-full h-full"
+                  src={`https://www.youtube.com/embed/${getYouTubeId(activeLesson.url)}`}
+                  title={activeLesson.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                // ✅ Local video file
+                <video
+                  key={activeLesson.id}
+                  className="object-contain w-full h-full"
+                  controls
+                  autoPlay
+                  src={activeLesson.url}
+                  onEnded={handleVideoEnded} // ✅ auto mark done
+                />
+              )
             ) : (
               <div className="flex flex-col items-center justify-center w-full h-full gap-4 bg-gray-900">
                 <AiOutlineLock className="text-5xl text-white/30" />
