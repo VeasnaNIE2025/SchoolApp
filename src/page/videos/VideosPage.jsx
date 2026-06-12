@@ -90,6 +90,11 @@ const curriculum = [
       { id: uid(), title: "20.2-សិក្សាអំពីរបៀប Add Bullets", duration: "4:10", done: false, url: "/Videos/Word/20-SmartArt/20.2-AddBullets.mp4" },
       { id: uid(), title: "20.3-សិក្សាអំពីរបៀប Add Text Pane", duration: "4:10", done: false, url: "/Videos/Word/20-SmartArt/20.3-AddText.mp4" },
       { id: uid(), title: "20.4-សិក្សាអំពី Layout និង Color", duration: "4:10", done: false, url: "/Videos/Word/20-SmartArt/20.4-ChangeLayoutAndColor.mp4" },
+
+      { id: uid(), title: "21.1-សិក្សាអំពីការកំណត់ក្បាលទំព័រ (Header) និងជើងទំព័រ (Footer)", duration: "5:45", done: false, url: "https://youtu.be/aonyoHQJS2Q" },
+      { id: uid(), title: "21.2-សិក្សាអំពីការកំណត់លេខទំព័រ (Page Numer)", duration: "4:10", done: false, url: "https://youtu.be/qUrTDZcb5sA" },
+      { id: uid(), title: "21.3-សិក្សាអំពីការកំណត់ម៉ូតអក្សរ (WordArt)", duration: "4:10", done: false, url: "https://youtu.be/g8qd6jPA86Y" },
+      { id: uid(), title: "21.4-សិក្សាអំពីការកំណត់អក្សរធំដើម (DropCap)", duration: "4:10", done: false, url: "https://youtu.be/CmB_1_CByC4" },
     ],
   },
   {
@@ -113,6 +118,7 @@ const curriculum = [
       { id: uid(), title: "7.3-COUNTA", duration: "5:50", done: false, url: "https://youtu.be/ClsKMuB4cyo" },
       { id: uid(), title: "7.4-COUNTIF", duration: "6:00", done: false, url: "https://youtu.be/JWm7zSgLW5o" },
       { id: uid(), title: "7.5-COUNTIFS", duration: "7:30", done: false, url: "https://youtu.be/jnrvlobFhKM" },
+      
     ],
   },
   {
