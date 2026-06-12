@@ -84,7 +84,7 @@ const subjects = [
       title: "មេរៀនទី ៤  ការណែនាំអំពីកម្មវិធី Microsoft Word",
       description: "សិក្សាអំពី ការរចនាទំព័រ និងការតុបតែងទំព័រ ",
       subTopics: ["២១.សិក្សាអំពី​ការរចនា និងរៀបចំសន្លឹកកិច្ចការ", " ២១.១ សិក្សា Header និង Footer", "២១.២ សិក្សាអំពី Page Number", "២១.៣ សិក្សាអំពី Word Art","  ២១.៤ សិក្សាអំពី Drop Cap"],
-      pdf: "/Videos/Word/21-DesigePage/21-Desing Page.pdf",
+      pdf: "/Videos/Word/21-DesigePage/21-DesingPage.pdf",
      },
       
     ],
