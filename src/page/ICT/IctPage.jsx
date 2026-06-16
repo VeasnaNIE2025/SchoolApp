@@ -339,16 +339,18 @@ const subjects = [
           id: 1,
           title: "QCM Examination System",
           description: "ប្រព័ន្ធប្រឡង QCM សម្រាប់ថ្នាក់ទី១០ និងទី១១",
-          type: "exam", 
+          type: "exam",
+          buttonLabel: "ចូលប្រឡង",
           subTopics: ["​ប្រព័ន្ធប្រឡងប្រចាំខែសម្រាប់ថ្នាក់ទី១០ និងទី១១","ត្រូវមាន ឈ្មោះ និងលេខសម្ងាត់","ចូលប្រឡងតាមម៉ោងកំណត់"],
           url: "https://qcm.salacode.site/student/dashboard",
         },
         {
           id: 2,
           title: "ប្រព័ន្ធចុះឈ្មោះសិស្ស Google Sheets",
-          description: "ផ្ទុ្កកទិន្នន័យសិស្សថ្នាក់ទី១០ ឆ្នាំ២០២៦-២០២៧",
-          type: "exam", 
-          subTopics: ["​ប័ណ្ណព័ត៌មានសិស្សថ្នាក់ទី១០ ឆ្នាំ២०២៦-២००२៧","Android App:https://bit.ly/4vUDk6F","រាល់ការកែទិនន្នន័យវានិងបញ្ជូនទៅ bot Telegram ដើម្បីត្រួតពិនិត្យ"],
+          description: "ផ្ទុ្កកទិន្នន័យសិស្សថ្នាក់ទី១០ ឆ្នាំ២០२៦-២००२៧",
+          type: "exam",
+          buttonLabel: "ចូលទៅចុះឈ្មោះ",
+          subTopics: ["​ប័ណ្ណព័ត៌មានសិស្សថ្នាក់ទី១០ ឆ្នាំ២००२៦-២००២៧","Android App:https://bit.ly/4vUDk6F","រាល់ការកែទិនន្នន័យវានិងបញ្ជូនទៅ bot Telegram ដើម្បីត្រួតពិនិត្យ"],
           url: "https://script.google.com/macros/s/AKfycbwTIWbiUeLZmiHe7Wtb4taCtlFKotb-2EKWZW38W8biyRU7ztcQX1bStnDWSoTCFtsr/exec",
         },
       ],
@@ -389,7 +391,7 @@ export default function IctPage() {
   const [viewTitle, setViewTitle] = useState("");
   const [activeSubject, setActiveSubject] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentPages, setCurrentPages] = useState({}); // Per-subject pagination
+  const [currentPages, setCurrentPages] = useState({});
 
   const openPdf = (file, title) => {
     setViewPdf(encodeURI(file));
@@ -401,7 +403,6 @@ export default function IctPage() {
     setViewTitle("");
   };
 
-  // Filter and search logic
   const filteredSubjects = useMemo(() => {
     return subjects
       .filter((s) => activeSubject === null || s.id === activeSubject)
@@ -418,7 +419,6 @@ export default function IctPage() {
       .filter((subject) => subject.lessons.length > 0);
   }, [activeSubject, searchQuery]);
 
-  // Reset pagination when search or filter changes
   const handleSearchChange = (value) => {
     setSearchQuery(value);
     setCurrentPages({});
@@ -429,7 +429,6 @@ export default function IctPage() {
     setCurrentPages({});
   };
 
-  // Handle page change for specific subject
   const handlePageChange = (subjectId, page) => {
     setCurrentPages((prev) => ({
       ...prev,
@@ -569,7 +568,7 @@ export default function IctPage() {
                                 onClick={() => window.open(lesson.url, "_blank")}
                                 className="flex items-center justify-center w-full gap-2 py-3 text-white transition bg-red-600 hover:bg-red-700 rounded-xl active:scale-95"
                               >
-                                <AiOutlineEye /> ចូលប្រឡង
+                                <AiOutlineEye /> {lesson.buttonLabel || "ចូលប្រឡង"}
                               </button>
                             ) : (
                               <div className="flex gap-3">
