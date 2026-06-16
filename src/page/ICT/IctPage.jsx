@@ -96,22 +96,71 @@ const subjects = [
       
     ],
   },
-  {
-    id: 3,
-    title: "​ប្រឡង​ប្រចាំខែ",
-    description: "ប្រព័ន្ធប្រឡងប្រចាំខែសម្រាប់ថ្នាក់ទី១០ និងទី១១",
-    color: "red",
-    icon: "📕",
-    lessons: [
-      {
-        id: 1,
-        title: "ថ្នាក់ទី១០ និងទី១១",
-        description: "បំពេញឈ្មោះ និងពាក្យសម្ងាត់ឱ្យបានត្រឹមត្រូវ",
-        subTopics: ["​ប្រព័ន្ធប្រឡងប្រចាំខែសម្រាប់ថ្នាក់ទី១០ និងទី១១"],
-        url: "https://qcm.salacode.site/student/dashboard",
-      },
-    ],
-  },
+    {
+      id: 3,
+      title: "គំរូឯកសារនានា",
+      description: "ឯកសារគំរូសម្រាប់គ្រូ និងសិស្ស",
+      color: "yellow",
+      icon: "📂",
+      lessons: [
+        {
+          id: 1,
+          title: "គំរូក្របសៀវភៅក្រដាស A4",
+          description: "Soft Microsoft Word Template for A4 Paper Size",
+          type: "document", 
+          subTopics: [
+            "សន្លឹកកិច្ចការ A4",
+            "​ប្រើប្រាស់ Shape",
+            "ប្រើប្រាស់រូបភាព",
+            "ប្រើប្រាស់ Picture Style",
+          ],
+          url: "/Videos/Other/Document/Cover BA4.docx",
+        },
+         {
+          id: 2,
+          title: "គំរូកាតសិស្សសម្រាប់ពាក់ក",
+          description: "Soft Microsoft Word Template for w:5.7 h:7.7 Paper Size",
+          type: "document", 
+          subTopics: [
+            "សន្លឹកកិច្ចការ A4/4",
+            "​ប្រើប្រាស់ Shape",
+            "ប្រើប្រាស់រូបភាព",
+            "ប្រើប្រាស់ Picture Style",
+          ],
+          url: "/Videos/Other/Document/Card.docx",
+        },
+        {
+          id: 3,
+          title: "គំរូលិខិតសរសើរ",
+          description: "Soft Microsoft Word Template  Paper Size A4",
+          type: "document", 
+          subTopics: [
+            "សន្លឹកកិច្ចការ A4",
+            "​ប្រើប្រាស់ Shape",
+            "ប្រើប្រាស់រូបភាព",
+            "ប្រើប្រាស់ Mail Merge",
+          ],
+          url: "/Videos/Other/Document/Fam.docx",
+        },
+      ],
+    },
+    {
+      id: 4,
+      title: "​ប្រឡង​ប្រចាំខែ",
+      description: "ប្រព័ន្ធប្រឡងប្រចាំខែសម្រាប់ថ្នាក់ទី១០ និងទី១១",
+      color: "red",
+      icon: "📕",
+      lessons: [
+        {
+          id: 1,
+          title: "ថ្នាក់ទី១០ និងទី១១",
+          description: "បំពេញឈ្មោះ និងពាក្យសម្ងាត់ឱ្យបានត្រឹមត្រូវ",
+          type: "exam", 
+          subTopics: ["​ប្រព័ន្ធប្រឡងប្រចាំខែសម្រាប់ថ្នាក់ទី១០ និងទី១១"],
+          url: "https://qcm.salacode.site/student/dashboard",
+        },
+      ],
+    },
 ];
 
 const colorMap = {
@@ -132,6 +181,12 @@ const colorMap = {
     iconBg: "bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-400",
     border: "border-red-200 dark:border-red-800",
     dot: "bg-red-500",
+  },
+   yellow: {
+    badge: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/50 dark:text-yellow-300",
+    iconBg: "bg-yellow-50 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400",
+    border: "border-yellow-200 dark:border-yellow-800",
+    dot: "bg-yellow-500",
   },
 };
 
@@ -248,7 +303,7 @@ export default function IctPage() {
                         </div>
 
                         {/* BUTTON */}
-                        <div className="flex gap-3 mt-auto">
+                        {/* <div className="flex gap-3 mt-auto">
                           <button
                             onClick={() => {
                               if (lesson.pdf) openPdf(lesson.pdf, lesson.title);
@@ -267,7 +322,46 @@ export default function IctPage() {
                           >
                             <AiOutlineDownload /> Download
                           </a>
-                        </div>
+                        </div> */}
+                        {/* BUTTON */}
+                        <div className="mt-auto">
+                          {lesson.type === "document" ? (
+                            <a
+                              href={lesson.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="flex items-center justify-center w-full gap-2 py-3 text-white transition bg-yellow-500 hover:bg-yellow-600 rounded-xl active:scale-95"
+                            >
+                              <AiOutlineDownload /> ទាញយកឯកសារ
+                            </a>
+                          ) : lesson.type === "exam" ? (
+                            <button
+                              onClick={() => window.open(lesson.url, "_blank")}
+                              className="flex items-center justify-center w-full gap-2 py-3 text-white transition bg-red-600 hover:bg-red-700 rounded-xl active:scale-95"
+                            >
+                              <AiOutlineEye /> ចូលប្រឡង
+                            </button>
+                          ) : (
+                            <div className="flex gap-3">
+                              <button
+                                onClick={() => openPdf(lesson.pdf, lesson.title)}
+                                className="flex items-center justify-center flex-1 gap-2 py-2 text-white transition bg-blue-600 hover:bg-blue-700 rounded-xl active:scale-95"
+                              >
+                                <AiOutlineEye /> មើល
+                              </button>
+
+                              <a
+                                href={lesson.pdf}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="flex items-center justify-center flex-1 gap-2 py-2 text-gray-800 transition bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white rounded-xl active:scale-95"
+                              >
+                                <AiOutlineDownload /> Download
+                              </a>
+                            </div>
+                          )}
+                        </div>                    
+
                       </div>
                     </div>
                   ))}
