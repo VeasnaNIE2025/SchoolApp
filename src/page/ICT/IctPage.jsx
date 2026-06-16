@@ -42,6 +42,13 @@ const subjects = [
         subTopics: ["7.1-MAX, MIN", "7.2-AVERAGE", "7.3-COUNT,COUNTA", "7.4-COUNTIF", "7.5-COUNTIFS"],
         pdf: "Videos/Excel/Excercise/7-Statistical.xlsx",
       },
+      {
+        id: 5,
+        title: "ប្រឡងប្រចាំខែមិថុនា ឆ្នាំ២០២៦",
+        description: "ប្រឡងប្រចាំខែមិថុនា ឆ្នាំ២០២៦ សម្រាប់ថ្ន​ាក់ទី១១",
+        subTopics: ["7.1-MAX, MIN", "7.2-AVERAGE", "7.3-COUNT", "7.4-COUNTIF", "7.5-COUNTIFS"],
+        pdf: "Videos/Excel/Excercise/8-exam.xlsb",
+      },
     ],
   },
   {
