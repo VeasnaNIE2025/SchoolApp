@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import {
   AiOutlineFilePdf,
   AiOutlineEye,
   AiOutlineDownload,
-  AiOutlineBook
+  AiOutlineBook,
+  AiOutlineSearch,
 } from "react-icons/ai";
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 const subjects = [
   {
@@ -76,24 +78,23 @@ const subjects = [
         id: 3,
         title: "មេរៀនទី ៤  ការណែនាំអំពីកម្មវិធី Microsoft Word",
         description: "សិក្សាអំពី Shape និងការកែសម្រូលការប្រើប្រាស់ ",
-        subTopics: ["១៩.សិក្សាអំពី​ Shape", "១៩.១ ការ Edit Shape", "១៩.២ Shape Style", "១៩.៣ Align Text in Shape","១៩.៤ Text Direction in Shape"," ១៩.៥ Shape Create Link"],
-        pdf: "/Videos/Word/19-Shape/១៩.សិក្សាអំពី_ Shape.pdf",
+        subTopics: ["១៉.សិក្សាអំពី​ Shape", "១៉.១ ការ Edit Shape", "១៉.២ Shape Style", "១៉.៣ Align Text in Shape","១៉.៤ Text Direction in Shape"," ១៉.៥ Shape Create Link"],
+        pdf: "/Videos/Word/19-Shape/១៉.សិក្សាអំពី_ Shape.pdf",
       },
       {
-        id: 3,
+        id: 4,
         title: "មេរៀនទី ៤  ការណែនាំអំពីកម្មវិធី Microsoft Word",
         description: "សិក្សាអំពី Smart Art និងការកែសម្រូលការប្រើប្រាស់ ",
-        subTopics: ["២០.សិក្សាអំពី​ Smart Art", "២០.១ សិក្សាអំពីរបៀប Add Shape", "២០.២ សិក្សាអំពីរបៀប Add Bullets", "២០.៣ សិក្សាអំពីរបៀប Add Text Pane","២០.៤ សិក្សាអំពី Layout និង Color"],
+        subTopics: ["២ា.សិក្សាអំពី​ Smart Art", "២ា.១ សិក្សាអំពីរបៀប Add Shape", "២ា.២ សិក្សាអំពីរបៀប Add Bullets", "២ា.៣ សិក្សាអំពីរបៀប Add Text Pane","២ា.៤ សិក្សាអំពី Layout និង Color"],
         pdf: "/Videos/Word/20-SmartArt/20-SmartArt.pdf",
       },
       {
-      id: 4,
+      id: 5,
       title: "មេរៀនទី ៤  ការណែនាំអំពីកម្មវិធី Microsoft Word",
       description: "សិក្សាអំពី ការរចនាទំព័រ និងការតុបតែងទំព័រ ",
-      subTopics: ["២១.សិក្សាអំពី​ការរចនា និងរៀបចំសន្លឹកកិច្ចការ", " ២១.១ សិក្សា Header និង Footer", "២១.២ សិក្សាអំពី Page Number", "២១.៣ សិក្សាអំពី Word Art","  ២១.៤ សិក្សាអំពី Drop Cap"],
+      subTopics: ["២ឹ.សិក្សាអំពី​ការរចនា និងរៀបចំសន្លឹកកិច្ចការ", " ២ឹ.១ សិក្សា Header និង Footer", "២ឹ.២ សិក្សាអំពី Page Number", "២ឹ.៣ សិក្សាអំពី Word Art","  ២ឹ.៤ សិក្សាអំពី Drop Cap"],
       pdf: "/Videos/Word/21-DesigePage/21-DesingPage.pdf",
      },
-      
     ],
   },
     {
@@ -114,10 +115,50 @@ const subjects = [
             "ប្រើប្រាស់រូបភាព",
             "ប្រើប្រាស់ Picture Style",
           ],
-          url: "/Videos/Other/Document/Cover BA4.docx",
+          url: "/Videos/Other/Document/coverbook/Coverbook0.docx",
         },
-         {
+           {
           id: 2,
+          title: "គំរូក្របសៀវភៅក្រដាស A4",
+          description: "Soft Microsoft Word Template for A4 Paper Size",
+          type: "document", 
+          subTopics: [
+            "សន្លឹកកិច្ចការ A4",
+            "​ប្រើប្រាស់ Shape",
+            "ប្រើប្រាស់រូបភាព",
+            "ប្រើប្រាស់ Picture Style",
+          ],
+          url: "/Videos/Other/Document/coverbook/Coverbook1.docx",
+        },
+           {
+          id: 3,
+          title: "គំរូក្របសៀវភៅក្រដាស A4",
+          description: "Soft Microsoft Word Template for A4 Paper Size",
+          type: "document", 
+          subTopics: [
+            "សន្លឹកកិច្ចការ A4",
+            "​ប្រើប្រាស់ Shape",
+            "ប្រើប្រាស់រូបភាព",
+            "ប្រើប្រាស់ Picture Style",
+          ],
+          url: "/Videos/Other/Document/coverbook/Coverbook2.docx",
+        },
+           {
+          id: 4,
+          title: "គំរូក្របសៀវភៅក្រដាស A4",
+          description: "Soft Microsoft Word Template for A4 Paper Size",
+          type: "document", 
+          subTopics: [
+            "សន្លឹកកិច្ចការ A4",
+            "​ប្រើប្រាស់ Shape",
+            "ប្រើប្រាស់រូបភាព",
+            "ប្រើប្រាស់ Picture Style",
+          ],
+          url: "/Videos/Other/Document/coverbook/Coverbook3.docx",
+        },
+        
+         {
+          id: 5,
           title: "គំរូកាតសិស្សសម្រាប់ពាក់ក",
           description: "Soft Microsoft Word Template for w:5.7 h:7.7 Paper Size",
           type: "document", 
@@ -127,10 +168,10 @@ const subjects = [
             "ប្រើប្រាស់រូបភាព",
             "ប្រើប្រាស់ Picture Style",
           ],
-          url: "/Videos/Other/Document/Card.docx",
+          url: "/Videos/Other/Document/card/Card.docx",
         },
         {
-          id: 3,
+          id: 7,
           title: "គំរូលិខិតសរសើរ",
           description: "Soft Microsoft Word Template  Paper Size A4",
           type: "document", 
@@ -140,10 +181,10 @@ const subjects = [
             "ប្រើប្រាស់រូបភាព",
             "ប្រើប្រាស់ Mail Merge",
           ],
-          url: "/Videos/Other/Document/Fam.docx",
+          url: "/Videos/Other/Document/fam/Fam.docx",
         },
         {
-          id: 4,
+          id: 8,
           title: "គំរូ CV ជាភាសាខ្មែរ",
           description: "Soft Microsoft Word Template  Paper Size A4",
           type: "document", 
@@ -153,10 +194,10 @@ const subjects = [
             "ប្រើប្រាស់រូបភាព",
             "ប្រើប្រាស់ Links",
           ],
-          url: "/Videos/Other/Document/CV.docx",
+          url: "/Videos/Other/Document/cv/CV.docx",
         },
         {
-          id: 5,
+          id: 9,
           title: "គំរូ វិញ្ញាបនបត្ររដ្ឋបាលសម្រា​ប់គ្រូបង្រៀន",
           description: "Soft Microsoft Word Template  Paper Size A4",
           type: "document", 
@@ -169,7 +210,7 @@ const subjects = [
           url: "/Videos/Other/Document/publicAdministration.dotx",
         },
         {
-          id: 5,
+          id: 10,
           title: "គំរូ មេរៀន Header & Footer",
           description: "Soft Microsoft Word Template  Paper Size A4",
           type: "document", 
@@ -180,6 +221,110 @@ const subjects = [
             "Word Art",
           ],
           url: "/Videos/Other/Document/Computer.docx",
+        },
+        {
+          id: 11,
+            title: "គំរូ វិក័យបត្រ Invoice ទី១",
+            description: "Soft Microsoft Word Template  Paper Size A4",
+            type: "document", 
+            subTopics: [
+              "សន្លឹកកិច្ចការ A4",
+              "​ប្រើប្រាស់ Table",
+              "Table Formating",
+              "ប្រភព៖ https://t.me/camtechfreeresource",
+            ],
+          url: "/Videos/Other/Document/invoice/invoice1.docx",
+        },
+        {
+          id: 12,
+           title: "គំរូ វិក័យបត្រ Invoice ទី២",
+          description: "Soft Microsoft Word Template  Paper Size A4",
+          type: "document", 
+          subTopics: [
+            "សន្លឹកកិច្ចការ A4",
+            "​ប្រើប្រាស់ Table",
+            "Table Formating",
+            "ប្រភព៖ https://t.me/camtechfreeresource",
+          ],
+          url: "/Videos/Other/Document/invoice/invoice2.docx",
+        },
+        {
+          id: 13,
+          title: "គំរូ វិក័យបត្រ Invoice ទី៣",
+          description: "Soft Microsoft Word Template  Paper Size A4",
+          type: "document", 
+          subTopics: [
+            "សន្លឹកកិច្ចការ A4",
+            "​ប្រើប្រាស់ Table",
+            "Table Formating",
+            "ប្រភព៖ https://t.me/camtechfreeresource",
+          ],
+          url: "/Videos/Other/Document/invoice/invoice3.docx"
+        },
+        {
+          id: 14,
+          title: "គំរូ វិក័យបត្រ Invoice ទី៤",
+          description: "Soft Microsoft Word Template  Paper Size A4",
+          type: "document", 
+          subTopics: [
+            "សន្លឹកកិច្ចការ A4",
+            "​ប្រើប្រាស់ Table",
+            "Table Formating",
+            "ប្រភព៖ https://t.me/camtechfreeresource",
+          ],
+          url: "/Videos/Other/Document/invoice/invoice4.docx",
+        },
+        {
+          id: 15,
+          title: "គំរូ វិក័យបត្រ Invoice ទី៥",
+          description: "Soft Microsoft Word Template  Paper Size A4",
+          type: "document", 
+          subTopics: [
+            "សន្លឹកកិច្ចការ A4",
+            "​ប្រើប្រាស់ Table",
+            "Table Formating",
+            "ប្រភព៖ https://t.me/camtechfreeresource",
+          ],
+          url: "/Videos/Other/Document/invoice/invoice5.docx",
+        },
+         {
+          id: 16,
+          title: "គំរូ CV ជាភាសាខ្មែរ គំរូទី១",
+          description: "Soft Microsoft Word Template  Paper Size A4",
+          type: "document", 
+          subTopics: [
+            "សន្លឹកកិច្ចការ A4",
+            "​ប្រើប្រាស់ Table",
+            "Table Formating",
+            "ប្រភព៖ https://t.me/camtechfreeresource",
+          ],
+          url: "/Videos/Other/Document/cv/khmer/KhmerCV1.doc",
+        },
+        {
+          id: 17,
+          title: "គំរូ CV ជាភាសាខ្មែរ គំរូទី២",
+          description: "Soft Microsoft Word Template  Paper Size A4",
+          type: "document", 
+          subTopics: [
+            "សន្លឹកកិច្ចការ A4",
+            "​ប្រើប្រាស់ Table",
+            "Table Formating",
+            "ប្រភព៖ https://t.me/camtechfreeresource",
+          ],
+          url: "/Videos/Other/Document/cv/khmer/KhmerCV2.docx",
+        },
+        {
+          id: 18,
+          title: "គំរូ CV ជាភាសាខ្មែរ គំរូទី៣",
+          description: "Soft Microsoft Word Template  Paper Size A4",
+          type: "document", 
+          subTopics: [
+            "សន្លឹកកិច្ចការ A4",
+            "​ប្រើប្រាស់ Table",
+            "Table Formating",
+            "ប្រភព៖ https://t.me/camtechfreeresource",
+          ],
+          url: "/Videos/Other/Document/cv/khmer/KhmerCV3.docx",
         },
       ],
     },
@@ -192,11 +337,19 @@ const subjects = [
       lessons: [
         {
           id: 1,
-          title: "ថ្នាក់ទី១០ និងទី១១",
-          description: "បំពេញឈ្មោះ និងពាក្យសម្ងាត់ឱ្យបានត្រឹមត្រូវ",
+          title: "QCM Examination System",
+          description: "ប្រព័ន្ធប្រឡង QCM សម្រាប់ថ្នាក់ទី១០ និងទី១១",
           type: "exam", 
-          subTopics: ["​ប្រព័ន្ធប្រឡងប្រចាំខែសម្រាប់ថ្នាក់ទី១០ និងទី១១"],
+          subTopics: ["​ប្រព័ន្ធប្រឡងប្រចាំខែសម្រាប់ថ្នាក់ទី១០ និងទី១១","ត្រូវមាន ឈ្មោះ និងលេខសម្ងាត់","ចូលប្រឡងតាមម៉ោងកំណត់"],
           url: "https://qcm.salacode.site/student/dashboard",
+        },
+        {
+          id: 2,
+          title: "ប្រព័ន្ធចុះឈ្មោះសិស្ស Google Sheets",
+          description: "ផ្ទុ្កកទិន្នន័យសិស្សថ្នាក់ទី១០ ឆ្នាំ២០២៦-២០២៧",
+          type: "exam", 
+          subTopics: ["​ប័ណ្ណព័ត៌មានសិស្សថ្នាក់ទី១០ ឆ្នាំ២०២៦-២००२៧","Android App:https://bit.ly/4vUDk6F","រាល់ការកែទិនន្នន័យវានិងបញ្ជូនទៅ bot Telegram ដើម្បីត្រួតពិនិត្យ"],
+          url: "https://script.google.com/macros/s/AKfycbwTIWbiUeLZmiHe7Wtb4taCtlFKotb-2EKWZW38W8biyRU7ztcQX1bStnDWSoTCFtsr/exec",
         },
       ],
     },
@@ -229,10 +382,14 @@ const colorMap = {
   },
 };
 
+const ITEMS_PER_PAGE = 6;
+
 export default function IctPage() {
   const [viewPdf, setViewPdf] = useState(null);
   const [viewTitle, setViewTitle] = useState("");
   const [activeSubject, setActiveSubject] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPages, setCurrentPages] = useState({}); // Per-subject pagination
 
   const openPdf = (file, title) => {
     setViewPdf(encodeURI(file));
@@ -242,6 +399,42 @@ export default function IctPage() {
   const closePdf = () => {
     setViewPdf(null);
     setViewTitle("");
+  };
+
+  // Filter and search logic
+  const filteredSubjects = useMemo(() => {
+    return subjects
+      .filter((s) => activeSubject === null || s.id === activeSubject)
+      .map((subject) => ({
+        ...subject,
+        lessons: subject.lessons.filter((lesson) => {
+          const searchLower = searchQuery.toLowerCase();
+          return (
+            lesson.title.toLowerCase().includes(searchLower) ||
+            lesson.description.toLowerCase().includes(searchLower)
+          );
+        }),
+      }))
+      .filter((subject) => subject.lessons.length > 0);
+  }, [activeSubject, searchQuery]);
+
+  // Reset pagination when search or filter changes
+  const handleSearchChange = (value) => {
+    setSearchQuery(value);
+    setCurrentPages({});
+  };
+
+  const handleSubjectChange = (subjectId) => {
+    setActiveSubject(subjectId);
+    setCurrentPages({});
+  };
+
+  // Handle page change for specific subject
+  const handlePageChange = (subjectId, page) => {
+    setCurrentPages((prev) => ({
+      ...prev,
+      [subjectId]: page,
+    }));
   };
 
   return (
@@ -258,10 +451,24 @@ export default function IctPage() {
           </p>
         </div>
 
+        {/* SEARCH BAR */}
+        <div className="mb-8">
+          <div className="relative">
+            <AiOutlineSearch className="absolute text-xl text-gray-400 transform -translate-y-1/2 left-4 top-1/2" />
+            <input
+              type="text"
+              placeholder="ស្វាគមន៍មកខ្ញុំ..."
+              value={searchQuery}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              className="w-full py-3 pl-12 pr-4 text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-2xl dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+        </div>
+
         {/* FILTER */}
         <div className="flex flex-wrap gap-3 mb-10">
           <button
-            onClick={() => setActiveSubject(null)}
+            onClick={() => handleSubjectChange(null)}
             className={`px-5 py-2 rounded-full text-sm transition ${
               activeSubject === null
                 ? "bg-black text-white dark:bg-white dark:text-black"
@@ -274,7 +481,7 @@ export default function IctPage() {
           {subjects.map((s) => (
             <button
               key={s.id}
-              onClick={() => setActiveSubject(s.id)}
+              onClick={() => handleSubjectChange(s.id)}
               className={`px-5 py-2 rounded-full text-sm flex items-center gap-2 transition ${
                 activeSubject === s.id
                   ? "bg-black text-white dark:bg-white dark:text-black"
@@ -287,127 +494,156 @@ export default function IctPage() {
         </div>
 
         {/* CONTENT */}
-        {subjects
-          .filter((s) => activeSubject === null || s.id === activeSubject)
-          .map((subject) => {
-            const c = colorMap[subject.color];
+        {filteredSubjects.length > 0 ? (
+          <>
+            {filteredSubjects.map((subject) => {
+              const c = colorMap[subject.color];
+              const currentPage = currentPages[subject.id] || 1;
+              const totalPages = Math.ceil(subject.lessons.length / ITEMS_PER_PAGE);
+              const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+              const endIndex = startIndex + ITEMS_PER_PAGE;
+              const paginatedLessons = subject.lessons.slice(startIndex, endIndex);
 
-            return (
-              <div key={subject.id} className="mb-14">
-                <h2 className="mb-6 text-xl font-bold text-gray-900 dark:text-white">
-                  {subject.title}
-                </h2>
+              return (
+                <div key={subject.id} className="mb-14">
+                  <h2 className="mb-6 text-xl font-bold text-gray-900 dark:text-white">
+                    {subject.title}
+                  </h2>
 
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                  {subject.lessons.map((lesson) => (
-                    <div
-                      key={`${subject.id}-${lesson.id}`}
-                      className={`group bg-white dark:bg-gray-800 rounded-3xl border ${c.border} shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col`}
-                    >
-                      {/* TOP */}
-                      <div className={`px-6 py-5 flex justify-between ${c.iconBg}`}>
-                        <AiOutlineFilePdf className="text-4xl transition group-hover:scale-110" />
-                        <span className={`text-xs px-3 py-1 rounded-full ${c.badge}`}>
-                          FREE
-                        </span>
-                      </div>
-
-                      {/* BODY */}
-                      <div className="flex flex-col flex-1 p-6">
-                        <h3 className="mb-2 text-lg font-semibold text-gray-900 transition dark:text-white group-hover:text-blue-600">
-                          {lesson.title}
-                        </h3>
-
-                        <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
-                          {lesson.description}
-                        </p>
-
-                        {/* SUB */}
-                        <div className="flex-1 mb-6">
-                          <p className="flex items-center gap-2 mb-2 text-xs text-gray-500 dark:text-gray-400">
-                            <AiOutlineBook /> ខ្លឹមសារ
-                          </p>
-
-                          <ul className="space-y-2">
-                            {lesson.subTopics.map((t, i) => (
-                              <li
-                                key={i}
-                                className="flex gap-2 text-sm text-gray-700 dark:text-gray-300"
-                              >
-                                <span className={`w-2 h-2 mt-2 rounded-full ${c.dot}`} />
-                                {t}
-                              </li>
-                            ))}
-                          </ul>
+                  <div className="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2 lg:grid-cols-3">
+                    {paginatedLessons.map((lesson) => (
+                      <div
+                        key={`${subject.id}-${lesson.id}`}
+                        className={`group bg-white dark:bg-gray-800 rounded-3xl border ${c.border} shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col`}
+                      >
+                        {/* TOP */}
+                        <div className={`px-6 py-5 flex justify-between ${c.iconBg}`}>
+                          <AiOutlineFilePdf className="text-4xl transition group-hover:scale-110" />
+                          <span className={`text-xs px-3 py-1 rounded-full ${c.badge}`}>
+                            FREE
+                          </span>
                         </div>
 
-                        {/* BUTTON */}
-                        {/* <div className="flex gap-3 mt-auto">
-                          <button
-                            onClick={() => {
-                              if (lesson.pdf) openPdf(lesson.pdf, lesson.title);
-                              else if (lesson.url) window.open(lesson.url, "_blank");
-                            }}
-                            className="flex items-center justify-center flex-1 gap-2 py-2 text-white transition bg-blue-600 hover:bg-blue-700 rounded-xl active:scale-95"
-                          >
-                            <AiOutlineEye /> មើល
-                          </button>
+                        {/* BODY */}
+                        <div className="flex flex-col flex-1 p-6">
+                          <h3 className="mb-2 text-lg font-semibold text-gray-900 transition dark:text-white group-hover:text-blue-600">
+                            {lesson.title}
+                          </h3>
 
-                          <a
-                            href={lesson.pdf || lesson.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="flex items-center justify-center flex-1 gap-2 py-2 text-gray-800 transition bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white rounded-xl active:scale-95"
-                          >
-                            <AiOutlineDownload /> Download
-                          </a>
-                        </div> */}
-                        {/* BUTTON */}
-                        <div className="mt-auto">
-                          {lesson.type === "document" ? (
-                            <a
-                              href={lesson.url}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="flex items-center justify-center w-full gap-2 py-3 text-white transition bg-yellow-500 hover:bg-yellow-600 rounded-xl active:scale-95"
-                            >
-                              <AiOutlineDownload /> ទាញយកឯកសារ
-                            </a>
-                          ) : lesson.type === "exam" ? (
-                            <button
-                              onClick={() => window.open(lesson.url, "_blank")}
-                              className="flex items-center justify-center w-full gap-2 py-3 text-white transition bg-red-600 hover:bg-red-700 rounded-xl active:scale-95"
-                            >
-                              <AiOutlineEye /> ចូលប្រឡង
-                            </button>
-                          ) : (
-                            <div className="flex gap-3">
-                              <button
-                                onClick={() => openPdf(lesson.pdf, lesson.title)}
-                                className="flex items-center justify-center flex-1 gap-2 py-2 text-white transition bg-blue-600 hover:bg-blue-700 rounded-xl active:scale-95"
-                              >
-                                <AiOutlineEye /> មើល
-                              </button>
+                          <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+                            {lesson.description}
+                          </p>
 
+                          {/* SUB */}
+                          <div className="flex-1 mb-6">
+                            <p className="flex items-center gap-2 mb-2 text-xs text-gray-500 dark:text-gray-400">
+                              <AiOutlineBook /> ខ្លឹមសារ
+                            </p>
+
+                            <ul className="space-y-2">
+                              {lesson.subTopics.map((t, i) => (
+                                <li
+                                  key={i}
+                                  className="flex gap-2 text-sm text-gray-700 dark:text-gray-300"
+                                >
+                                  <span className={`w-2 h-2 mt-2 rounded-full ${c.dot}`} />
+                                  {t}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          
+                          {/* BUTTON */}
+                          <div className="mt-auto">
+                            {lesson.type === "document" ? (
                               <a
-                                href={lesson.pdf}
+                                href={lesson.url}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="flex items-center justify-center flex-1 gap-2 py-2 text-gray-800 transition bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white rounded-xl active:scale-95"
+                                className="flex items-center justify-center w-full gap-2 py-3 text-white transition bg-yellow-500 hover:bg-yellow-600 rounded-xl active:scale-95"
                               >
-                                <AiOutlineDownload /> Download
+                                <AiOutlineDownload /> ទាញយកឯកសារ
                               </a>
-                            </div>
-                          )}
-                        </div>                    
+                            ) : lesson.type === "exam" ? (
+                              <button
+                                onClick={() => window.open(lesson.url, "_blank")}
+                                className="flex items-center justify-center w-full gap-2 py-3 text-white transition bg-red-600 hover:bg-red-700 rounded-xl active:scale-95"
+                              >
+                                <AiOutlineEye /> ចូលប្រឡង
+                              </button>
+                            ) : (
+                              <div className="flex gap-3">
+                                <button
+                                  onClick={() => openPdf(lesson.pdf, lesson.title)}
+                                  className="flex items-center justify-center flex-1 gap-2 py-2 text-white transition bg-blue-600 hover:bg-blue-700 rounded-xl active:scale-95"
+                                >
+                                  <AiOutlineEye /> មើល
+                                </button>
 
+                                <a
+                                  href={lesson.pdf}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="flex items-center justify-center flex-1 gap-2 py-2 text-gray-800 transition bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white rounded-xl active:scale-95"
+                                >
+                                  <AiOutlineDownload /> Download
+                                </a>
+                              </div>
+                            )}
+                          </div>                    
+
+                        </div>
                       </div>
+                    ))}
+                  </div>
+
+                  {/* PAGINATION PER SUBJECT */}
+                  {totalPages > 1 && (
+                    <div className="flex items-center justify-center gap-4 mb-12">
+                      <button
+                        onClick={() => handlePageChange(subject.id, Math.max(1, currentPage - 1))}
+                        disabled={currentPage === 1}
+                        className="flex items-center gap-2 px-4 py-2 text-gray-900 transition bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:text-white dark:border-gray-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        <AiOutlineLeft /> មុន
+                      </button>
+
+                      <div className="flex gap-2">
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                          <button
+                            key={page}
+                            onClick={() => handlePageChange(subject.id, page)}
+                            className={`px-3 py-2 rounded-lg transition ${
+                              currentPage === page
+                                ? "bg-blue-600 text-white"
+                                : "bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            }`}
+                          >
+                            {page}
+                          </button>
+                        ))}
+                      </div>
+
+                      <button
+                        onClick={() => handlePageChange(subject.id, Math.min(totalPages, currentPage + 1))}
+                        disabled={currentPage === totalPages}
+                        className="flex items-center gap-2 px-4 py-2 text-gray-900 transition bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:text-white dark:border-gray-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        បន្ទាប់ <AiOutlineRight />
+                      </button>
                     </div>
-                  ))}
+                  )}
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </>
+        ) : (
+          <div className="py-16 text-center">
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              មិនមានលទ្ធផលដែលត្រូវគ្នា
+            </p>
+          </div>
+        )}
       </div>
 
       {/* MODAL */}
