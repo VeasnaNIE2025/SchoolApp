@@ -99,7 +99,7 @@ const subjects = [
       id: 6,
       title: "មេរៀនទី ៥  ការណែនាំអំពី Internet",
       description: "ការណែនាំអំពី Internet ",
-      subTopics: ["១-តើអ្វីទៅជា Internet?", " 2-សេវាកម្ម Internet", "៣-តម្រូវការក្នុងការប្រើប្រាស់ Internet", "៤-កម្មវិធីរុករក Internet Browser","៥-របៀបបើក និងចូលប្រើប្រាស់ Internet Browser..."],
+      subTopics: ["១-តើអ្វីទៅជា Internet?", " 2-សេវាកម្ម Internet", "៣-តម្រូវការក្នុងការប្រើប្រាស់ Internet", "៤-កម្មវិធីរុករក Internet Browser","៥-របៀបបើក និងចូលប្រើប្រាស់ Internet Browser","ការណែនាំ interface របស់ Internet Browser"],
       pdf: "/Videos/Word/22-Internet/22-Internet.pdf",
      },
     ],
