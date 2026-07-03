@@ -78,7 +78,7 @@ const subjects = [
         id: 3,
         title: "មេរៀនទី ៤  ការណែនាំអំពីកម្មវិធី Microsoft Word",
         description: "សិក្សាអំពី Shape និងការកែសម្រូលការប្រើប្រាស់ ",
-        subTopics: ["១៉.សិក្សាអំពី​ Shape", "១៉.១ ការ Edit Shape", "១៉.២ Shape Style", "១៉.៣ Align Text in Shape","១៉.៤ Text Direction in Shape"," ១៉.៥ Shape Create Link"],
+        subTopics: ["1៩-សិក្សាអំពី​ Shape", "១៩.១-ការ Edit Shape", "១៩.២-Shape Style", "១៩.៣-Align Text in Shape","១៩.៤-Text Direction in Shape"," ១៩.៥-Shape Create Link"],
         pdf: "/Videos/Word/19-Shape/១៉.សិក្សាអំពី_ Shape.pdf",
       },
       {
@@ -97,9 +97,9 @@ const subjects = [
      },
      {
       id: 6,
-      title: "មេរៀនទី 5  ការណែនាំអំពីកម្មវិធី Microsoft Word",
-      description: "សិក្សាអំពី ការរចនាទំព័រ និងការតុបតែងទំព័រ ",
-      subTopics: ["២១.សិក្សាអំពី​ការរចនា និងរៀបចំសន្លឹកកិច្ចការ", " ២១.១ សិក្សា Header និង Footer", "២១.២ សិក្សាអំពី Page Number", "២១.៣ សិក្សាអំពី Word Art","  ២១.៤ សិក្សាអំពី Drop Cap"],
+      title: "មេរៀនទី ៥  ការណែនាំអំពី Internet",
+      description: "ការណែនាំអំពី Internet ",
+      subTopics: ["១-តើអ្វីទៅជា Internet?", " 2-សេវាកម្ម Internet", "៣-តម្រូវការក្នុងការប្រើប្រាស់ Internet", "៤-កម្មវិធីរុករក Internet Browser","៥-របៀបបើក និងចូលប្រើប្រាស់ Internet Browser..."],
       pdf: "/Videos/Word/22-Internet/22-Internet.pdf",
      },
     ],
