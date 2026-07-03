@@ -44,7 +44,14 @@ const curriculum = [
     title: "3-telegram-install",
     duration: "3:20",
     done: false,
-    url: "/Videos/Other/3-telegram-install.mp4",  // ✅ មាន 3-
+    url: "/Videos/Other/3-telegram-install.mp4",  
+  },
+   {
+    id: uid(),
+    title: "4-how to add multiple watermark in word",
+    duration: "3:20",
+    done: false,
+    url: "https://youtu.be/sZk7oET12Ng",  
   },
 ],
   },
