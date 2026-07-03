@@ -79,7 +79,7 @@ const subjects = [
         title: "មេរៀនទី ៤  ការណែនាំអំពីកម្មវិធី Microsoft Word",
         description: "សិក្សាអំពី Shape និងការកែសម្រូលការប្រើប្រាស់ ",
         subTopics: ["1៩-សិក្សាអំពី​ Shape", "១៩.១-ការ Edit Shape", "១៩.២-Shape Style", "១៩.៣-Align Text in Shape","១៩.៤-Text Direction in Shape"," ១៩.៥-Shape Create Link"],
-        pdf: "/Videos/Word/19-Shape/១៉.សិក្សាអំពី_ Shape.pdf",
+        pdf: "/Videos/Word/19-Shape/19-Shape.pdf",
       },
       {
         id: 4,
