@@ -97,6 +97,13 @@ const subjects = [
      },
      {
       id: 6,
+      title: "មេរៀនទី ៤  ការណែនាំអំពីកម្មវិធី Microsoft Word",
+      description: "សិក្សាអំពី ការរចនាទំព័រ និងការតុបតែងទំព័រ ",
+      subTopics: ["២១.៥-សិក្សាអំពីការសរសេររូបមន្ដគណិតវិទ្យា(Equation)", "២១.៦-សិក្សាអំពីការប្រើប្រាស់និមិត្តសញ្ញា (Symbol)", "២១.៧-សិក្សាអំពី Watermark", "២១.៨-សិក្សាអំពីការដាក់ស៊ុំជុំវិញអត្ថបទ(PageBorder)"],
+      pdf: "/Videos/Word/21.1-DesingePage1/21.1-DesignPage2.pdf",
+     },
+     {
+      id: 7,
       title: "មេរៀនទី ៥  ការណែនាំអំពី Internet",
       description: "ការណែនាំអំពី Internet ",
       subTopics: ["១-តើអ្វីទៅជា Internet?", " 2-សេវាកម្ម Internet", "៣-តម្រូវការក្នុងការប្រើប្រាស់ Internet", "៤-កម្មវិធីរុករក Internet Browser","៥-របៀបបើក និងចូលប្រើប្រាស់ Internet Browser","ការណែនាំ interface របស់ Internet Browser"],
