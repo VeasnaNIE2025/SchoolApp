@@ -8,7 +8,7 @@ const BOOKS = [
   {
     id: 1,
     title: '2020-02-06 Manual Scratch in Khmer',
-    author: 'មិនបានចុះ',
+    author: 'មិនឈ្មោះអ្នកនិពន្ធ',
     category: 'បច្ចេកវិទ្យា',
     cover: '/PDF/Library/Scratch/2020-02-06 Manual Scratch in Khmer.jpg',
     downloadUrl: '/PDF/Library/Scratch/2020-02-06 Manual Scratch in Khmer.pdf',
@@ -20,6 +20,38 @@ const BOOKS = [
     category: 'បច្ចេកវិទ្យា',
     cover: '/PDF/Library/MinibotCammBlock/mBlock book.jpg',
     downloadUrl: '/PDF/Library/MinibotCammBlock/mBlock book.pdf',
+  },
+  {
+    id: 3,
+    title: 'សរសេរកូដបញ្ជា Robot Mini BotCam ជាមួយកម្មវិធី Mind+',
+    author: 'ក្រុមហ៊ុនអង្គរអ៊ី និងស៊ី (EANC)',
+    category: 'បច្ចេកវិទ្យា',
+    cover: '/PDF/Library/MiniBotCamMindPlus/Mini BotCam with Mind Plus.jpg',
+    downloadUrl: '/PDF/Library/MiniBotCamMindPlus/mBlock Mini BotCam with Mind Plus.pdf',
+  },
+  {
+    id: 4,
+    title: 'មេរៀន និងលំហាត់កម្មវិធី Adobe Photoshop',
+    author: 'លោកគ្រូ នន់ សុវណ្ណរាជ',
+    category: 'បច្ចេកវិទ្យា',
+    cover: '/PDF/Library/Photoshop/photoshop.jpg',
+    downloadUrl: '/PDF/Library/Photoshop/photoshop.pdf',
+  },
+  {
+    id: 5,
+    title: 'Programming Arduino IDE',
+    author: 'លោកគ្រូ គាន ប៊ុនធា',
+    category: 'បច្ចេកវិទ្យា',
+    cover: '/PDF/Library/Arduino/arduino.jpg',
+    downloadUrl: '/PDF/Library/Arduino/arduino.pdf',
+  },
+  {
+    id: 6,
+    title: 'មូលដ្ឋានគ្រឹះនៃ Arduino Programming',
+    author: 'លោកគ្រូ ថុល ចាន់ថន',
+    category: 'បច្ចេកវិទ្យា',
+    cover: '/PDF/Library/Arduino/arduino1.jpg',
+    downloadUrl: '/PDF/Library/Arduino/arduino1.pdf',
   },
 ]
 
