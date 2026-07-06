@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import { FiSearch, FiDownload, FiBookOpen } from 'react-icons/fi'
+import "../../index.css";
 
 // ទិន្នន័យសៀវភៅគំរូ — អ្នកអាចជំនួសដោយទិន្នន័យពិតពី Google Sheets / API
 const CATEGORIES = ['ទាំងអស់', 'ប្រលោមលោក', 'វិទ្យាសាស្ត្រ', 'ប្រវត្តិសាស្ត្រ', 'កុមារ', 'បច្ចេកវិទ្យា']
@@ -34,9 +35,6 @@ function Library() {
   return (
     <div className="min-h-screen bg-[#F3ECDB] font-khmer">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@500;700&family=Noto+Sans+Khmer:wght@400;500;600&display=swap');
-        .font-khmer-display { font-family: 'Noto Serif Khmer', serif; }
-        .font-khmer { font-family: 'Noto Sans Khmer', sans-serif; }
         .shelf-lines {
           background-image: repeating-linear-gradient(
             to bottom,
@@ -55,7 +53,7 @@ function Library() {
             <FiBookOpen size={22} />
             <span className="text-sm tracking-wide font-medium">បណ្ណាល័យសាលា</span>
           </div>
-          <h1 className="font-khmer-display text-[#F3ECDB] text-3xl md:text-4xl font-bold mb-8">
+          <h1 className="font-khmer text-[#F3ECDB] text-3xl md:text-4xl font-bold mb-8">
             ស្វែងរកសៀវភៅដែលអ្នកចង់អាន
           </h1>
 
@@ -100,7 +98,7 @@ function Library() {
       <main className="max-w-6xl mx-auto px-6 py-8">
         {filteredBooks.length === 0 ? (
           <div className="text-center py-20">
-            <p className="font-khmer-display text-xl text-[#3E5C4F] mb-1">រកមិនឃើញសៀវភៅទេ</p>
+            <p className="font-khmer font-bold text-xl text-[#3E5C4F] mb-1">រកមិនឃើញសៀវភៅទេ</p>
             <p className="text-[#8A8272] text-sm">សាកល្បងស្វែងរកដោយពាក្យផ្សេង ឬជ្រើសក្រុមផ្សេង</p>
           </div>
         ) : (
@@ -126,7 +124,7 @@ function Library() {
                   </div>
 
                   <div className="p-3.5">
-                    <h3 className="font-khmer-display text-[#2B2620] text-base font-bold leading-snug mb-1 line-clamp-2">
+                    <h3 className="font-khmer text-[#2B2620] text-base font-bold leading-snug mb-1 line-clamp-2">
                       {book.title}
                     </h3>
                     <p className="text-[#8A8272] text-xs mb-3">{book.author}</p>
