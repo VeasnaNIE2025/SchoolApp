@@ -13,6 +13,14 @@ const BOOKS = [
     cover: '/PDF/Library/Scratch/2020-02-06 Manual Scratch in Khmer.jpg',
     downloadUrl: '/PDF/Library/Scratch/2020-02-06 Manual Scratch in Khmer.pdf',
   },
+  {
+    id: 2,
+    title: 'សរសេរកូដបញ្ជា Robot Mini BotCam ជាមួយកម្មវិធី mBlock',
+    author: 'ក្រុមហ៊ុនអង្គរអ៊ី និងស៊ី (EANC)',
+    category: 'បច្ចេកវិទ្យា',
+    cover: '/PDF/Library/MinibotCammBlock/mBlock book.jpg',
+    downloadUrl: '/PDF/Library/MinibotCammBlock/mBlock book.pdf',
+  },
 ]
 
 const SPINE_COLORS = ['bg-[#8C3B2E]', 'bg-[#1F3A2E]', 'bg-[#C9A227]', 'bg-[#3E5C4F]', 'bg-[#7A5230]']
