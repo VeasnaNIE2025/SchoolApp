@@ -1,12 +1,18 @@
 import React, { useMemo, useState } from 'react'
 import { FiSearch, FiDownload, FiBookOpen } from 'react-icons/fi'
-import "../../index.css";
 
 // ទិន្នន័យសៀវភៅគំរូ — អ្នកអាចជំនួសដោយទិន្នន័យពិតពី Google Sheets / API
 const CATEGORIES = ['ទាំងអស់', 'ប្រលោមលោក', 'វិទ្យាសាស្ត្រ', 'ប្រវត្តិសាស្ត្រ', 'កុមារ', 'បច្ចេកវិទ្យា']
 
 const BOOKS = [
-  { id: 1, title: '2020-02-06 Manual Scratch in Khmer', author: 'មិនបានចុះ', category: 'បច្ចេកវិទ្យា', cover: 'PDF/Library/2020-02-06 Manual Scratch in Khmer.jpg', downloadUrl: 'PDF/Library/2020-02-06 Manual Scratch in Khmer.pdf' },
+  {
+    id: 1,
+    title: '2020-02-06 Manual Scratch in Khmer',
+    author: 'មិនបានចុះ',
+    category: 'បច្ចេកវិទ្យា',
+    cover: '/PDF/Library/2020-02-06 Manual Scratch in Khmer.jpg',
+    downloadUrl: '/PDF/Library/2020-02-06 Manual Scratch in Khmer.pdf',
+  },
 ]
 
 const SPINE_COLORS = ['bg-[#8C3B2E]', 'bg-[#1F3A2E]', 'bg-[#C9A227]', 'bg-[#3E5C4F]', 'bg-[#7A5230]']
