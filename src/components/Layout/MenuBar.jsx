@@ -19,6 +19,7 @@ const navItems = [
   { to: "/", label: "ទំព័រដើម", icon: AiOutlineHome },
   { to: "/news", label: "ព័ត៌មាន", icon: AiOutlineRead },
   { to: "/ict", label: "ព័ត៌មានវិទ្យា", icon: AiOutlineLaptop },
+  { to: "/library", label: "បណ្ណាល័យ", icon: AiOutlineLaptop },
   { to: "/videos", label: "វីដេអូ", icon: BsCameraVideo },
   { to: "/aboutme", label: "អំពីខ្ញុំ", icon: AiOutlineInfoCircle },
   { to: "/contact", label: "ទំនាក់ទំនង", icon: AiOutlinePhone },
