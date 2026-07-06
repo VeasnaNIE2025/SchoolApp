@@ -6,14 +6,7 @@ import "../../index.css";
 const CATEGORIES = ['ទាំងអស់', 'ប្រលោមលោក', 'វិទ្យាសាស្ត្រ', 'ប្រវត្តិសាស្ត្រ', 'កុមារ', 'បច្ចេកវិទ្យា']
 
 const BOOKS = [
-  { id: 1, title: 'ផ្កាថ្ម', author: 'នូ ហាច', category: 'ប្រលោមលោក', cover: 'https://picsum.photos/seed/lib1/400/560', downloadUrl: '#' },
-  { id: 2, title: 'ចម្លងទឹកភ្នែក', author: 'រិម កិន', category: 'ប្រលោមលោក', cover: 'https://picsum.photos/seed/lib2/400/560', downloadUrl: '#' },
-  { id: 3, title: 'រូបវិទ្យាទំនើប', author: 'សុខ វិសាល', category: 'វិទ្យាសាស្ត្រ', cover: 'https://picsum.photos/seed/lib3/400/560', downloadUrl: '#' },
-  { id: 4, title: 'ប្រវត្តិកម្ពុជា', author: 'ជា សារិន', category: 'ប្រវត្តិសាស្ត្រ', cover: 'https://picsum.photos/seed/lib4/400/560', downloadUrl: '#' },
-  { id: 5, title: 'រឿងនិទានកុមារ', author: 'ម៉ម សុភា', category: 'កុមារ', cover: 'https://picsum.photos/seed/lib5/400/560', downloadUrl: '#' },
-  { id: 6, title: 'សេចក្តីផ្តើម JavaScript', author: 'ហេង ដារា', category: 'បច្ចេកវិទ្យា', cover: 'https://picsum.photos/seed/lib6/400/560', downloadUrl: '#' },
-  { id: 7, title: 'គីមីវិទ្យាមូលដ្ឋាន', author: 'លី សេង', category: 'វិទ្យាសាស្ត្រ', cover: 'https://picsum.photos/seed/lib7/400/560', downloadUrl: '#' },
-  { id: 8, title: 'អង្គរវត្ត និងអតីតកាល', author: 'ចាន់ ធីតា', category: 'ប្រវត្តិសាស្ត្រ', cover: 'https://picsum.photos/seed/lib8/400/560', downloadUrl: '#' },
+  { id: 1, title: '2020-02-06 Manual Scratch in Khmer', author: 'មិនបានចុះ', category: 'បច្ចេកវិទ្យា', cover: 'PDF/Library/2020-02-06 Manual Scratch in Khmer.jpg', downloadUrl: 'PDF/Library/2020-02-06 Manual Scratch in Khmer.pdf' },
 ]
 
 const SPINE_COLORS = ['bg-[#8C3B2E]', 'bg-[#1F3A2E]', 'bg-[#C9A227]', 'bg-[#3E5C4F]', 'bg-[#7A5230]']
