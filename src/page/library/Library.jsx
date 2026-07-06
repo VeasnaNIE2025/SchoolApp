@@ -10,8 +10,8 @@ const BOOKS = [
     title: '2020-02-06 Manual Scratch in Khmer',
     author: 'មិនបានចុះ',
     category: 'បច្ចេកវិទ្យា',
-    cover: '/PDF/Library/2020-02-06 Manual Scratch in Khmer.jpg',
-    downloadUrl: '/PDF/Library/2020-02-06 Manual Scratch in Khmer.pdf',
+    cover: '/PDF/Library/Scratch/2020-02-06 Manual Scratch in Khmer.jpg',
+    downloadUrl: '/PDF/Library/Scratch/2020-02-06 Manual Scratch in Khmer.pdf',
   },
 ]
 
