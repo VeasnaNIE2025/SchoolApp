@@ -11,6 +11,7 @@ import IctPage from "./page/ICT/IctPage";
 import VideosPage from "./page/videos/VideosPage";
 import ContactPage from "./page/contact/ContactPage";
 import AboutMePage from "./page/aboutme/AboutMePage";
+import Library from "./page/library/Library";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/news/:id" element={<NewsDetail />} />
           <Route path="/ict" element={<IctPage />} />
+          <Route path="/library" element={<Library />} />
           <Route path="/videos" element={<VideosPage />} />
           <Route path="/aboutme" element={<AboutMePage />} />
           
