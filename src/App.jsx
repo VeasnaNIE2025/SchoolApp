@@ -13,6 +13,7 @@ import ContactPage from "./page/contact/ContactPage";
 import AboutMePage from "./page/aboutme/AboutMePage";
 import Library from "./page/library/Library";
 import StudentHomeWork from "./page/gethomework/StudentHomeWork";
+import ListHomeWork from "./page/gethomework/ListHomeWork";
 
 function App() {
   return (
@@ -33,7 +34,8 @@ function App() {
           <Route path="/videos" element={<VideosPage />} />
           <Route path="/aboutme" element={<AboutMePage />} />
           <Route path="/gethomework/StudentHomeWork" element={<StudentHomeWork />} />
-          
+          <Route path="/gethomework/ListHomeWork" element={<ListHomeWork />} />
+
           {/* ដាក់ * នៅខាងក្រោមបំផុត */}
           <Route path="*" element={<h1>404 - ទំព័រមិនមានទេ</h1>} />
         </Route>
