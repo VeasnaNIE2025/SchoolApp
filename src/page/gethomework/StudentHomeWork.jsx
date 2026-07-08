@@ -207,7 +207,6 @@ export default function AssignmentForm() {
           --border: #313b57;
           --muted: #9aa3b8;
         }
-        .af-display { font-family: 'Kantumruy Pro', sans-serif; font-weight: 700; }
 
         .af-card {
           position: relative;
@@ -246,6 +245,8 @@ export default function AssignmentForm() {
         .af-field label {
           color: var(--ink);
         }
+        .af-eyebrow { color: var(--muted); }
+        .af-heading { color: var(--ink); }
         .af-input, .af-select {
           font-family: 'Kantumruy Pro', sans-serif;
           background: var(--surface);
@@ -356,10 +357,10 @@ export default function AssignmentForm() {
 
       <div className="w-full max-w-xl">
         <div className="text-center mb-5">
-          <span className="af-display inline-block text-xs tracking-[0.3em] uppercase text-white/50 mb-2">
+          <span className="font-khmer af-eyebrow inline-block text-xs tracking-[0.3em] uppercase mb-2">
             ប្រព័ន្ធសាលារៀន
           </span>
-          <h1 className="af-display text-3xl md:text-4xl font-extrabold text-white">
+          <h1 className="font-khmer af-heading text-3xl md:text-4xl font-extrabold">
             ប្រគល់កិច្ចការ
           </h1>
         </div>
@@ -525,7 +526,7 @@ export default function AssignmentForm() {
                     <CheckIcon />
                   </div>
                 </div>
-                <h3 className="af-display af-modal-title text-xl font-bold mb-1.5">{modal.title}</h3>
+                <h3 className="font-khmer af-modal-title text-xl font-bold mb-1.5">{modal.title}</h3>
                 <p className="af-modal-text text-sm mb-5">{modal.text}</p>
 
                 <button
@@ -554,7 +555,7 @@ export default function AssignmentForm() {
                     <AlertIcon />
                   </div>
                 </div>
-                <h3 className="af-display af-modal-title text-xl font-bold mb-1.5">{modal.title}</h3>
+                <h3 className="font-khmer af-modal-title text-xl font-bold mb-1.5">{modal.title}</h3>
                 <p className="af-modal-text text-sm mb-5">{modal.text}</p>
                 <button
                   onClick={closeModal}

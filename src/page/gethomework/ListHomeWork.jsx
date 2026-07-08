@@ -88,7 +88,6 @@ export default function ListHomeWork() {
           --row-alt: rgba(43, 53, 80, 0.35);
           --row-hover: rgba(224,172,92,0.12);
         }
-        .lh-display { font-family: 'Kantumruy Pro', sans-serif; font-weight: 700; }
 
         .lh-card {
           position: relative;
@@ -119,7 +118,8 @@ export default function ListHomeWork() {
           z-index: 2;
         }
 
-        .lh-label { color: var(--ink); }
+        .lh-eyebrow { color: var(--muted); }
+        .lh-heading { color: var(--ink); }
 
         .lh-select {
           appearance: none;
@@ -194,10 +194,10 @@ export default function ListHomeWork() {
 
       <div className="w-full max-w-3xl">
         <div className="text-center mb-5">
-          <span className="lh-display inline-block text-xs tracking-[0.3em] uppercase text-white/50 mb-2">
+          <span className="font-khmer lh-eyebrow inline-block text-xs tracking-[0.3em] uppercase mb-2">
             ប្រព័ន្ធសាលារៀន
           </span>
-          <h1 className="lh-display text-3xl md:text-4xl font-extrabold text-white">
+          <h1 className="font-khmer lh-heading text-3xl md:text-4xl font-extrabold">
             បញ្ជីអ្នកបានប្រគល់កិច្ចការ
           </h1>
         </div>
