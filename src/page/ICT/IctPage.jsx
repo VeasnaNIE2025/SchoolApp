@@ -1054,7 +1054,7 @@ const subjects = [
           description: "ផ្ទុ្កកទិន្នន័យសិស្សថ្នាក់ទី១០ ឆ្នាំ២០២៦-២០២៧",
           type: "exam",
           buttonLabel: "ចូលទៅចុះឈ្មោះ",
-          subTopics: ["​ប័ណ្ណព័ត៌មានសិស្សថ្នាក់ទី១០ ឆ្នាំ២០២៦-២០២៧","Android App:https://bit.ly/4vUDk6F","រាល់ការកែទិនន្នន័យវានិងបញ្ជូនទៅ bot Telegram ដើម្បីត្រួតពិនិត្យ"],
+          subTopics: ["​ប័ណ្ណព័ត៌មានសិស្សថ្នាក់ទី១០ ឆ្នាំ២០២៦-២០២៧","Android App:https://drive.google.com/file/d/197OeaUIqTiuJ7LvVzMCNJvIEjb0LoJBm/view","រាល់ការកែទិនន្នន័យវានិងបញ្ជូនទៅ bot Telegram ដើម្បីត្រួតពិនិត្យ"],
           url: "https://script.google.com/macros/s/AKfycbwTIWbiUeLZmiHe7Wtb4taCtlFKotb-2EKWZW38W8biyRU7ztcQX1bStnDWSoTCFtsr/exec",
         },
         {
