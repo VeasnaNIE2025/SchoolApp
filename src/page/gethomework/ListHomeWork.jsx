@@ -14,12 +14,7 @@ export default function ListHomeWork() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // បើមានតម្លៃថ្នាក់ផ្ទេរមកពីទំព័រ Form ឱ្យយកធ្វើជា filterClass ដំបូង បើគ្មានទេ ដាក់ទទេ (គ្រប់ថ្នាក់)
   const [filterClass, setFilterClass] = useState(location.state?.selectedClass || "");
-
-  // ============================
-  // ទាញទិន្នន័យអ្នកដែលបាន Submit
-  // ============================
 
   const loadSubmissions = async () => {
     setLoading(true);
@@ -56,23 +51,44 @@ export default function ListHomeWork() {
   return (
     <div className="lh-root min-h-screen flex justify-center px-4 py-10">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Battambang:wght@700;900&family=Kantumruy+Pro:wght@400;500;600;700&display=swap');
-
         .lh-root {
           --ink: #1b2a4a;
           --paper: #fbf9f4;
-          --chalkboard: #1e3d36;
-          --chalkboard-2: #163029;
+          --chalkboard: #eef1f5;
+          --chalkboard-2: #e2e6ee;
           --rule: #b9cbe6;
           --margin: #c1443d;
           --gold: #b8863b;
           --gold-dark: #93692b;
+          --surface: rgba(255,255,255,0.7);
+          --surface-strong: #ffffff;
+          --border: #d8ccb0;
+          --muted: #6b7280;
+          --row-alt: rgba(185, 203, 230, 0.18);
+          --row-hover: rgba(184,134,59,0.10);
           font-family: 'Kantumruy Pro', sans-serif;
           background:
-            radial-gradient(circle at 15% 10%, rgba(255,255,255,0.05), transparent 40%),
+            radial-gradient(circle at 15% 10%, rgba(255,255,255,0.4), transparent 40%),
             linear-gradient(180deg, var(--chalkboard) 0%, var(--chalkboard-2) 100%);
+          transition: background .25s ease;
         }
-        .lh-display { font-family: 'Battambang', 'Kantumruy Pro', sans-serif; }
+        .dark .lh-root {
+          --ink: #eef1f8;
+          --paper: #1a2133;
+          --chalkboard: #0b0f1a;
+          --chalkboard-2: #05070c;
+          --rule: #2b3550;
+          --margin: #ef6f68;
+          --gold: #e0ac5c;
+          --gold-dark: #f0c27c;
+          --surface: rgba(255,255,255,0.06);
+          --surface-strong: #202840;
+          --border: #313b57;
+          --muted: #9aa3b8;
+          --row-alt: rgba(43, 53, 80, 0.35);
+          --row-hover: rgba(224,172,92,0.12);
+        }
+        .lh-display { font-family: 'Kantumruy Pro', sans-serif; font-weight: 700; }
 
         .lh-card {
           position: relative;
@@ -80,6 +96,7 @@ export default function ListHomeWork() {
           box-shadow: 0 30px 60px -20px rgba(0,0,0,0.45), 0 0 0 1px rgba(0,0,0,0.03);
           border-radius: 14px;
           overflow: hidden;
+          transition: background .25s ease;
         }
         .lh-margin {
           position: absolute;
@@ -102,12 +119,14 @@ export default function ListHomeWork() {
           z-index: 2;
         }
 
+        .lh-label { color: var(--ink); }
+
         .lh-select {
           appearance: none;
           -webkit-appearance: none;
           font-family: 'Kantumruy Pro', sans-serif;
-          background: rgba(255,255,255,0.7);
-          border: 1.5px solid #d8ccb0;
+          background: var(--surface);
+          border: 1.5px solid var(--border);
           color: var(--ink);
           transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
         }
@@ -115,24 +134,37 @@ export default function ListHomeWork() {
           outline: none;
           border-color: var(--gold);
           box-shadow: 0 0 0 3px rgba(184,134,59,0.18);
-          background: #ffffff;
+          background: var(--surface-strong);
+        }
+        .lh-select option {
+          background: var(--surface-strong);
+          color: var(--ink);
         }
 
+        .lh-refresh { color: var(--gold-dark); }
+
+        .lh-error {
+          background: rgba(193,68,61,0.12);
+          color: var(--margin);
+        }
+
+        .lh-table-wrap { border: 1px solid var(--border); }
         .lh-table thead th {
           font-family: 'Kantumruy Pro', sans-serif;
           color: var(--paper);
           background: var(--ink);
           font-weight: 600;
         }
+        .lh-table tbody td { color: var(--ink); }
         .lh-table tbody tr:nth-child(even) {
-          background: rgba(185, 203, 230, 0.18);
+          background: var(--row-alt);
         }
         .lh-table tbody tr {
-          border-bottom: 1px solid #e7ddc4;
+          border-bottom: 1px solid var(--border);
           transition: background .12s ease;
         }
         .lh-table tbody tr:hover {
-          background: rgba(184,134,59,0.10);
+          background: var(--row-hover);
         }
 
         .lh-badge {
@@ -140,6 +172,9 @@ export default function ListHomeWork() {
           color: var(--gold-dark);
           font-weight: 600;
         }
+
+        .lh-skeleton { background: var(--row-alt); }
+        .lh-empty-text { color: var(--muted); }
 
         .lh-spin {
           animation: lh-spin 0.8s linear infinite;
@@ -177,9 +212,7 @@ export default function ListHomeWork() {
             {/* Header row: filter + count + refresh */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
               <div className="flex items-center gap-2">
-                <label className="text-sm font-semibold shrink-0" style={{ color: "var(--ink)" }}>
-                  ត្រងតាមថ្នាក់
-                </label>
+                <label className="lh-label text-sm font-semibold shrink-0">ត្រងតាមថ្នាក់</label>
                 <div className="relative">
                   <select
                     className="lh-select rounded-lg pl-3 pr-8 py-2 text-[15px]"
@@ -204,8 +237,7 @@ export default function ListHomeWork() {
                 <button
                   onClick={loadSubmissions}
                   disabled={loading}
-                  className="text-sm flex items-center gap-1.5 font-medium disabled:opacity-50"
-                  style={{ color: "var(--gold-dark)" }}
+                  className="lh-refresh text-sm flex items-center gap-1.5 font-medium disabled:opacity-50"
                 >
                   <RefreshIcon className={loading ? "lh-spin" : ""} />
                   ផ្ទុកឡើងវិញ
@@ -214,34 +246,23 @@ export default function ListHomeWork() {
             </div>
 
             {/* Content */}
-            {error && (
-              <div
-                className="text-sm rounded-lg px-4 py-3 mb-4"
-                style={{ background: "#fbeceb", color: "var(--margin)" }}
-              >
-                {error}
-              </div>
-            )}
+            {error && <div className="lh-error text-sm rounded-lg px-4 py-3 mb-4">{error}</div>}
 
             {loading ? (
               <div className="space-y-2">
                 {[...Array(5)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="h-10 rounded-md animate-pulse"
-                    style={{ background: "rgba(185,203,230,0.35)" }}
-                  />
+                  <div key={i} className="lh-skeleton h-10 rounded-md animate-pulse" />
                 ))}
               </div>
             ) : filteredRows.length === 0 ? (
               <div className="lh-fade text-center py-12">
                 <EmptyIcon />
-                <p className="text-sm text-gray-500 mt-3">
+                <p className="lh-empty-text text-sm mt-3">
                   {filterClass ? `មិនទាន់មានសិស្សថ្នាក់ ${filterClass} ប្រគល់កិច្ចការទេ` : "មិនទាន់មានទិន្នន័យប្រគល់កិច្ចការទេ"}
                 </p>
               </div>
             ) : (
-              <div className="lh-fade overflow-x-auto rounded-lg" style={{ border: "1px solid #e7ddc4" }}>
+              <div className="lh-fade lh-table-wrap overflow-x-auto rounded-lg">
                 <table className="lh-table w-full text-sm text-left border-collapse">
                   <thead>
                     <tr>
@@ -253,16 +274,10 @@ export default function ListHomeWork() {
                   <tbody>
                     {filteredRows.map((row, idx) => (
                       <tr key={`${row.no}-${row.name}-${idx}`}>
-                        <td className="px-4 py-2.5" style={{ color: "var(--ink)" }}>
-                          {row.no}
-                        </td>
-                        <td className="px-4 py-2.5 font-medium" style={{ color: "var(--ink)" }}>
-                          {row.name}
-                        </td>
+                        <td className="px-4 py-2.5">{row.no}</td>
+                        <td className="px-4 py-2.5 font-medium">{row.name}</td>
                         <td className="px-4 py-2.5">
-                          <span className="lh-badge text-xs px-2 py-0.5 rounded-md">
-                            {row.className}
-                          </span>
+                          <span className="lh-badge text-xs px-2 py-0.5 rounded-md">{row.className}</span>
                         </td>
                       </tr>
                     ))}
@@ -277,9 +292,6 @@ export default function ListHomeWork() {
   );
 }
 
-// ============================
-// Icons
-// ============================
 function ChevronIcon({ className = "" }) {
   return (
     <svg className={className} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
