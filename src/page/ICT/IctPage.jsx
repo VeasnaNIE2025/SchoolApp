@@ -374,7 +374,7 @@ const subjects = [
           type: "exam",
           buttonLabel: "ចូលទៅប្រគល់",
           subTopics: ["ប្រគល់កិច្ចការប្រឡង"],
-          url: "../../gethomework/StudentHomeWork",
+          url: "./gethomework/StudentHomeWork",
         },
       ],
     },

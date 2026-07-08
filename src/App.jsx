@@ -32,7 +32,7 @@ function App() {
           <Route path="/library" element={<Library />} />
           <Route path="/videos" element={<VideosPage />} />
           <Route path="/aboutme" element={<AboutMePage />} />
-          <Route path="/gethomework" element={<StudentHomeWork />} />
+          <Route path="/gethomework/StudentHomeWork" element={<StudentHomeWork />} />
           
           {/* ដាក់ * នៅខាងក្រោមបំផុត */}
           <Route path="*" element={<h1>404 - ទំព័រមិនមានទេ</h1>} />
