@@ -686,6 +686,7 @@
 //   );
 // }
 
+
 import { useState, useMemo } from "react";
 import {
   AiOutlineFilePdf,
@@ -693,6 +694,7 @@ import {
   AiOutlineDownload,
   AiOutlineBook,
   AiOutlineSearch,
+  AiOutlineLink,
 } from "react-icons/ai";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
@@ -1110,16 +1112,16 @@ function SubTopicItem({ text, dotClass }) {
     return (
       <li className="flex gap-2 text-sm text-gray-700 dark:text-gray-300">
         <span className={`w-2 h-2 mt-2 rounded-full ${dotClass} shrink-0`} />
-        <span>
-          {label && <span>{label}: </span>}
+        <span className="flex flex-wrap items-center gap-1.5">
+          {label && <span>{label}</span>}
           <a
             href={url}
             target="_blank"
             rel="noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="text-blue-600 underline break-all hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+            className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline"
           >
-            {url}
+            <AiOutlineLink /> {label ? "ចុចទីនេះ" : "តំណភ្ជាប់"}
           </a>
         </span>
       </li>
