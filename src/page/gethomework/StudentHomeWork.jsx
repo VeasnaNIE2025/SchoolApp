@@ -326,7 +326,7 @@
 
 // }
 import React, { useState } from "react";
-
+import "../../index.css";
 export default function AssignmentForm() {
   const WEB_APP_URL =
     "https://script.google.com/macros/s/AKfycbxpfLd-waq63udUdloVTOMxWanaqRSgvzSONStm_LjGnS7bkDgNDL60myrT-95AE1r-AA/exec";
