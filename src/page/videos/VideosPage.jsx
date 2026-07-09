@@ -27,7 +27,7 @@ const curriculum = [
  lessons: [
   {
     id: uid(),
-    title: "1-HelpFindKey",
+    title: "របៀបប្រគល់កិច្ចការប្រឡងឆមាសលើកទី២",
     duration: "3:20",
     done: false,
     url: "https://youtu.be/-PiHKWQw6jc",  // ✅ មាន 1-
