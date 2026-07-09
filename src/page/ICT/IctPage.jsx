@@ -799,6 +799,13 @@ const subjects = [
       subTopics: ["១-តើអ្វីទៅជា Internet?", " 2-សេវាកម្ម Internet", "៣-តម្រូវការក្នុងការប្រើប្រាស់ Internet", "៤-កម្មវិធីរុករក Internet Browser","៥-របៀបបើក និងចូលប្រើប្រាស់ Internet Browser","ការណែនាំ interface របស់ Internet Browser"],
       pdf: "/Videos/Word/22-Internet/22-Internet.pdf",
      },
+     {
+      id: 8,
+      title: "មេរៀនទី ៥  ការណែនាំអំពី Internet (ត)",
+      description: "ការណែនាំអំពី Internet ",
+      subTopics: ["7-ស្វែងយល់អំពី Search Engine", " 8-ភាពខុសគ្នារវាង Search Engine និង AI", "9-ការកំណត់ Search Engine នៅលើ Search bar Ms.Edge", "10-ការស្វែងរករូបភាពនៅលើ Search Engine Google","11-ការស្វែងរកឯកសារនៅលើ Google Search Engine "],
+      pdf: "/Videos/Word/22-Internet/22-Internet_1.pdf",
+     },
     ],
   },
     {
