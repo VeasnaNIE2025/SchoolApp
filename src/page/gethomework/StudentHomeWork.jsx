@@ -695,7 +695,7 @@ export default function AssignmentForm() {
     setStudentNo(student ? student.no : "");
   };
 
-  const ALLOWED_EXTS = ["doc", "docx", "xls", "xlsx", "pdf"];
+  const ALLOWED_EXTS = ["doc", "docx", "xls", "xlsx", "xlsb", "pdf"];
   const MAX_SIZE = 10 * 1024 * 1024; // 10MB
 
   const applyFile = (selected) => {
@@ -708,7 +708,7 @@ export default function AssignmentForm() {
         open: true,
         status: "error",
         title: "ប្រភេទឯកសារមិនត្រឹមត្រូវ",
-        text: "សូមជ្រើសរើសឯកសារ Word (.doc, .docx) Excel (.xls, .xlsx) ឬ PDF (.pdf) ប៉ុណ្ណោះ។",
+        text: "សូមជ្រើសរើសឯកសារ Word (.doc, .docx) Excel (.xls, .xlsx, .xlsb) ឬ PDF (.pdf) ប៉ុណ្ណោះ។",
       });
       return;
     }
@@ -1113,7 +1113,7 @@ export default function AssignmentForm() {
                     <span className="af-drop-text text-sm font-medium">
                       អូសឯកសារមកទីនេះ ឬចុចដើម្បីជ្រើសរើស
                     </span>
-                    <span className="af-drop-sub text-xs">គាំទ្រ .doc, .docx, .xls, .xlsx, .pdf (≤ 10MB)</span>
+                    <span className="af-drop-sub text-xs">គាំទ្រ .doc, .docx, .xls, .xlsx, .xlsb, .pdf (≤ 10MB)</span>
                   </>
                 )}
               </label>
@@ -1121,7 +1121,7 @@ export default function AssignmentForm() {
                 id="af-file"
                 ref={fileInputRef}
                 type="file"
-                accept=".doc,.docx,.xls,.xlsx,.pdf"
+                accept=".doc,.docx,.xls,.xlsx,.xlsb,.pdf"
                 className="hidden"
                 onChange={handleFileChange}
               />
