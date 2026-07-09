@@ -30,6 +30,13 @@ const curriculum = [
     title: "1-HelpFindKey",
     duration: "3:20",
     done: false,
+    url: "https://youtu.be/-PiHKWQw6jc",  // ✅ មាន 1-
+  },
+  {
+    id: uid(),
+    title: "1-HelpFindKey",
+    duration: "3:20",
+    done: false,
     url: "/Videos/Other/1-HelpFindKey.mp4",  // ✅ មាន 1-
   },
   {
