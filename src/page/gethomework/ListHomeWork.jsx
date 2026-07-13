@@ -318,6 +318,7 @@
 //   );
 // }
 
+
 import React, { useEffect, useMemo, useRef, useState } from "react";
 // Import useLocation ដើម្បីចាប់យកតម្លៃ State ផ្ទេរមកពីទំព័រ Form
 import { useLocation } from "react-router-dom";
@@ -387,41 +388,111 @@ export default function ListHomeWork() {
         import("html2canvas"),
       ]);
 
-      const canvas = await html2canvas(tableRef.current, {
-        scale: 2, // resolution ខ្ពស់ ដើម្បីឲ្យអក្សរច្បាស់
+      const SCALE = 2; // resolution ខ្ពស់ ដើម្បីឲ្យអក្សរច្បាស់
+
+      const tableEl = tableRef.current.querySelector("table");
+      const theadEl = tableEl.querySelector("thead");
+      const bodyRowEls = Array.from(tableEl.querySelectorAll("tbody tr"));
+
+      // ចាប់រូបភាពទាំងមូលមួយដង (header + body)
+      const fullCanvas = await html2canvas(tableRef.current, {
+        scale: SCALE,
         backgroundColor: "#ffffff",
         useCORS: true,
       });
 
-      const imgData = canvas.toDataURL("image/png");
+      // វាស់ទីតាំង header និងជួរនីមួយៗនៅក្នុង DOM (មិនទាន់ scale) ដើម្បីដឹងថា
+      // តើកន្លែងណាជាចន្លោះជួរ (row boundary) — កុំឲ្យកាត់កណ្តាលជួរ
+      const wrapperTop = tableRef.current.getBoundingClientRect().top;
+      const headerHeightDom = theadEl.getBoundingClientRect().height;
+      const rowBoundariesPx = bodyRowEls.map((tr) => {
+        const rect = tr.getBoundingClientRect();
+        return {
+          top: (rect.top - wrapperTop) * SCALE,
+          bottom: (rect.bottom - wrapperTop) * SCALE,
+        };
+      });
+      const headerHeightPx = Math.round(headerHeightDom * SCALE);
+
+      // កាត់ (crop) ចេញជា header canvas ដាច់ដោយឡែក ដើម្បីអាចដាក់ម្តងទៀតរាល់ទំព័រ
+      const headerCanvas = document.createElement("canvas");
+      headerCanvas.width = fullCanvas.width;
+      headerCanvas.height = headerHeightPx;
+      headerCanvas
+        .getContext("2d")
+        .drawImage(fullCanvas, 0, 0, fullCanvas.width, headerHeightPx, 0, 0, fullCanvas.width, headerHeightPx);
+      const headerDataUrl = headerCanvas.toDataURL("image/png");
 
       // A4 size ជា mm
-      const pdf = new jsPDF({
-        orientation: "portrait",
-        unit: "mm",
-        format: "a4",
-      });
-
-      const pageWidth = pdf.internal.pageSize.getWidth();
-      const pageHeight = pdf.internal.pageSize.getHeight();
+      const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+      const pageWidthMM = pdf.internal.pageSize.getWidth();
+      const pageHeightMM = pdf.internal.pageSize.getHeight();
       const margin = 10;
 
-      const imgWidth = pageWidth - margin * 2;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const contentWidthMM = pageWidthMM - margin * 2;
+      const pxToMm = contentWidthMM / fullCanvas.width;
+      const headerHeightMM = headerHeightPx * pxToMm;
+      const contentHeightMM = pageHeightMM - margin * 2;
+      // ទំហំដែលនៅសល់សម្រាប់ជួរទិន្នន័យ បន្ទាប់ពីដក header ចេញ
+      const bodyBudgetPx = (contentHeightMM - headerHeightMM) / pxToMm;
 
-      let heightLeft = imgHeight;
-      let position = margin;
+      let rowIdx = 0;
+      let firstPage = true;
 
-      // ទំព័រទី ១
-      pdf.addImage(imgData, "PNG", margin, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight - margin * 2;
+      while (rowIdx < rowBoundariesPx.length) {
+        const pageStartPx = rowBoundariesPx[rowIdx].top;
+        let pageEndPx = pageStartPx;
+        let nextRowIdx = rowIdx;
 
-      // បើតារាងវែងជាងមួយទំព័រ បន្ថែមទំព័របន្ត
-      while (heightLeft > 0) {
-        position = heightLeft - imgHeight + margin;
-        pdf.addPage();
-        pdf.addImage(imgData, "PNG", margin, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight - margin * 2;
+        // ប្រមូលជួរដែលអាចដាក់ក្នុងទំព័រនេះបាន ដោយមិនកាត់កណ្តាលជួរណាមួយឡើយ
+        while (
+          nextRowIdx < rowBoundariesPx.length &&
+          rowBoundariesPx[nextRowIdx].bottom - pageStartPx <= bodyBudgetPx
+        ) {
+          pageEndPx = rowBoundariesPx[nextRowIdx].bottom;
+          nextRowIdx++;
+        }
+        // ករណីជួរតែមួយវែងជាងទំហំមួយទំព័រ ត្រូវបង្ខំបញ្ចូលវាទៅទោះបីជាវែងក៏ដោយ
+        if (nextRowIdx === rowIdx) {
+          pageEndPx = rowBoundariesPx[rowIdx].bottom;
+          nextRowIdx++;
+        }
+
+        const sliceHeightPx = Math.max(1, Math.round(pageEndPx - pageStartPx));
+        const sliceCanvas = document.createElement("canvas");
+        sliceCanvas.width = fullCanvas.width;
+        sliceCanvas.height = sliceHeightPx;
+        sliceCanvas
+          .getContext("2d")
+          .drawImage(
+            fullCanvas,
+            0,
+            Math.round(pageStartPx),
+            fullCanvas.width,
+            sliceHeightPx,
+            0,
+            0,
+            fullCanvas.width,
+            sliceHeightPx
+          );
+
+        if (!firstPage) pdf.addPage();
+        firstPage = false;
+
+        // header ត្រូវបានចម្លងឡើងវិញរាល់ទំព័រ ដើម្បីងាយអានជានិច្ច
+        pdf.addImage(headerDataUrl, "PNG", margin, margin, contentWidthMM, headerHeightMM);
+
+        const sliceHeightMM = sliceHeightPx * pxToMm;
+        pdf.addImage(
+          sliceCanvas.toDataURL("image/png"),
+          "PNG",
+          margin,
+          margin + headerHeightMM,
+          contentWidthMM,
+          sliceHeightMM
+        );
+
+        rowIdx = nextRowIdx;
       }
 
       const dateStr = new Date().toISOString().slice(0, 10);
