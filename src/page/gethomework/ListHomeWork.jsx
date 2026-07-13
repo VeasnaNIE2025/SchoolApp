@@ -322,8 +322,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 // Import useLocation ដើម្បីចាប់យកតម្លៃ State ផ្ទេរមកពីទំព័រ Form
 import { useLocation } from "react-router-dom";
 // npm install jspdf html2canvas
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+// ចំណាំ: jsPDF/html2canvas ត្រូវបាន import ដោយ dynamic() នៅក្នុង exportToPDF()
+// ដើម្បីកុំឲ្យវាធ្វើឲ្យ main bundle ធំពេក (chunk size warning)
 
 export default function ListHomeWork() {
   const location = useLocation();
@@ -381,6 +381,12 @@ export default function ListHomeWork() {
 
     setExporting(true);
     try {
+      // ទាញយក library តែពេលចុច export ប៉ុណ្ណោះ (code-splitting)
+      const [{ default: jsPDF }, { default: html2canvas }] = await Promise.all([
+        import("jspdf"),
+        import("html2canvas"),
+      ]);
+
       const canvas = await html2canvas(tableRef.current, {
         scale: 2, // resolution ខ្ពស់ ដើម្បីឲ្យអក្សរច្បាស់
         backgroundColor: "#ffffff",
