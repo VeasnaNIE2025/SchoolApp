@@ -806,6 +806,13 @@ const subjects = [
       subTopics: ["7-ស្វែងយល់អំពី Search Engine", " 8-ភាពខុសគ្នារវាង Search Engine និង AI", "9-ការកំណត់ Search Engine នៅលើ Search bar Ms.Edge", "10-ការស្វែងរករូបភាពនៅលើ Search Engine Google","11-ការស្វែងរកឯកសារនៅលើ Google Search Engine "],
       pdf: "/Videos/Word/22-Internet/22-Internet_1.pdf",
      },
+      {
+      id: 9,
+      title: "ប្រឡងឆមាសឆមាសលើកទី២ ថ្នាក់ទី១០D",
+      description: "ពិន្ទុពេញ 30 ពិន្ទុ",
+      subTopics: ["បន្ទាប់ពីប្រឡងចប់សូមចូលទៅ upload ចូលប្រព័ន្ធ","ករណីមិនបានចូលប្រព័ន្ធមានន័យថា បាន ០ ស្វ័យប្រវត្តិ","ដល់ម៉ោងត្រូវបបញ្ជូនដូចក្នុងវីដេអូណែនាំ"],
+      pdf: "/Videos/Word/23.10DExam/10D.docx",
+     },
     ],
   },
     {
