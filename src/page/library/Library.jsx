@@ -53,6 +53,14 @@ const BOOKS = [
     cover: '/PDF/Library/Arduino/arduino1.jpg',
     downloadUrl: '/PDF/Library/Arduino/arduino1.pdf',
   },
+  {
+    id: 7,
+    title: 'React js from 0 To Hero',
+    author: 'គ្មានឈ្មោះអ្នកនិពន្ធ',
+    category: 'បច្ចេកវិទ្យា',
+    cover: '/PDF/Library/Arduino/Reactjs.jpg',
+    downloadUrl: '/PDF/Library/Reactjs/Reactjs.pdf',
+  },
 ]
 
 const SPINE_COLORS = ['bg-[#8C3B2E]', 'bg-[#1F3A2E]', 'bg-[#C9A227]', 'bg-[#3E5C4F]', 'bg-[#7A5230]']
