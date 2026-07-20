@@ -58,7 +58,7 @@ const BOOKS = [
     title: 'React js from 0 To Hero',
     author: 'គ្មានឈ្មោះអ្នកនិពន្ធ',
     category: 'បច្ចេកវិទ្យា',
-    cover: '/PDF/Library/Library/Reactjs/Reactjs.jpg',
+    cover: '/PDF/Library/Reactjs/Reactjs.jpg',
     downloadUrl: '/PDF/Library/Reactjs/Reactjs.pdf',
   },
 ]
